@@ -8,9 +8,10 @@ It does **not** include the slide or lab viewer apps—only what instructors nee
 | Path | Purpose |
 | :--- | :--- |
 | `course/` | Slide Markdown + shared `images/` (stock graphics + sample) |
-| `labs/` | Lab Markdown (Lab Generator skill coming later) |
+| `labs/` | One folder per lab (`README.md` + `images/`) |
 | `.agents/skills/course-generator/` | Rules and layout templates for slide courses |
-| `.cursorrules`, `CLAUDE.md`, `AGENTS.md`, `.github/copilot-instructions.md` | Point every common coding agent at the skill |
+| `.agents/skills/lab-generator/` | Rules and templates for hands-on labs |
+| `.cursorrules`, `CLAUDE.md`, `AGENTS.md`, `.github/copilot-instructions.md` | Point every common coding agent at the skills |
 
 ## Quick start
 
@@ -21,7 +22,7 @@ It does **not** include the slide or lab viewer apps—only what instructors nee
 4. **Put slides under `course/`** (multi-file: `00-introduction.md`, `01-….md`, …) and keep shared graphics in `course/images/`.
 5. **Preview slides** in the hosted HTML Slides Viewer (paste your GitHub course folder URL):
    - https://roitraining.github.io/md-to-html-slides-viewer/
-6. **Labs** go under `labs/` when you are ready (see `labs/README.md`). Preview with the [lab viewer](https://github.com/roitraining/md-to-html-lab-viewer).
+6. **Labs** go under `labs/lab-NN-slug/` (see Lab Generator skill). Preview with the [lab viewer](https://github.com/roitraining/md-to-html-lab-viewer).
 
 Full workflow: **[AUTHORING.md](AUTHORING.md)**.
 

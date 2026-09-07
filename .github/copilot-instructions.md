@@ -1,12 +1,15 @@
-# Course authoring guidelines (GitHub Copilot)
+# Course and lab authoring guidelines (GitHub Copilot)
 
-When drafting or modifying presentation slides or course structure in this repository, always follow:
+When drafting or modifying **presentation slides** in this repository, follow:
 
-- Core rules: [.agents/skills/course-generator/SKILL.md](.agents/skills/course-generator/SKILL.md)
-- Layout templates: [.agents/skills/course-generator/examples/layout-templates.md](.agents/skills/course-generator/examples/layout-templates.md)
+- [.agents/skills/course-generator/SKILL.md](.agents/skills/course-generator/SKILL.md)
+- [.agents/skills/course-generator/examples/layout-templates.md](.agents/skills/course-generator/examples/layout-templates.md)
 
-Place slide chapters under `course/` with shared assets in `course/images/`. Place labs under `labs/`.
+When drafting or modifying **labs**, follow:
 
-Reuse the stock images in `course/images/` (welcome, agenda, who-should-attend, prerequisites, qa, ROI logo). Do not regenerate them.
+- [.agents/skills/lab-generator/SKILL.md](.agents/skills/lab-generator/SKILL.md)
+- [.agents/skills/lab-generator/examples/lab-template.md](.agents/skills/lab-generator/examples/lab-template.md)
 
-Do not use the ampersand character in slide titles or body text; write “and” instead (e.g. Questions and Answers).
+Place slide chapters under `course/` with shared assets in `course/images/`. Place each lab under `labs/lab-NN-slug/` (`README.md` + `images/`).
+
+Reuse stock slide images in `course/images/`. Do not use the ampersand character in titles or body text; write “and” instead.

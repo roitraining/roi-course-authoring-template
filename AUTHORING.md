@@ -18,11 +18,11 @@ Use any editor with a coding agent:
 - Claude Code  
 - Antigravity / Gemini  
 
-Pointer files in this repo (`.cursorrules`, `CLAUDE.md`, `AGENTS.md`, `.github/copilot-instructions.md`) tell the agent to follow the Course Generator skill. You should not need global machine setup.
+Pointer files in this repo (`.cursorrules`, `CLAUDE.md`, `AGENTS.md`, `.github/copilot-instructions.md`) tell the agent to follow the Course Generator and Lab Generator skills. You should not need global machine setup.
 
 If the agent seems unaware of the rules, say explicitly:
 
-> Read `.agents/skills/course-generator/SKILL.md` and `examples/layout-templates.md`, then follow them.
+> Read `.agents/skills/course-generator/SKILL.md` and `.agents/skills/lab-generator/SKILL.md`, then follow them.
 
 ## 3. Course layout (slides)
 
@@ -45,33 +45,41 @@ course/
 - **Stock images** are already in `course/images/`. Copy them into place for every new course folder if you split courses later; do not reinvent them.
 - Replace `course/sample-course.md` with your real chapters when you start (or keep it as a layout reference).
 
-### Lab stubs on slides
-
-Chapter endings include a **lab stub** (title, time, link only). Point the link at a file under `labs/`, for example:
-
-`labs/lab-01-getting-started.md`
-
-Do not write full lab steps in the slide deck—that belongs in `labs/` (Lab Generator skill forthcoming).
-
-## 4. Labs layout (placeholder)
+## 4. Labs layout
 
 ```text
 labs/
-  README.md          # this phase
-  lab-01-….md        # later, with Lab Generator skill
+  lab-01-getting-started/
+    README.md
+    images/
+  lab-02-…
 ```
 
-See [labs/README.md](labs/README.md).
+Follow:
+
+- [.agents/skills/lab-generator/SKILL.md](.agents/skills/lab-generator/SKILL.md)
+- [.agents/skills/lab-generator/examples/lab-template.md](.agents/skills/lab-generator/examples/lab-template.md)
+
+See also [labs/README.md](labs/README.md) and the sample at `labs/lab-01-sample-lab-viewer-format/`.
+
+### Lab stubs on slides
+
+Chapter endings include a **lab stub** (title, time, link only). Point the link at the lab folder, for example:
+
+`labs/lab-01-getting-started/`
+
+Do not write full lab steps in the slide deck.
 
 ## 5. Work with the agent
 
 Suggested sequence:
 
 1. Share audience, duration, and objectives.
-2. Ask for an **outline** (chapters → sections) and confirm it.
+2. Ask for an **outline** (chapters → sections → labs) and confirm it.
 3. Ask the agent to **write** `course/00-introduction.md` and each chapter file.
-4. Ask it to run the skill’s **validation checklist**.
-5. You review slides in the viewer; fix content and visuals as needed.
+4. Ask the agent to **write** each lab under `labs/lab-NN-slug/` using the Lab Generator skill.
+5. Ask it to run each skill’s **validation checklist**.
+6. You review slides and labs in their viewers; fix content and visuals as needed.
 
 ## 6. Preview
 
@@ -93,8 +101,12 @@ Use the [md-to-html-lab-viewer](https://github.com/roitraining/md-to-html-lab-vi
 - Do not invent instructor bios on the Welcome slide.
 - Do not use `&` in slide titles/body (write “and”; use **Questions and Answers**, not “Q&A”).
 - Do not regenerate the stock intro/outro images—reuse the files in `course/images/`.
+- Do not put full lab procedures in slide Markdown—use `labs/` and the Lab Generator skill.
+- Do not use Qwiklabs `ql-*` tags or fragments in Lab Viewer manuals.
 
 ## 8. Skill reference
 
-- [.agents/skills/course-generator/SKILL.md](.agents/skills/course-generator/SKILL.md)  
-- [.agents/skills/course-generator/examples/layout-templates.md](.agents/skills/course-generator/examples/layout-templates.md)  
+- Course: [.agents/skills/course-generator/SKILL.md](.agents/skills/course-generator/SKILL.md)  
+- Course templates: [.agents/skills/course-generator/examples/layout-templates.md](.agents/skills/course-generator/examples/layout-templates.md)  
+- Labs: [.agents/skills/lab-generator/SKILL.md](.agents/skills/lab-generator/SKILL.md)  
+- Lab template: [.agents/skills/lab-generator/examples/lab-template.md](.agents/skills/lab-generator/examples/lab-template.md)  

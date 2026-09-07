@@ -2,18 +2,29 @@
 
 Hands-on lab Markdown for this course lives in this folder.
 
-## Status
+## Layout
 
-The **Lab Generator** skill is not in this template yet. Lab authoring rules will mirror the [md-to-html-lab-viewer](https://github.com/roitraining/md-to-html-lab-viewer) format and will be added under `.agents/skills/lab-generator/` in a later update.
+```text
+labs/
+  lab-01-short-slug/
+    README.md      # lab manual (preferred name for Lab Viewer folder URLs)
+    images/        # screenshots and diagrams
+  lab-02-…
+```
 
-## For now
+## Authoring
 
-- Keep this `labs/` directory in your course repo.
-- When a slide chapter includes a lab stub, link to a future file here, e.g. `lab-01-getting-started.md`.
-- You may draft simple lab Markdown manually; naming suggestion: `lab-NN-short-slug.md` aligned with chapter numbers.
+Follow the **Lab Generator** skill:
+
+- [.agents/skills/lab-generator/SKILL.md](../.agents/skills/lab-generator/SKILL.md)
+- [.agents/skills/lab-generator/examples/lab-template.md](../.agents/skills/lab-generator/examples/lab-template.md)
+
+Ask your coding agent, for example: *“Using the Lab Generator skill, write lab-02-… under labs/ for chapter 2.”*
 
 ## Preview
 
-Open lab files with the hosted or local **lab viewer** once available for your workflow:
+Use the [HTML Lab Viewer](https://github.com/roitraining/md-to-html-lab-viewer) with a `?lab=` URL pointing at the lab folder or its `README.md`.
 
-https://github.com/roitraining/md-to-html-lab-viewer
+## Sample
+
+See [lab-01-sample-lab-viewer-format](lab-01-sample-lab-viewer-format/) for a minimal reference manual.
