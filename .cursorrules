@@ -1,0 +1,10 @@
+# Course and lab authoring rules
+
+When generating, outlining, editing, or validating **slide courses** in this repository, read and strictly follow:
+
+- [.agents/skills/course-generator/SKILL.md](.agents/skills/course-generator/SKILL.md)
+- [.agents/skills/course-generator/examples/layout-templates.md](.agents/skills/course-generator/examples/layout-templates.md)
+
+Put slide chapters and shared images under `course/`. Put labs under `labs/`.
+
+When a **Lab Generator** skill is added under `.agents/skills/lab-generator/`, follow that skill for all lab Markdown.
