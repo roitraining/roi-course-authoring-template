@@ -13,3 +13,5 @@ When drafting or modifying **labs**, follow:
 Place slide chapters under `course/` with shared assets in `course/images/`. Place each lab under `labs/lab-NN-slug/` (`README.md` + `images/`).
 
 Reuse stock slide images in `course/images/`. Do not use the ampersand character in titles or body text; write “and” instead.
+
+Content chapters default to quizzes after What You Learned. Questions and Answers may use `Questions?` or stacked + `qa.png`.

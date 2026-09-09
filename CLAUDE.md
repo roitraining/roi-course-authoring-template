@@ -19,6 +19,7 @@ Before creating or editing **labs**, read and follow:
 - Slides: `course/` (Markdown chapters + `course/images/`)
 - Labs: `labs/lab-NN-slug/README.md` + `images/`
 - Reuse stock slide images in `course/images/` (`welcome.png`, `agenda.png`, `who-should-attend.png`, `prerequisites.png`, `qa.png`, ROI logo). Do not regenerate them.
+- Default chapter quizzes after What You Learned (see Course Generator skill).
 
 ## Preview
 

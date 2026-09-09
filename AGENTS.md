@@ -13,8 +13,9 @@
 
 ## Output expectations
 
-- Prefer multi-file courses (`00-introduction.md`, `01-….md`, …) under `course/`.
+- Prefer multi-file courses (`00-introduction.md`, `01-….md`, …) under `course/`; short single-deck courses may use one file.
 - Same `<!-- course-title: … -->` in every chapter file.
 - No ampersand (`&`) in slide or lab titles/body text (use “and”).
-- Questions and Answers slides: title + `images/qa.png` only (`layout: stacked`).
+- Content chapters: Lab stub → What You Learned → Quizzes (default) → Questions and Answers.
+- Questions and Answers: `Questions?` body **or** stacked + `images/qa.png`—pick one pattern per course.
 - Labs use Overview → Objectives → Setup → Task N → Congratulations!; no Qwiklabs `ql-*` tags.

@@ -1,11 +1,13 @@
 # Course Generator Slide Layout Templates
 
 Copy and paste these templates when building decks for the HTML Slides Viewer.
-See [SKILL.md](../SKILL.md) for course structure, timing, and multi-file rules.
+See [SKILL.md](../SKILL.md) for course structure, timing, and file-layout rules (multi-file default; short-course exception).
 
 ---
 
-## 0. Multi-file course layout
+## 0. Course file layout
+
+**Default (multi-chapter / full courses):**
 
 ```text
 course-root/
@@ -13,19 +15,21 @@ course-root/
   01-getting-started.md
   02-basic-language-syntax.md
   images/
-    roi-logo-with-name.png      # required stock
-    welcome.png                 # required stock
-    agenda.png                  # required stock
-    who-should-attend.png       # required stock
-    prerequisites.png           # required stock
-    qa.png                      # required stock
+    roi-logo-with-name.png      # stock — copy from template
+    welcome.png                 # stock
+    agenda.png                  # stock
+    who-should-attend.png       # stock
+    prerequisites.png           # stock
+    qa.png                      # stock (optional Q and A visual)
     ch01-architecture-overview.png
     ch02-console-screenshot.png   # may be a TODO placeholder target
 ```
 
-Copy the six **required stock** files from the HTML Slides Viewer repo `images/` folder (do not regenerate). Wire them on Welcome, Agenda, Who Should Attend, Prerequisites, and Questions and Answers as shown below.
+Copy the **stock** files from `course/images/` in this template (do not regenerate). Wire them on Welcome, Agenda, Who Should Attend, Prerequisites, and optionally Questions and Answers.
 
-Every Markdown file starts with the **same** course-title metadata:
+**Short-course exception:** one Markdown file (e.g. `course.md`) is fine for a thin single-sitting deck. Split when the outline becomes multi-chapter.
+
+Every Markdown file starts with the **same** course-title metadata (or once at the top of a single-file short course):
 
 ```markdown
 <!-- course-title: 815: Hands-On Terraform -->
@@ -60,7 +64,7 @@ Chapter divider variant:
 
 ## 2. Welcome (Introduction chapter)
 
-Bullets + `welcome.png` → auto-split (list left, image right). **Required.**
+Bullets + `welcome.png` → auto-split. **Recommended** when using this template’s stock set.
 
 ```markdown
 # Welcome!
@@ -97,7 +101,7 @@ Do **not** invent a fictional instructor—leave Name / Background / Contact inf
 
 ## 4. Course Agenda (chapter list)
 
-Course-level orientation (distinct from per-section Navigation). Include **`agenda.png`** for auto-split. **Required.**
+Course-level orientation (distinct from per-section Navigation):
 
 ```markdown
 # Agenda
@@ -110,13 +114,13 @@ Course-level orientation (distinct from per-section Navigation). Include **`agen
 ![Agenda](images/agenda.png)
 ```
 
-Do **not** use `layout: navigation` for this course-level Agenda slide—save navigation layout for in-chapter section orientation.
+Optional: use `<!-- layout: navigation -->` and bold the first chapter if you want syllabus highlighting.
 
 ---
 
 ## 5. Who Should Attend / Prerequisites
 
-Include the stock images on both slides (auto-split). **Required.**
+Include stock images when using this template’s set (auto-split).
 
 ```markdown
 # Who Should Attend
@@ -261,7 +265,7 @@ Alert examples:
 - Strong GCP IAM fit
 ```
 
-Prefer a **table** or columns instead of more than two levels of nested bullets.
+Prefer the house style when it helps teaching (thesis-first, ~3–4 main bullets, optional sub-bullets, **two levels max**). If you need deeper structure, use a **table** or columns—or split the slide. **Teaching quality wins** over blind bullet-count compliance; viewer syntax remains a hard constraint.
 
 ---
 
@@ -364,11 +368,84 @@ Do **not** write lab steps here. Labs are authored separately.
 
 ---
 
-## 16. Questions and Answers
+## 16. Chapter quizzes (default — content chapters only)
 
-Use **stacked** layout with stock **`qa.png`**. **Required** at the end of every content chapter.
+Place after What You Learned and **before** Questions and Answers. Skip for Introduction and course-summary/office-hours closers; omit if the chapter is very short or the user declines quizzes.
 
-Title only—**do not** use `Q&A`, an ampersand, or body text like `Questions?` (the image is enough).
+### Quiz 1–2 (multiple choice + answer)
+
+```markdown
+# Quiz 1 of 3
+
+**Why does local Terraform state fail for teams?**
+
+- A. It is always encrypted at rest
+- B. Concurrent applies can corrupt state without locking or a shared backend
+- C. Providers cannot authenticate when state is local
+- D. Remote backends disable versioning
+
+---
+
+# Quiz 1 — Answer
+
+**Why does local Terraform state fail for teams?**
+
+**Correct: B.** Concurrent applies can corrupt state without locking or a shared backend
+
+- Local state lives on one machine—no shared source of truth
+- Without locking, two applies can overwrite each other
+- Secrets in state increase risk if the file is copied or committed
+- Remote backends + locking are the usual team fix
+```
+
+(Repeat as `Quiz 2 of 3` / `Quiz 2 — Answer`.)
+
+### Quiz 3 (open discussion + discussion points)
+
+```markdown
+<!-- layout: 2-column -->
+# Quiz 3 of 3 — Discussion
+
+### Prompt
+Your team still keeps `terraform.tfstate` on laptops for a shared network stack.
+
+### Discuss
+- What failure mode worries you most?
+- What minimum remote-backend controls would you require?
+- Who approves the first migration?
+
+---
+
+<!-- layout: 2-column -->
+# Quiz 3 — Discussion Points
+
+**Your team still keeps `terraform.tfstate` on laptops for a shared network stack.**
+
+### Strong Answers Mention
+- Concurrent apply / lost updates
+- Secret leakage via copied state files
+- Backend with locking, encryption, least-privilege IAM
+- Named owner for migration and rollback
+
+### Watch For
+- “We are careful, so local is fine”
+- Migrating without a rollback plan
+- Broad write credentials on the state bucket
+```
+
+---
+
+## 17. Questions and Answers
+
+**Default:** title + `Questions?` body.
+
+**Template alternative:** stacked layout with stock `qa.png` (title only—no `Q&A` / ampersand).
+
+```markdown
+# Questions and Answers
+
+Questions?
+```
 
 ```markdown
 <!-- layout: stacked -->
@@ -379,10 +456,14 @@ Title only—**do not** use `Q&A`, an ampersand, or body text like `Questions?` 
 
 ---
 
-## 17. Assemble files
+## 18. Assemble files
 
-**`00-introduction.md`:** Title → Welcome (+ `welcome.png`) → Course Objectives → Agenda (+ `agenda.png`) → Who Should Attend (+ `who-should-attend.png`) → Prerequisites (+ `prerequisites.png`)
+**Default — `00-introduction.md`:** Title → Welcome (+ stock images) → Course Objectives → Agenda → Who Should Attend → Prerequisites
 
-**Each `0N-….md` chapter:** Title → Chapter Objectives → (Navigation → section slides) × N → Lab stub → What You Learned → Questions and Answers (`stacked` + `qa.png`)
+**Default — each content `0N-….md` chapter:** Title → Chapter Objectives → (Navigation → section slides) × N → Lab stub → What You Learned → Quizzes (2 MCQ + 1 discussion, with answers) → Questions and Answers
 
-Ensure `images/` includes the full stock set: `roi-logo-with-name.png`, `welcome.png`, `agenda.png`, `who-should-attend.png`, `prerequisites.png`, `qa.png`.
+**No quizzes on:** Introduction; course-summary / office-hours closers; very short chapters or when the user declines
+
+**Short-course exception:** the same spine may live in one file (e.g. `course.md`) when the deck is a single sitting.
+
+Ensure `images/` includes the stock set when authoring from this template: `roi-logo-with-name.png`, `welcome.png`, `agenda.png`, `who-should-attend.png`, `prerequisites.png`, `qa.png`.
