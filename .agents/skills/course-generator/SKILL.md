@@ -187,7 +187,7 @@ are **gates**, not the creative goal.
 - `<!-- course-title: … -->` at the top of **each** chapter file
 - Lone `---` between slides
 - Clean layout comments on their own line—never nest HTML comments
-- Valid directives only: `title` | `navigation` | `2-column` / `two-column` | `3-column` / `three-column` | `title-image` | `stacked` / `stack`
+- Valid directives only: `title` | `navigation` | `2-column` / `two-column` | `3-column` / `three-column` | `title-image` | `image-only` / `image` | `stacked` / `stack`
 
 ### Layout selection matrix
 
@@ -197,9 +197,10 @@ are **gates**, not the creative goal.
 | **Navigation** | `<!-- layout: navigation -->` | Section orientation; bold exactly one active item |
 | **Content** | *(omit)* | Default vertical bullets, short code, tables, alerts |
 | **Auto-split** | *(omit)* | Same slide has **both** a bullet list and an image → list left, image right |
-| **Two-column** | `<!-- layout: 2-column -->` | Compare two items; pros/cons; before/after. Columns start at `###` |
-| **Three-column** | `<!-- layout: 3-column -->` | Three parallel options. Columns start at `###` |
+| **Two-column** | `<!-- layout: 2-column -->` | Compare two items; pros/cons; before/after. Columns start at `###`. Optional `<!-- below-columns -->` keeps a following alert full width under the columns |
+| **Three-column** | `<!-- layout: 3-column -->` | Three parallel options. Columns start at `###`. Same `<!-- below-columns -->` marker for a full-width callout under the row |
 | **Title-image** | `<!-- layout: title-image -->` | One large diagram/screenshot that should dominate |
+| **Image-only** | `<!-- layout: image-only -->` | Full-stage image with **no visible title**; keep an `#` heading in Markdown so the slide tray has a label |
 | **Stacked** | `<!-- layout: stacked -->` | Bullets/content on top, image below (full width); disables auto-split |
 
 **Variety:** do not use default content layout more than **3 times in a row**.
@@ -246,7 +247,7 @@ Copy from `course/images/` in this repo (or from the HTML Slides Viewer `images/
 
 - Diagrams, analogies, infographics, charts, architecture drawings, AI-generated photos when they improve understanding or appeal
 - Screenshots when teaching UI/tooling
-- Prefer `title-image`, `stacked`, or auto-split when a visual should dominate, sit below content, or sit beside bullets
+- Prefer `title-image`, `image-only`, `stacked`, or auto-split when a visual should dominate, sit alone, sit below content, or sit beside bullets
 
 ### Where files live
 

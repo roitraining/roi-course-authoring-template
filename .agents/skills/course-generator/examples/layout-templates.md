@@ -267,6 +267,30 @@ Alert examples:
 
 Prefer the house style when it helps teaching (thesis-first, ~3–4 main bullets, optional sub-bullets, **two levels max**). If you need deeper structure, use a **table** or columns—or split the slide. **Teaching quality wins** over blind bullet-count compliance; viewer syntax remains a hard constraint.
 
+### Full-width callout below columns
+
+By default, alerts placed after a column header stay **inside that column**. To put a NOTE/WARNING under the whole column row (full slide width), end the column region with:
+
+```markdown
+<!-- layout: 2-column -->
+# Local vs Remote State
+
+### Local
+- Fast for solo prototypes
+- No team sharing
+
+### Remote
+- Shared source of truth
+- State locking
+
+<!-- below-columns -->
+
+> [!WARNING]
+> This warning spans the full slide width under both columns.
+```
+
+The same `<!-- below-columns -->` marker works with `<!-- layout: 3-column -->`.
+
 ---
 
 ## 11. Title-Image
@@ -277,6 +301,21 @@ Prefer the house style when it helps teaching (thesis-first, ~3–4 main bullets
 
 ![System Diagram](images/ch02-reference-architecture.png)
 ```
+
+---
+
+## 11a. Image-only (tray title, no on-slide heading)
+
+Use when the diagram should fill the stage with **no visible title**. Keep an `#` heading in Markdown so the slide drawer still has a useful label.
+
+```markdown
+<!-- layout: image-only -->
+# Reference Architecture
+
+![System Diagram](images/ch02-reference-architecture.png)
+```
+
+Alias: `<!-- layout: image -->` also works.
 
 ---
 
