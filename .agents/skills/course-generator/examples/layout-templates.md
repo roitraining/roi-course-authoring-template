@@ -383,14 +383,12 @@ Generate custom diagrams/infographics/photos into `images/` when you can; use TO
 
 ## 14. Lab stub (end of chapter — no lab body)
 
-Do **not** write lab steps here. Labs are authored separately.
+Do **not** write lab steps here. Do **not** add the lab URL—humans add the link later. Labs are authored separately with the Lab Generator skill.
 
 ```markdown
 # Lab 2: Configure Remote State
 
-**Time:** 25 minutes
-
-**Lab guide:** [Lab 2 instructions](https://example.com/labs/lab-02)
+**Time:** 30 minutes
 ```
 
 ---

@@ -50,7 +50,7 @@ course/
 ```text
 labs/
   lab-01-getting-started/
-    README.md
+    lab.md
     images/
   lab-02-…
 ```
@@ -60,15 +60,11 @@ Follow:
 - [.agents/skills/lab-generator/SKILL.md](.agents/skills/lab-generator/SKILL.md)
 - [.agents/skills/lab-generator/examples/lab-template.md](.agents/skills/lab-generator/examples/lab-template.md)
 
-See also [labs/README.md](labs/README.md) and the sample at `labs/lab-01-sample-lab-viewer-format/`.
+See also [labs/README.md](labs/README.md) and the sample at `labs/lab-01-sample-lab-viewer-format/lab.md`.
 
 ### Lab stubs on slides
 
-Chapter endings include a **lab stub** (title, time, link only). Point the link at the lab folder, for example:
-
-`labs/lab-01-getting-started/`
-
-Do not write full lab steps in the slide deck.
+Chapter endings include a **lab stub** with the **lab title and time only**. Do **not** add the lab URL in the stub—humans add the link later. Do not write full lab steps in the slide deck.
 
 ## 5. Work with the agent
 
@@ -93,7 +89,7 @@ Local alternative: run any static server in a checkout of the slides viewer and 
 
 ### Labs
 
-Use the [md-to-html-lab-viewer](https://github.com/roitraining/md-to-html-lab-viewer) once lab files exist.
+Use the [HTML Lab Viewer](https://labv.roitraining.com/) and paste a GitHub URL to the lab folder.
 
 ## 7. What not to do
 
@@ -102,6 +98,7 @@ Use the [md-to-html-lab-viewer](https://github.com/roitraining/md-to-html-lab-vi
 - Do not use `&` in slide titles/body (write “and”; use **Questions and Answers**, not “Q&A”).
 - Do not regenerate the stock intro/outro images—reuse the files in `course/images/`.
 - Do not put full lab procedures in slide Markdown—use `labs/` and the Lab Generator skill.
+- Do not put a lab URL on the course lab stub (title and time only; humans add the link later).
 - Do not use Qwiklabs `ql-*` tags or fragments in Lab Viewer manuals.
 
 ## 8. Skill reference

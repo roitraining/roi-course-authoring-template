@@ -10,4 +10,4 @@ When generating, outlining, editing, or validating **labs**, read and strictly f
 - [.agents/skills/lab-generator/SKILL.md](.agents/skills/lab-generator/SKILL.md)
 - [.agents/skills/lab-generator/examples/lab-template.md](.agents/skills/lab-generator/examples/lab-template.md)
 
-Put slide chapters and shared images under `course/`. Put each lab under `labs/lab-NN-slug/` with `README.md` and `images/`.
+Put slide chapters and shared images under `course/`. Put each lab under `labs/lab-NN-slug/` with `lab.md` and `images/`. Preview labs at https://labv.roitraining.com/ (lab folder URL). Course lab stubs include title and time only.

@@ -2,18 +2,23 @@
 name: lab-generator
 description: >
   Designs and writes ROI Training hands-on lab manuals as Markdown for the HTML
-  Lab Viewer—one folder per lab with images, Overview, Objectives, Tasks, and
-  Congratulations. Use when creating labs, lab guides, lab manuals, challenge
-  steps, or linking labs from course slide stubs.
+  Lab Viewer—one folder per lab with lab.md, images, Overview, Lab Instructions,
+  and Congratulations. Use when creating labs, lab guides, lab manuals, challenge
+  steps, or pairing labs with course slide stubs.
 ---
 
 # Lab Generator Skill
 
-Write **clear, procedural lab manuals** for intermediate professionals. Output compiles in the [HTML Lab Viewer](https://github.com/roitraining/md-to-html-lab-viewer) as a single Markdown document (not slide decks).
+Write **clear, procedural lab manuals** for intermediate professionals. Output
+compiles in the [HTML Lab Viewer](https://labv.roitraining.com/) as a single
+Markdown document (not slide decks).
 
-**Always read** [examples/lab-template.md](examples/lab-template.md) and copy that structure rather than inventing a new outline.
+**Always read** [examples/lab-template.md](examples/lab-template.md) and the
+sample at `labs/lab-01-sample-lab-viewer-format/lab.md`. Copy that structure
+rather than inventing a new outline.
 
-Labs are **simpler than slide courses**: one story, numbered tasks, copyable commands, screenshots where useful. Prefer doing over lecturing.
+Labs are **simpler than slide courses**: one story, numbered tasks, copyable
+commands, screenshots where useful. Prefer doing over lecturing.
 
 ---
 
@@ -28,10 +33,10 @@ Labs are **simpler than slide courses**: one story, numbered tasks, copyable com
 
 ## 2. Design workflow
 
-1. Confirm what the learner should **accomplish** (outcomes) and approximate **time** (often 20–30 minutes; match the course lab stub).
-2. Outline **Tasks** (usually 3–6) that build sequentially.
-3. Write **one lab folder** with Markdown + `images/` (see §3).
-4. Add or update the **course slide lab stub** to link this lab (title, time, link only—no lab steps on slides).
+1. Confirm what the learner should **accomplish** (outcomes) and **time** (often about **30 minutes**; match the course lab stub).
+2. Outline **Tasks** (usually 3–6) that build sequentially. Prefer a **Bonus Task** unless it truly does not fit.
+3. Write **one lab folder** with `lab.md` + `images/` (see §3).
+4. If a slide course exists, ensure the chapter **lab stub** has the lab title and time only (Course Generator does not add the link—humans add that later).
 5. Run the **Validation checklist** (§9).
 
 ---
@@ -43,24 +48,24 @@ In the authoring template, labs live under `labs/`:
 ```text
 labs/
   lab-01-getting-started/
-    README.md          # preferred filename (Lab Viewer opens README.md for folder URLs)
+    lab.md             # preferred filename (Lab Viewer opens the lab folder)
     images/
       task1-console.png
       architecture.png
   lab-02-remote-state/
-    README.md
+    lab.md
     images/
 ```
 
 ### Naming
 
 - Folder: `lab-NN-short-kebab-slug` aligned with course chapter/lab numbers when possible.
-- Markdown: prefer **`README.md`** so a GitHub folder URL works with the Lab Viewer (`?lab=` on a folder appends `README.md`).
+- Markdown: prefer **`lab.md`**. Preview by opening the **lab folder** URL in the Lab Viewer (not a deep link to a specific file unless debugging).
 - Images: descriptive names under `images/`; never `image1.png`.
 
 ### Image references
 
-Use relative paths from the Markdown file:
+Use relative paths from `lab.md`:
 
 ```markdown
 ![Create bucket dialog](images/create-bucket.png)
@@ -68,54 +73,120 @@ Use relative paths from the Markdown file:
 
 The Lab Viewer resolves relative images against the Markdown file’s directory.
 
+### Preview
+
+Open [https://labv.roitraining.com/](https://labv.roitraining.com/) and paste a GitHub URL to the **lab folder** (for example `…/labs/lab-01-getting-started`).
+
 ---
 
 ## 4. Required lab structure (in order)
 
-| Section | Heading | Notes |
-| :--- | :--- | :--- |
-| Title | `# …` | Imperative or clear outcome; title case; include key product/tech names |
-| Overview | `## Overview` | 1–2 short paragraphs: scenario, why it matters, what they build |
-| Objectives | `## Objectives` | Intro line + imperative bullets (complete sentences with ending punctuation) |
-| Prerequisites | `## Prerequisites` | Optional but preferred; skills/accounts/tools—not a hard dependency on another lab unless the user requires it |
-| Setup | `## Setup` | Account login, project selection, open console/Cloud Shell, clone repo—only what this lab needs |
-| Tasks | `## Task N. Title` | Numbered; imperative task title; sentence case after the number |
-| Closing | `## Congratulations!` | Brief summary of what they accomplished; no new procedures |
+Use **Title Case** for `#` and `##` headings. Use `### Task N: …` / `### Bonus Task N: …` with a **colon**, and **sentence case** after the colon (capitalize the first word and proper nouns only—not Title Case on every word).
 
-### Task body pattern
+| Section | Heading | Required? | Notes |
+| :--- | :--- | :--- | :--- |
+| Title | `# …` | Yes | Outcome-oriented; Title Case; include key product/tech names |
+| Time Required | `## Time Required` | Yes | Prefer **`30 minutes`** (or the agreed duration). Write the full phrase, not a bare number |
+| Overview | `## Overview` | Yes | Short narrative: *In this lab, you will…* / *In this lab, you…* what students do |
+| You learn how to | `### You learn how to:` | Yes | Nested under Overview. Imperative bullets; one bullet per main task theme; begin each with a verb |
+| Scenario | `## Scenario` | Optional | Business problem / use case framing |
+| Lab Instructions | `## Lab Instructions` | Yes | Contains all tasks |
+| Tasks | `### Task N: …` | Yes | Numbered tasks; setup belongs in **Task 1** (no separate Setup section) |
+| Bonus | `### Bonus Task N: …` | Preferred | Fewer step-by-step hints; stretch goal similar to what they just practiced |
+| Closing | `## Congratulations!` | Yes | *In this lab, you have:* + past tense of the “You learn how to” bullets |
 
-Under each `## Task N. …`:
+### Overview and learning objectives
 
-1. One or two sentences: what this task achieves (not the step list).
-2. **Numbered steps** (`1.` repeated is fine; renderers renumber)—one primary user action per step when practical.
+```markdown
+## Overview
+
+In this lab, you will configure a remote backend and migrate Terraform state for team use.
+
+### You learn how to:
+- Create a remote state bucket with versioning enabled.
+- Configure a Terraform backend and migrate state.
+- Verify that state locking prevents concurrent applies.
+```
+
+- Bullets under **You learn how to** are imperative, complete sentences with ending punctuation.
+- Prefer one learning bullet per primary task (Bonus may share themes rather than adding a new bullet).
+
+### Scenario (optional, but preferred)
+
+Short description of the business problem or use case. Omit when the Overview already provides enough context.
+
+### Lab Instructions and tasks
+
+Under `## Lab Instructions`:
+
+1. **`### Task 1: …`** — Include environment setup here (sign in, select project, open console/Cloud Shell, clone repo). Then the first real work.
+2. **`### Task 2: …`** through **`### Task N: …`** — Continue the story.
+3. **`### Bonus Task N: …`** — Preferred. Same domain, fewer hand-holding steps.
+
+#### Task body pattern
+
+1. One or two sentences: what this task achieves (not the full step list).
+2. **Numbered steps** — restart at **1.** at the beginning of each task. Put a **blank line between each numbered step**. One primary user action per step when practical.
 3. Fenced code with a **language tag**; introduce commands with purpose (“To list regions, run:”).
 4. Screenshots for non-obvious UI; **meaningful alt text**; do not screenshot text that belongs in a code block.
-5. Callouts sparingly (`> [!NOTE]`, `> [!TIP]`, `> [!WARNING]`, `> [!IMPORTANT]`, `> [!CAUTION]`).
+5. **Callouts when appropriate** — see §4a. Prefer `[!NOTE]`, `[!IMPORTANT]`, and `[!WARNING]` in labs (TIP/CAUTION also supported).
 
 Optional under a task: a short **Success criteria** bullet list when verification matters.
 
-### Objectives wording
+### 4a. Callouts / alerts (use when appropriate)
+
+Add GitHub-style callouts in tasks when they help the learner. Do **not** sprinkle them on every step—use them for real guidance, constraints, or pitfalls.
+
+| Alert | Use when |
+| :--- | :--- |
+| `> [!NOTE]` | Helpful context, expected results, or “you should see…” guidance |
+| `> [!IMPORTANT]` | Must-follow constraints (ignore fine details for now, required settings, do not skip) |
+| `> [!WARNING]` | Mistakes, destructive actions, or easy-to-miss failures |
+| `> [!TIP]` | Optional shortcut (use sparingly) |
+| `> [!CAUTION]` | Stronger than WARNING when the risk is high |
+
+**Syntax** (blockquote + tag on the first line; blank line before the callout is fine):
 
 ```markdown
-## Objectives
+> [!NOTE]
+> Your generated page should resemble the screenshot below, but it will not be fully functional yet.
 
-In this lab, you learn how to:
+> [!IMPORTANT]
+> Ignore fine visual details for now. Focus on structure and layout.
 
-- Create a VPC network.
-- Launch a Compute Engine instance in the network.
+> [!WARNING]
+> Do not commit real project IDs or secrets to a shared repository.
 ```
+
+Place callouts after the step (or cluster of steps) they apply to. Emulate the sample lab and patterns like the GCP Canvas labs.
+
+### Congratulations!
+
+```markdown
+## Congratulations!
+
+In this lab, you have:
+- Created a remote state bucket with versioning enabled.
+- Configured a Terraform backend and migrated state.
+- Verified that state locking prevents concurrent applies.
+```
+
+Mirror the **You learn how to** list in past tense. No new procedures.
 
 ---
 
 ## 5. Lab Viewer Markdown correctness
 
-The Lab Viewer is a single scrolling HTML page (TOC from headings). It supports:
+The Lab Viewer is a single scrolling HTML page (TOC from headings) at
+[https://labv.roitraining.com/](https://labv.roitraining.com/). It supports:
 
 - Standard Markdown (headings, lists, tables, links, images)
 - Fenced code blocks with language tags (copy button in the viewer)
 - GitHub-style alerts: `[!NOTE]`, `[!TIP]`, `[!IMPORTANT]`, `[!WARNING]`, `[!CAUTION]`
 
-**Do not use** Qwiklabs-only tags or fragments (`ql-code-block`, `ql-infobox`, `![[/fragments/…]]`, templated `ql-variable` syntax). Those belong in other publishing systems, not this viewer.
+**Do not use** Qwiklabs-only tags or fragments (`ql-code-block`, `ql-infobox`,
+`![[/fragments/…]]`, templated `ql-variable` syntax). Those belong in other
+publishing systems, not this viewer.
 
 External links are fine; the viewer opens them in a new tab.
 
@@ -134,9 +205,9 @@ External links are fine; the viewer opens them in a new tab.
 
 ## 7. Relationship to slide courses
 
-- Course Generator writes **lab stubs only** on slides (title, time, link).
-- This skill writes the **full lab manual** under `labs/`.
-- Link example for a stub: relative path or GitHub URL to `labs/lab-01-…/` (folder) or `…/README.md`.
+- Course Generator writes a **lab stub** on slides: **title and time only**.
+- Humans add the lab URL/link later.
+- This skill writes the **full lab manual** under `labs/lab-NN-slug/lab.md`.
 
 ---
 
@@ -146,6 +217,8 @@ External links are fine; the viewer opens them in a new tab.
 - Do **not** author Qwiklabs YAML, assessments, or `ql-*` markup unless the user explicitly asks for that platform.
 - Do **not** invent credentials, project IDs, or secret values—use placeholders like `YOUR_PROJECT_ID`.
 - Do **not** leave screenshot references without alt text or without a file / `<!-- TODO IMAGE: … -->`.
+- Do **not** add a separate top-level Setup or Prerequisites section—put setup steps in Task 1.
+- Do **not** put a lab URL on the course stub (title and time only).
 
 ---
 
@@ -153,18 +226,24 @@ External links are fine; the viewer opens them in a new tab.
 
 Before delivering:
 
-- [ ] Folder `labs/lab-NN-slug/` with `README.md` and `images/` as needed
-- [ ] Structure: Title → Overview → Objectives → (Prerequisites) → Setup → Task 1…N → Congratulations!
-- [ ] Objectives are imperative complete sentences with ending punctuation
-- [ ] Tasks numbered; steps numbered; code fences have language tags
+- [ ] Folder `labs/lab-NN-slug/` with **`lab.md`** and `images/` as needed
+- [ ] Structure: Title → Time Required → Overview (with You learn how to) → (Scenario) → Lab Instructions (Task 1…N, Bonus preferred) → Congratulations!
+- [ ] `#` / `##` headings use Title Case; tasks use `### Task N: …` with sentence case after the colon
+- [ ] Time Required uses a full phrase such as `30 minutes`
+- [ ] You learn how to bullets are imperative complete sentences with ending punctuation
+- [ ] Setup appears in Task 1 (no standalone Setup section)
+- [ ] Each task restarts numbering at 1; code fences have language tags
+- [ ] Bonus Task included unless it clearly does not fit
+- [ ] Congratulations past-tense mirrors You learn how to
 - [ ] Images use `images/…` relative paths and meaningful alt text (or TODO IMAGE comments)
-- [ ] GitHub alerts use correct `[!NOTE]|[!TIP]|[!WARNING]|[!IMPORTANT]|[!CAUTION]` syntax when used
+- [ ] Callouts use correct `[!NOTE]|[!IMPORTANT]|[!WARNING]|[!TIP]|[!CAUTION]` syntax when used; NOTE/IMPORTANT/WARNING added where appropriate (not on every step)
 - [ ] No `&` in titles/body; no `ql-*` / fragment syntax
-- [ ] Second person, simple present; Congratulations summarizes outcomes only
-- [ ] Course slide stub updated with title, time, and link (if a course exists)
+- [ ] Second person, simple present
+- [ ] Course stub (if any) has title and time only—no lab link authored here
 
 ---
 
 ## 10. Templates
 
-Copy-paste skeleton: [examples/lab-template.md](examples/lab-template.md).
+Copy-paste skeleton: [examples/lab-template.md](examples/lab-template.md).  
+Emulate the sample: `labs/lab-01-sample-lab-viewer-format/lab.md`.

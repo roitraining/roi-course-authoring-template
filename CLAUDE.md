@@ -17,11 +17,12 @@ Before creating or editing **labs**, read and follow:
 ## Layout
 
 - Slides: `course/` (Markdown chapters + `course/images/`)
-- Labs: `labs/lab-NN-slug/README.md` + `images/`
+- Labs: `labs/lab-NN-slug/lab.md` + `images/`
 - Reuse stock slide images in `course/images/` (`welcome.png`, `agenda.png`, `who-should-attend.png`, `prerequisites.png`, `qa.png`, ROI logo). Do not regenerate them.
 - Default chapter quizzes after What You Learned (see Course Generator skill).
+- Lab stubs on slides: title and time only (no link).
 
 ## Preview
 
 Slides: https://roitraining.github.io/md-to-html-slides-viewer/  
-Labs: https://github.com/roitraining/md-to-html-lab-viewer  
+Labs: https://labv.roitraining.com/  

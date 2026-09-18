@@ -8,7 +8,7 @@
 ## Repository layout
 
 - `course/` — slide Markdown and `images/`
-- `labs/lab-NN-slug/` — each lab’s `README.md` plus `images/`
+- `labs/lab-NN-slug/` — each lab’s `lab.md` plus `images/`
 - Stock intro/outro slide images live in `course/images/`; copy/reuse those filenames; do not regenerate.
 
 ## Output expectations
@@ -17,5 +17,7 @@
 - Same `<!-- course-title: … -->` in every chapter file.
 - No ampersand (`&`) in slide or lab titles/body text (use “and”).
 - Content chapters: Lab stub → What You Learned → Quizzes (default) → Questions and Answers.
+- Lab stub on slides: **title and time only** (no lab URL—humans add the link later).
 - Questions and Answers: `Questions?` body **or** stacked + `images/qa.png`—pick one pattern per course.
-- Labs use Overview → Objectives → Setup → Task N → Congratulations!; no Qwiklabs `ql-*` tags.
+- Labs: Title → Time Required → Overview (You learn how to) → optional Scenario → Lab Instructions (Task / Bonus Task) → Congratulations!; preferred file `lab.md`; no Qwiklabs `ql-*` tags.
+- Preview labs at https://labv.roitraining.com/ (paste the lab folder URL).

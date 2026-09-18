@@ -126,7 +126,7 @@ A **short** course (roughly a single sitting / one thin chapter’s worth of tea
 - ~**2–3 minutes** of lecture per content slide on average.
 - Section: ~**6–10** teaching slides.
 - Chapter: ~**3–4** sections → ~**30–40** slides → ~**90–120** minutes lecture (~**1.5–2.5 hours**).
-- Activity/lab stub: estimate **20–30 minutes** (link only—do not author lab steps).
+- Activity/lab stub: estimate about **30 minutes** (title and time only on slides—do not author lab steps or the lab URL).
 - Full training day: aim for **4–5** labs (often 2 chapters morning, 2–3 afternoon). Adjust when lengths differ.
 
 ---
@@ -149,7 +149,7 @@ A **short** course (roughly a single sitting / one thin chapter’s worth of tea
 3. **For each section:**
    - **Navigation** — `<!-- layout: navigation -->`: full section list; bold **exactly one** current section (where we’ve been / where we are / where we’re going; ~2 seconds of instructor time)
    - **Section teaching slides** (~6–10 typical)
-4. **Activity / Hands-On Lab** — title, time estimate, link to lab instructions **only** (labs are authored by a different process)
+4. **Activity / Hands-On Lab** — lab title and time estimate **only** (no lab URL; humans add the link later). Labs are authored separately with the Lab Generator skill.
 5. **What You Learned** — past tense of the Chapter Objectives (same ideas)
 6. **Chapter quizzes** — default; see below (omit only when appropriate)
 7. **Questions and Answers** — title `Questions and Answers`; body `Questions?` **or** `<!-- layout: stacked -->` with stock **`images/qa.png`** (pick one pattern per course and stay consistent)
@@ -207,15 +207,26 @@ are **gates**, not the creative goal.
 
 ### Callouts / alerts
 
-Use sparingly for teaching emphasis:
+Use when appropriate for teaching emphasis—do not put a callout on every slide. Prefer NOTE, IMPORTANT, and WARNING in procedural teaching; TIP and CAUTION when they fit.
 
 | Alert | Use for |
 | :--- | :--- |
-| `> [!NOTE]` | Context / background |
+| `> [!NOTE]` | Context / background / expected results |
 | `> [!TIP]` | Shortcuts / pro tips |
 | `> [!WARNING]` | Pitfalls |
 | `> [!IMPORTANT]` | Must-not-miss rules |
 | `> [!CAUTION]` | Strong caution (supported by the viewer) |
+
+```markdown
+> [!NOTE]
+> Remote state is shared. Coordinate before force-unlocking.
+
+> [!IMPORTANT]
+> Always enable locking before the team shares a backend.
+
+> [!WARNING]
+> Applying with the wrong workspace can destroy the wrong environment.
+```
 
 ### Other syntax rules
 
@@ -273,7 +284,7 @@ Copy from `course/images/` in this repo (or from the HTML Slides Viewer `images/
 
 ## 9. Explicit non-goals
 
-- **Do not write lab exercise bodies**—only the lab stub slide (title, time, link)
+- **Do not write lab exercise bodies**—only the lab stub slide (title and time; no URL)
 - **Do not invent instructor bio**—use Welcome placeholders
 - **Do not** collapse a multi-chapter / full-length course into one file for convenience (short single-deck courses are fine—see §4)
 - **Do not** leave a broken image link without a TODO when the file was not generated
@@ -303,7 +314,7 @@ Before delivering, verify **teaching quality** and **viewer conformance**.
 - [ ] Course Objectives = 1 overall + 1 per content chapter
 - [ ] Each content chapter: Title → Objectives → (Nav → section slides)… → Lab stub → What You Learned → Quizzes (default) → Questions and Answers last
 - [ ] Every section Navigation lists **all** sections with **exactly one** `**bold**` item
-- [ ] Lab stub has title, time estimate, and link only (no lab steps authored here)
+- [ ] Lab stub has title and time estimate only (no lab steps; no lab URL authored here)
 - [ ] What You Learned is past tense of Chapter Objectives; Questions and Answers is minimal (`Questions?` or stacked + `qa.png`)
 - [ ] Content-chapter quizzes (unless omitted): 2 MCQs + 1 discussion, each with answer/points slides, grounded in chapter content; not on intro/summary closers
 - [ ] Layout directives are valid; comments are clean (not nested)

@@ -7,7 +7,7 @@ Hands-on lab Markdown for this course lives in this folder.
 ```text
 labs/
   lab-01-short-slug/
-    README.md      # lab manual (preferred name for Lab Viewer folder URLs)
+    lab.md         # lab manual (preferred name)
     images/        # screenshots and diagrams
   lab-02-…
 ```
@@ -23,8 +23,8 @@ Ask your coding agent, for example: *“Using the Lab Generator skill, write lab
 
 ## Preview
 
-Use the [HTML Lab Viewer](https://github.com/roitraining/md-to-html-lab-viewer) with a `?lab=` URL pointing at the lab folder or its `README.md`.
+Use the [HTML Lab Viewer](https://labv.roitraining.com/) and paste a GitHub URL to the **lab folder**.
 
 ## Sample
 
-See [lab-01-sample-lab-viewer-format](lab-01-sample-lab-viewer-format/) for a minimal reference manual.
+See [lab-01-sample-lab-viewer-format](lab-01-sample-lab-viewer-format/) (`lab.md`) for a reference manual in the preferred format.

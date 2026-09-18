@@ -341,7 +341,7 @@ Here is a summary of all layouts supported in this slide engine:
 3. Experiment with different layout directives.
 4. Refresh the viewer page to see your changes immediately.
 
-- [View Lab Guide](https://roitraining.github.io/md-to-html-lab-viewer/)
+- [View Lab Guide](https://labv.roitraining.com/)
 
 ---
 
