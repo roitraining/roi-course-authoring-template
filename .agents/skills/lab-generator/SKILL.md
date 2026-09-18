@@ -36,8 +36,9 @@ commands, screenshots where useful. Prefer doing over lecturing.
 1. Confirm what the learner should **accomplish** (outcomes) and **time** (often about **30 minutes**; match the course lab stub).
 2. Outline **Tasks** (usually 3–6) that build sequentially. Prefer a **Bonus Task** unless it truly does not fit.
 3. Write **one lab folder** with `lab.md` + `images/` (see §3).
-4. If a slide course exists, ensure the chapter **lab stub** has the lab title and time only (Course Generator does not add the link—humans add that later).
-5. Run the **Validation checklist** (§9).
+4. **Test and illustrate** when you can (see §3a): run the lab steps if tools/access allow; capture or generate screenshots and diagrams; otherwise leave placeholders + TODO comments for humans.
+5. If a slide course exists, ensure the chapter **lab stub** has the lab title and time only (Course Generator does not add the link—humans add that later).
+6. Run the **Validation checklist** (§9).
 
 ---
 
@@ -76,6 +77,31 @@ The Lab Viewer resolves relative images against the Markdown file’s directory.
 ### Preview
 
 Open [https://labv.roitraining.com/](https://labv.roitraining.com/) and paste a GitHub URL to the **lab folder** (for example `…/labs/lab-01-getting-started`).
+
+### 3a. Testing, screenshots, and generated images
+
+Treat verification and visuals as part of authoring—not optional polish.
+
+**Test the lab when you are able.** If you have access to the CLIs, consoles, APIs, browsers, or other tools the lab uses, execute the steps (or a faithful dry-run) and fix broken commands, wrong labels, missing flags, and bad ordering before you deliver. If you cannot fully test (no credentials, no product access, offline), say so briefly and still write the most accurate procedure you can.
+
+**Create images and screenshots when you are able.**
+
+- Capture real UI screenshots for non-obvious console or wizard steps
+- Generate diagrams, architecture sketches, or annotated visuals when that teaches better than a raw screenshot
+- Save files under `images/` with descriptive names; wire them with meaningful alt text
+
+**If you cannot produce an accurate visual yet**, do not silently omit it and do not invent a fake product screenshot when accuracy matters. Instead:
+
+1. Add the Markdown image reference (so the layout is ready)
+2. Add a `<!-- TODO IMAGE: … -->` comment that tells a human exactly what to capture or create
+3. Add a **placeholder image file** under `images/` (a simple labeled stub is fine) so the link is not broken
+
+```markdown
+<!-- TODO IMAGE: Console screenshot of the Create bucket dialog with Name and Location filled in -->
+![Create bucket dialog](images/create-bucket.png)
+```
+
+Prefer a placeholder + TODO over a missing image or a fabricated UI that could mislead learners.
 
 ---
 
@@ -216,7 +242,9 @@ External links are fine; the viewer opens them in a new tab.
 - Do **not** write slide decks here (use Course Generator).
 - Do **not** author Qwiklabs YAML, assessments, or `ql-*` markup unless the user explicitly asks for that platform.
 - Do **not** invent credentials, project IDs, or secret values—use placeholders like `YOUR_PROJECT_ID`.
-- Do **not** leave screenshot references without alt text or without a file / `<!-- TODO IMAGE: … -->`.
+- Do **not** leave screenshot references without alt text, without a file on disk, or without a `<!-- TODO IMAGE: … -->` when the real asset is still missing.
+- Do **not** invent fake product screenshots when accuracy matters—use a placeholder image + TODO for the human.
+- Do **not** skip testing when you have the tools/access to run the lab steps.
 - Do **not** add a separate top-level Setup or Prerequisites section—put setup steps in Task 1.
 - Do **not** put a lab URL on the course stub (title and time only).
 
@@ -235,7 +263,9 @@ Before delivering:
 - [ ] Each task restarts numbering at 1; code fences have language tags
 - [ ] Bonus Task included unless it clearly does not fit
 - [ ] Congratulations past-tense mirrors You learn how to
-- [ ] Images use `images/…` relative paths and meaningful alt text (or TODO IMAGE comments)
+- [ ] Lab tested when tools/access allow; known untested areas noted
+- [ ] Screenshots/diagrams generated or captured when possible; otherwise placeholder image file + `<!-- TODO IMAGE: … -->` + meaningful alt text
+- [ ] Images use `images/…` relative paths (no broken links)
 - [ ] Callouts use correct `[!NOTE]|[!IMPORTANT]|[!WARNING]|[!TIP]|[!CAUTION]` syntax when used; NOTE/IMPORTANT/WARNING added where appropriate (not on every step)
 - [ ] No `&` in titles/body; no `ql-*` / fragment syntax
 - [ ] Second person, simple present
