@@ -293,6 +293,31 @@ The same `<!-- below-columns -->` marker works with `<!-- layout: 3-column -->`.
 
 ---
 
+## 10c. Card layout
+
+Each `###` heading becomes a card title. Dash list items under that heading become **sentences** in the card body (the viewer strips the bullets). Prefer complete sentences. Three cards sit in a row; four cards use a 2-by-2 grid.
+
+```markdown
+<!-- layout: card-layout -->
+# Choose a Backend Shape
+
+### Locking
+- Concurrent writes must be blocked before they corrupt state.
+- Pick a lock that the team already knows how to operate.
+
+### Durability
+- State belongs in a service with versioning and encryption at rest.
+- Local files are fine for a prototype and risky the moment two people apply.
+
+### Access
+- Grant the pipeline identity only what it needs to read and write state.
+- Do not share a personal credential across laptops.
+```
+
+Aliases: `<!-- layout: cards -->` or `<!-- layout: card -->`.
+
+---
+
 ## 11. Title-Image
 
 ```markdown
@@ -316,6 +341,23 @@ Use when the diagram should fill the stage with **no visible title**. Keep an `#
 ```
 
 Alias: `<!-- layout: image -->` also works.
+
+---
+
+## 11a2. Full-bleed (covers top bar and footer)
+
+Use when the image should fill the **entire 16:9 slide**, overlapping the accent bar and footer. Keep an `#` heading so the drawer still has a label. The image uses `cover` (fills the canvas; may crop).
+
+```markdown
+<!-- layout: full-bleed -->
+# Opening Visual
+
+![Keynote photo](images/ch01-opening-visual.png)
+```
+
+Aliases: `<!-- layout: bleed -->` or `<!-- layout: full-bleed-image -->`.
+
+Do **not** use this when you still want the ROI footer and top bar. That is `image-only`.
 
 ---
 

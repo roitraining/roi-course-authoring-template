@@ -187,7 +187,7 @@ are **gates**, not the creative goal.
 - `<!-- course-title: … -->` at the top of **each** chapter file
 - Lone `---` between slides
 - Clean layout comments on their own line—never nest HTML comments
-- Valid directives only: `title` | `navigation` | `2-column` / `two-column` | `3-column` / `three-column` | `title-image` | `image-only` / `image` | `stacked` / `stack`
+- Valid directives only: `title` | `navigation` | `2-column` / `two-column` | `3-column` / `three-column` | `card-layout` / `cards` / `card` | `title-image` | `image-only` / `image` | `full-bleed` / `bleed` | `stacked` / `stack`
 
 ### Layout selection matrix
 
@@ -199,8 +199,10 @@ are **gates**, not the creative goal.
 | **Auto-split** | *(omit)* | Same slide has **both** a bullet list and an image → list left, image right |
 | **Two-column** | `<!-- layout: 2-column -->` | Compare two items; pros/cons; before/after. Columns start at `###`. Optional `<!-- below-columns -->` keeps a following alert full width under the columns |
 | **Three-column** | `<!-- layout: 3-column -->` | Three parallel options. Columns start at `###`. Same `<!-- below-columns -->` marker for a full-width callout under the row |
+| **Card layout** | `<!-- layout: card-layout -->` | Each `###` is a card title; dash list items become sentences in the card body (no bullets). Three cards in a row; four cards in a 2-by-2 grid |
 | **Title-image** | `<!-- layout: title-image -->` | One large diagram/screenshot that should dominate |
 | **Image-only** | `<!-- layout: image-only -->` | Full-stage image with **no visible title**; keep an `#` heading in Markdown so the slide tray has a label |
+| **Full-bleed** | `<!-- layout: full-bleed -->` | Image covers the entire 16:9 slide, including top bar and footer. Keep an `#` heading for the tray label |
 | **Stacked** | `<!-- layout: stacked -->` | Bullets/content on top, image below (full width); disables auto-split |
 
 **Variety:** do not use default content layout more than **3 times in a row**.
@@ -258,7 +260,7 @@ Copy from `course/images/` in this repo (or from the HTML Slides Viewer `images/
 
 - Diagrams, analogies, infographics, charts, architecture drawings, AI-generated photos when they improve understanding or appeal
 - Screenshots when teaching UI/tooling
-- Prefer `title-image`, `image-only`, `stacked`, or auto-split when a visual should dominate, sit alone, sit below content, or sit beside bullets
+- Prefer `title-image`, `image-only`, `full-bleed`, `stacked`, or auto-split when a visual should dominate, sit alone, fill the whole slide, sit below content, or sit beside bullets
 
 ### Where files live
 
