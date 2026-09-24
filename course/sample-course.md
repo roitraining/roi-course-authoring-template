@@ -1,17 +1,5 @@
-<!-- 
-  COURSE TITLE METADATA:
-  The course-title comment below sets the title text displayed in the 
-  left column of the footer across all slides in this deck.
--->
 <!-- course-title: 123: Sample Course -->
 
-<!-- 
-  SLIDE 1: Course Cover Slide
-  Layout Type: "title"
-  Activation: Include the comment "layout: title" on its own line.
-  Usage: Centers all text and graphics, hides the slide progress header, 
-  and styles the cover slide.
--->
 <!-- layout: title -->
 ![ROI Logo](images/roi-logo-with-name.png)
 
@@ -20,9 +8,7 @@
 
 ---
 
-<!-- 
-  SLIDE 2: Welcome (auto-split: bullets + image)
--->
+<!-- layout: panel-right -->
 # Welcome!
 
 - ROI leads the industry in designing and delivering customized technology and management training solutions
@@ -30,29 +16,32 @@
   - Name
   - Background
   - Contact info
-- Let's get started!
+- Let’s get started!
 
 ![Welcome](images/welcome.png)
 
 ---
 
-<!-- 
-  SLIDE 3: Agenda (auto-split: bullets + image)
--->
+# Course Objectives
+
+- **Choose the right HTML Slides Viewer layout** for each teaching moment in an ROI course
+- Build the standard introduction and the core layouts: default content, auto-split, and columns
+- Use cards, panels, and large-media layouts, then close a chapter the standard way
+
+---
+
+<!-- layout: panel-left -->
 # Agenda
 
-- Chapter 1: Standard & Split Layouts
-- Chapter 2: Multi-Column & Immersive Layouts
-- Layout reference and hands-on practice
-- Questions and wrap-up
+- Chapter 1: Standard and Split Layouts
+- Chapter 2: Cards, Panels, and Large Media
+- Questions and Answers
 
 ![Agenda](images/agenda.png)
 
 ---
 
-<!-- 
-  SLIDE 4: Who Should Attend (auto-split: bullets + image)
--->
+<!-- layout: panel-right -->
 # Who Should Attend
 
 - Instructors authoring ROI Markdown slide decks
@@ -63,9 +52,7 @@
 
 ---
 
-<!-- 
-  SLIDE 5: Prerequisites (auto-split: bullets + image)
--->
+<!-- layout: panel-left -->
 # Prerequisites
 
 - Comfortable editing Markdown files
@@ -76,178 +63,300 @@
 
 ---
 
-<!-- 
-  SLIDE 6: Default / Content Layout Slide
-  Layout Type: "content" (Default)
-  Activation: Leave blank or omit layout directives.
-  Usage: Text and lists flow vertically. Standard for general information slides.
--->
-# Default Slide Layout
-
-This slide demonstrates the default **content** layout. When no layout directive is specified, content flows vertically from top to bottom.
-
-### Markdown Features Supported:
-- **Bold Text** and *Italic Text*
-- Bullet points (like this list)
-- Subheaders (`###` or `##` tags)
-- Callouts / Alerts (see below)
-
-> [!NOTE]
-> This is a NOTE alert callout. Use it to highlight auxiliary tips, background context, or interesting facts.
-
----
-
-<!-- 
-  SLIDE 3: Chapter Divider Cover Slide
-  Layout Type: "title"
-  Activation: Include "layout: title" on its own line.
-  Usage: Centers all text. Perfect for separating the course into logical modules or chapters.
--->
 <!-- layout: title -->
 ![ROI Logo](images/roi-logo-with-name.png)
 
 123: Sample Course
 
-# Chapter 1: Standard & Split Layouts
+# Chapter 1: Standard and Split Layouts
 
 ---
 
-<!-- 
-  SLIDE 4: Chapter Agenda / Navigation Layout Slide
-  Layout Type: "navigation"
-  Activation: Include "layout: navigation" on its own line.
-  Usage: Creates an agenda/table of contents layout.
-  Active Concept Highlighting: 
-    The presentation app scans list items on navigation slides. 
-    The item wrapped in bold asterisks (e.g. **Topic**) automatically renders in 
-    bold black text, while all other topics render in a muted light grey.
--->
+# Chapter 1: Objectives
+
+- Explain when to use default content, navigation, and auto-split
+- Compare two-column and three-column slides
+- Place notes and warnings inside columns or full width under them
+
+---
+
 <!-- layout: navigation -->
-# Agenda: Part 1
+# Agenda: Chapter 1
 
-- **Introduction to Layouts**
-- Default & Content Slides
-- Auto-Split Layouts
-- Three-Column Layout
-- Immersive Image Layout
-- Stacked Layout
+- **Default Content**
+- Auto-Split
+- Columns and Callouts
 
 ---
 
-<!-- 
-  SLIDE 5: 2-Column Auto-Split Layout Slide
-  Layout Type: "split" (Triggered Automatically)
-  Activation: Default layout (no layout directive) containing BOTH a bullet list and an image.
-  Usage: The app automatically detects this combination and builds a 2-column layout
-         with the bullet list on the left and the image centered on the right.
--->
-# Auto-Split Layout (2-Columns)
+# Default Slide Layout
 
-- **Layout Detection**: No explicit layout directive is required for this effect.
-- **Left Column**: The first bullet list (`ul` or `ol`) is automatically placed here.
-- **Right Column**: The first image (`img`) is automatically placed here.
-- **Use Case**: Great for showing text descriptions next to supporting diagrams or screenshots.
+This slide demonstrates the default **content** layout. When no layout directive is specified, content flows vertically from top to bottom.
+
+### Markdown features supported
+- **Bold text** and *italic text*
+- Bullet points (like this list)
+- Subheaders (`###` or `##`)
+- Callouts and alerts (see below)
+
+> [!NOTE]
+> Use a NOTE alert for background context or helpful facts that support the main point.
+
+---
+
+<!-- layout: navigation -->
+# Agenda: Chapter 1
+
+- Default Content
+- **Auto-Split**
+- Columns and Callouts
+
+---
+
+# Auto-Split Layout
+
+- **No directive needed**: a bullet list plus an image triggers this layout automatically
+- **Left column**: the first list on the slide
+- **Right column**: the first image on the slide
+- **Best for**: short points beside a diagram or screenshot
 
 ![Sample Diagram](images/sample-diagram.png)
 
 ---
 
-<!-- 
-  SLIDE 6: Chapter Agenda / Navigation Layout Slide (Topic 2 Active)
-  Layout Type: "navigation"
-  Activation: Include "layout: navigation" on its own line.
-  Usage: Highlights the second topic: "Default & Content Slides".
--->
 <!-- layout: navigation -->
-# Agenda: Part 1
+# Agenda: Chapter 1
 
-- Introduction to Layouts
-- **Default & Content Slides**
-- Auto-Split Layouts
-- Three-Column Layout
-- Immersive Image Layout
-- Stacked Layout
+- Default Content
+- Auto-Split
+- **Columns and Callouts**
 
 ---
 
-<!-- 
-  SLIDE 7: Chapter 2 Divider Cover Slide
-  Layout Type: "title"
-  Activation: Include "layout: title" on its own line.
--->
+<!-- layout: 2-column -->
+# Side-by-Side Topics (2 Columns)
+
+### Left Column
+- **Independent**: standard text and lists only
+- **No image required**: useful for parallel concepts
+- **Clean structure**: columns start at each `###` header
+
+### Right Column
+- **Symmetric**: equal width beside the left column
+- **Easy comparison**: place two alternatives side by side
+- **Teaching use**: pros and cons, before and after, local vs remote
+
+---
+
+<!-- layout: 2-column -->
+# Two Columns with Notes and Warnings
+
+### Recommended Pattern
+- Put callouts under the matching column header
+- Keep alert text short so columns stay balanced
+- Use NOTE for context the learner should remember
+
+> [!NOTE]
+> Alerts belong to the column that contains them. Place the blockquote after that column’s bullets.
+
+### Watch Outs
+- Long warnings can push column height unevenly
+- Prefer one alert per column on dense slides
+- WARNING works well for common authoring mistakes
+
+> [!WARNING]
+> Do not put an image on a `2-column` text slide if you only wanted side-by-side lists. Use auto-split (list plus image) or `stacked` instead.
+
+---
+
+<!-- layout: 2-column -->
+# Full-Width Callout Below Two Columns
+
+### Pros
+- Fast to author in Markdown
+- Easy side-by-side comparison
+- Works without images
+
+### Cons
+- Dense columns can overflow
+- Alerts inside columns compete for height
+- Longer warnings need full width
+
+<!-- below-columns -->
+
+> [!WARNING]
+> To place a callout under both columns, finish the column content, then put `<!-- below-columns -->` on its own line, then add your alert. Everything after that marker spans the full slide width.
+
+---
+
+<!-- layout: three-column -->
+# Comparing Features (3 Columns)
+
+### Column A
+- **Flexibility**: define layout columns cleanly
+- **Alignment**: columns align horizontally
+- **Styling**: accent borders match the theme
+
+### Column B
+- **Spacing**: generous gap between columns
+- **Readability**: strong for side-by-side comparisons
+- **Teaching use**: three options or three steps
+
+### Column C
+- **Auto-grouping**: built by the viewer from headers
+- **Clean Markdown**: simple headers and lists
+- **Keep it short**: three short columns beat one crowded slide
+
+---
+
+<!-- layout: three-column -->
+# Three Columns with Callouts
+
+### Note
+- Background context
+- Non-blocking guidance
+- Safe defaults
+
+> [!NOTE]
+> Use NOTE when the point is helpful context, not a hard requirement.
+
+### Tip
+- Faster authoring shortcuts
+- Viewer-friendly patterns
+- Reusable slide shapes
+
+> [!TIP]
+> Draft column headers first, then fill bullets, then add one alert if needed.
+
+### Warning
+- Easy-to-miss pitfalls
+- Layout conflicts
+- Overflow risk
+
+> [!WARNING]
+> Keep each column short. Three tall alerts will crowd the 1280 by 720 canvas.
+
+---
+
+<!-- layout: three-column -->
+# Full-Width Callout Below Three Columns
+
+### Design
+- Pick the layout first
+- Keep headers parallel
+- Limit to three bullets
+
+### Author
+- Write columns next
+- Prefer short phrases
+- Save callouts for last
+
+### Review
+- Check overflow on the design canvas
+- Confirm alert placement
+- Preview in the viewer
+
+<!-- below-columns -->
+
+> [!NOTE]
+> Same pattern for three columns: after the last column, add `<!-- below-columns -->` on its own line, then the alert.
+
+---
+
 <!-- layout: title -->
 ![ROI Logo](images/roi-logo-with-name.png)
 
 123: Sample Course
 
-# Chapter 2: Advanced Columns & Large Media
+# Chapter 2: Cards, Panels, and Large Media
 
 ---
 
-<!-- 
-  SLIDE 8: Two-Column Custom Layout Slide
-  Layout Type: "two-column" (or "2-column")
-  Activation: Include the comment "layout: two-column" or "layout: 2-column" on its own line.
-  Usage: Splits `the slide into two equal vertical columns below the title.
-  Structure: 
-    Start each column with a subheader (e.g. H3 headers like ### Column A) 
-    followed by the list items or paragraphs belonging to that column.
-    This is different from "split" layout because it supports pure text columns (no images required).
--->
-<!-- layout: 2-column -->
-# Side-by-Side Topics (2 Columns)
+# Chapter 2: Objectives
 
-### Left Column
-- **Independent**: Standard text/lists only
-- **No Image Required**: Great for parallel concepts
-- **Clean Structure**: Automatically parsed by subheaders
-
-### Right Column
-- **Symmetric**: Proportions are equal to the left column
-- **Easy Comparison**: Readily compare two alternatives
-- **Responsive**: Flex layout wraps gracefully
+- Turn simple headings and lists into cards
+- Place an image in a colored side panel or in a large-media layout
+- Recognize the standard chapter close: lab, review, quiz, and questions
 
 ---
 
-<!-- 
-  SLIDE 9: Three-Column Layout Slide
-  Layout Type: "three-column"
-  Activation: Include "layout: three-column" or "layout: 3-column" on its own line.
-  Usage: Splits the slide into three equal vertical columns below the title.
-  Structure: 
-    Start each column with a subheader (e.g. H3 headers like ### Option A) 
-    followed by the list items or paragraphs belonging to that column.
--->
-<!-- layout: three-column -->
-# Comparing Features (3 Columns)
+<!-- layout: navigation -->
+# Agenda: Chapter 2
 
-### Column A
-- **Flexibility**: Define layout columns cleanly
-- **Alignment**: Columns align horizontally
-- **Styling**: Accent borders match theme
-
-### Column B
-- **Spacing**: Generous gap between columns
-- **Readability**: Perfect for side-by-side comparisons
-- **Adaptability**: Adjusts on screen resize
-
-### Column C
-- **Auto-grouping**: Handled by JavaScript
-- **Clean Markdown**: Simple headers and lists
-- **Responsive**: Adapts to mobile/desktop
+- **Cards**
+- Panels and Large Media
+- Code and Reference
 
 ---
 
-<!-- 
-  SLIDE 10: Title-Image Immersive Layout Slide
-  Layout Type: "title-image"
-  Activation: Include "layout: title-image" on its own line.
-  Usage: Showcases a single large diagram, mockup, or infographic.
-  Design details:
-    The title sits at the top of the slide, and the single image is scaled 
-    using "object-fit: contain" to fill 100% of the remaining vertical space 
-    between the title and the footer without vertical overflow or scrollbars.
--->
+<!-- layout: card-layout -->
+# Idea Cards from Simple Markdown
+
+### When to use cards
+- Use cards when each idea needs a title and a short explanation.
+- Keep three or four cards so they stay readable on the 16:9 canvas.
+- Write each list item as a complete sentence, not a fragment.
+
+### How the Markdown maps
+- Each `###` heading becomes the card title.
+- Each dash list item under that heading becomes a sentence in the card body.
+- The viewer removes the bullets so the body reads as ordinary prose.
+
+### What to avoid
+- Do not pack a full paragraph of teaching into a single card.
+- Do not mix images into this layout. Use auto-split or stacked instead.
+- If you need a comparison table, use columns or a table, not cards.
+
+---
+
+<!-- layout: card-layout -->
+# Four Cards on One Slide
+
+### Name the idea
+- Give every card a short title that an instructor can point to.
+- The title should be the claim, not a category label.
+
+### Write sentences
+- Body text is sentences, even though you author them as a dash list.
+- One thought per line keeps the card scannable from the back of the room.
+
+### Limit the set
+- Four cards fill a 2 by 2 grid on the design canvas.
+- If a fifth idea appears, start a new slide rather than shrinking the type.
+
+### Stay on theme
+- Card color, type, and the accent bar come from the active slide theme.
+- Switching ROI Theme, Demo Theme, and Holcim Theme restyles the cards without new Markdown.
+
+---
+
+<!-- layout: navigation -->
+# Agenda: Chapter 2
+
+- Cards
+- **Panels and Large Media**
+- Code and Reference
+
+---
+
+<!-- layout: panel-left -->
+# Panel on the Left
+
+The colored third comes from the active theme. Title and text stay in the light area. The image is centered in the panel.
+
+![Agenda graphic](images/agenda.png)
+
+---
+
+<!-- layout: panel-right -->
+# Panel on the Right
+
+Use this for section openers such as Welcome and Who Should Attend. Agenda and Prerequisites use the left panel.
+
+![Prerequisites graphic](images/prerequisites.png)
+
+---
+
 <!-- layout: title-image -->
 # High-Resolution Immersive Image
 
@@ -255,17 +364,22 @@ This slide demonstrates the default **content** layout. When no layout directive
 
 ---
 
-<!-- 
-  SLIDE 11: Stacked Layout Slide
-  Layout Type: "stacked" (or "stack")
-  Activation: Include "layout: stacked" or "layout: stack" on its own line.
-  Usage: Title and content on top; image below filling remaining height.
-  Design details:
-    Disables auto-split so a bullet list + image stay vertical (content above, image below)
-    instead of side-by-side. The image scales with object-fit: contain into remaining space.
--->
+<!-- layout: image-only -->
+# Architecture Diagram
+
+![Architecture Diagram](images/sample-diagram.png)
+
+---
+
+<!-- layout: full-bleed -->
+# Full-Bleed Photo
+
+![Full-bleed architecture diagram](images/sample-diagram.png)
+
+---
+
 <!-- layout: stacked -->
-# Stacked Content + Image
+# Stacked Content and Image
 
 - Use when the diagram is wider than tall and needs full slide width
 - Bullets stay readable above the visual
@@ -275,16 +389,16 @@ This slide demonstrates the default **content** layout. When no layout directive
 
 ---
 
-<!-- 
-  SLIDE 12: Code Blocks & Callouts Demo Slide
-  Layout Type: "content" (Default)
-  Activation: Omit layout directives.
-  Usage: Demonstrates how code blocks and GitHub-style alerts are rendered.
-  Features:
-    - Code blocks automatically get a "Copy" button in the upper-right corner.
-    - Multiple alert styles (TIP, IMPORTANT, WARNING, CAUTION) are fully supported.
--->
-# Code Blocks & Rich Callouts
+<!-- layout: navigation -->
+# Agenda: Chapter 2
+
+- Cards
+- Panels and Large Media
+- **Code and Reference**
+
+---
+
+# Code Blocks and Rich Callouts
 
 Here is a block of code with syntax highlighting and a copy button:
 
@@ -297,67 +411,128 @@ function showStatus(message) {
 ```
 
 > [!TIP]
-> Use TIP alerts to highlight helpful suggestions or productivity shortcuts.
+> Use TIP alerts for helpful suggestions or productivity shortcuts.
 
 > [!WARNING]
-> Use WARNING alerts to warn users about potential mistakes, gotchas, or security considerations.
+> Use WARNING alerts for mistakes, gotchas, or security considerations.
 
 ---
 
-<!-- 
-  SLIDE 13: Tables Slide
-  Layout Type: "content" (Default)
-  Activation: Omit layout directives.
-  Usage: Showcases clean alignment of markdown tables.
--->
 # Layout Reference Cheat Sheet
 
-Here is a summary of all layouts supported in this slide engine:
-
-| Layout Name | Directive Comment | Main Design Behavior |
+| Layout | Directive | Behavior |
 | :--- | :--- | :--- |
-| **Title** | `layout: title` | Centers all content; hides header/footer. |
-| **Content** | (None / Default) | Single column top-to-bottom layout. |
-| **Navigation** | `layout: navigation` | Chapter list; active concept highlighted in bold. |
-| **Auto-Split** | (Automatic) | Triggers automatically if image + bullets are present. |
-| **Three Column** | `layout: three-column` | Creates 3 side-by-side vertical columns. |
-| **Title Image** | `layout: title-image` | Immersive view; image scales to fill remaining height. |
-| **Stacked** | `layout: stacked` | Content on top; image below filling remaining height. |
+| **Title** | `layout: title` | Centered cover or chapter divider |
+| **Content** | *(none)* | Default top-to-bottom flow |
+| **Navigation** | `layout: navigation` | Agenda list; bold exactly one active topic |
+| **Auto-Split** | *(automatic)* | List left, image right when both are present |
+| **Two Column** | `layout: 2-column` | Text columns from `###` headers; optional below-columns marker |
+| **Three Column** | `layout: three-column` | Three parallel text columns |
+| **Card Layout** | `layout: card-layout` | `###` titles become cards; list items become sentences (no bullets) |
+| **Panel Left** | `layout: panel-left` | Theme color fills the left third; image centered there |
+| **Panel Right** | `layout: panel-right` | Theme color fills the right third; image centered there |
+| **Title Image** | `layout: title-image` | Visible title; image fills remaining height |
+| **Image Only** | `layout: image-only` | Image fills the stage; H1 labels the tray only |
+| **Full Bleed** | `layout: full-bleed` | Image covers the whole 16:9 slide, including top bar and footer |
+| **Stacked** | `layout: stacked` | Content on top; image below full width |
 
 ---
 
-<!-- 
-  SLIDE 14: Hands-On Activity Slide
-  Layout Type: "content" (Default)
-  Activation: Omit layout directives.
--->
 # Hands-On Lab Exercise
 
-**Duration**: 15 minutes
-
-### Follow these steps to complete the layout activity:
-1. Open the course markdown file in your text editor.
-2. Add a new slide separated by a triple-dash (`---`).
-3. Experiment with different layout directives.
-4. Refresh the viewer page to see your changes immediately.
+**Time:** 15 minutes
 
 - [View Lab Guide](https://labv.roitraining.com/)
 
 ---
 
+# What You Learned
 
-<!-- 
-  SLIDE 14: Summary / Wrap-up Slide
-  Layout Type: "content" (Default)
-  Activation: Omit layout directives.
--->
-# Course Wrap-Up
+- Explained when to use default content, navigation, and auto-split
+- Compared two-column and three-column slides
+- Placed notes and warnings inside columns or full width under them
+- Turned simple headings and lists into cards
+- Placed an image in a colored side panel or in a large-media layout
+- Recognized the standard chapter close: lab, review, quiz, and questions
 
-### Key Concepts Covered:
-1. Writing slides using simple Markdown and HTML comment directives
-2. Utilizing the correct layout for different presentation styles
-3. Presenting code blocks and tables elegantly
-4. Working with vertical & split layouts
+---
+
+# Quiz 1 of 3
+
+**You need a warning under both columns, not inside one of them. What do you add?**
+
+- A. A second `#` heading
+- B. `<!-- below-columns -->` on its own line, then the alert
+- C. `<!-- layout: full-bleed -->`
+- D. An image so the slide auto-splits
+
+---
+
+# Quiz 1: Answer
+
+**You need a warning under both columns, not inside one of them. What do you add?**
+
+**Correct: B.** `<!-- below-columns -->` on its own line, then the alert
+
+- Content before the marker stays in the columns
+- Content after the marker spans the full slide width
+- The same marker works for two-column and three-column slides
+- An image would auto-split a default slide, which is a different layout
+
+---
+
+# Quiz 2 of 3
+
+**Which layout covers the top bar and the footer?**
+
+- A. `image-only`
+- B. `title-image`
+- C. `full-bleed`
+- D. `panel-right`
+
+---
+
+# Quiz 2: Answer
+
+**Which layout covers the top bar and the footer?**
+
+**Correct: C.** `full-bleed`
+
+- `image-only` fills the content area and keeps the top bar and footer
+- `title-image` keeps a visible title and fits the image below it
+- `panel-right` colors one third of the slide and leaves the chrome in place
+- `full-bleed` covers the entire 16:9 slide
+
+---
+
+<!-- layout: 2-column -->
+# Quiz 3 of 3: Discussion
+
+### Prompt
+You have four short ideas. Each needs a title and two sentences. No diagram.
+
+### Discuss
+- Would you use cards, columns, or a default bullet list?
+- What breaks if you add a fifth idea on the same slide?
+- When would you switch to auto-split instead?
+
+---
+
+<!-- layout: 2-column -->
+# Quiz 3: Discussion Points
+
+**You have four short ideas. Each needs a title and two sentences. No diagram.**
+
+### Strong Answers Mention
+- Cards: each `###` is a title and the list items become sentences
+- Four cards use a 2 by 2 grid; a fifth idea belongs on the next slide
+- Columns fit a comparison, not four separate explanations
+- Auto-split needs a list and an image, so it does not apply here
+
+### Watch For
+- Packing a paragraph into one card
+- Shrinking type to force a fifth card onto the slide
+- Choosing full-bleed when there is no image
 
 ---
 
