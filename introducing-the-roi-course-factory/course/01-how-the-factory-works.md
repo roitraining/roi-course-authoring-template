@@ -117,25 +117,15 @@ Introducing the ROI Course Factory
 - It holds the folder layout, the stock images, and the skills.
 ---
 
-# The Loop You Will Actually Use
-
-- **Brief** the agent inside a clone of the template
-- **Read** the draft in the viewer, the way the room will see it
-- **Fix** the slide in the editor when a layout, image, or line is wrong
-- **Share** a GitHub URL so the next instructor opens the same course
-
-> [!NOTE]
-> The room never needs the editor. Instructors live in the viewer. Authors and editors live in the repo.
----
 <!-- layout: 2-column -->
 # What Is the Course, and What is the Viewer
 
-### Course is markdown and images
+### The Course is markdown and images
 - Slide text, layout comments, and images
 - Chapter files and the course title in the footer
 - This is what you commit and what the next person opens
 
-### Viewer controls the look
+### The Viewers control the look
 - Theme, light or dark, and type size
 - Pen, highlighter, pointer, and flipchart
 - Handy while you teach, gone for the next instructor
@@ -145,60 +135,7 @@ Introducing the ROI Course Factory
 > [!IMPORTANT]
 > If it is not in the Markdown, it is not part of the course.
 ---
-# Course Markdown Example
 
-
-```markdown
-# Open the Viewer
-
-- Start at slidesv.roitraining.com
-- Open a local folder or a GitHub URL
-- The viewer presents the file and does not save it
-
- ---
-
-# Theme and Type Size
-
-- The theme restyles the slides
-- Plus and minus change type size for this browser
-
-> [!NOTE]
-> Theme and type size stay in this browser. They are not written into the file.
-
- ---
-
-<!-- layout: 2-column -->
-# Two Ways to Open
-
-### Local
-- Choose the folder of chapter files
-- Several Markdown files become chapters
-
-### GitHub
-- Paste a repo, a folder, or a file URL
-- Copy the share link for the class
-
- ---
-
-<!-- layout: stacked -->
-# The Toolbar
-
-- Folder opens a course
-- Fullscreen hides the bar
-- The annotation dock sits on the slide
-
-![Viewer toolbar](images/viewer-toolbar.png)
-
- ---
-
-<!-- layout: navigation -->
-# Chapter 1
-
-- **Using the Viewer**
-- Using the Editor
-- Creating a Course
-```
----
 <!-- layout: card-layout -->
 # Who Does What
 
@@ -217,6 +154,32 @@ Open the viewer and teach. They mark up the slide. They do not rewrite the file
 
 Preview before the class. Can generate PDFs for students from the viewer
 ---
+<!-- layout: card-layout -->
+# Advantages of Using The ROI Course Factory
+
+### Faster Course Development
+- An initial course plus labs can be created in minutes.
+- Testing and editing is aided by the agent. 
+
+### Simpler Custom Course Creation
+- Rewrite an existing course for a new audience with a single prompt.
+- The agant can be pointed at multiple courses and asked to combine them. 
+
+### Easier Editing
+- The editor is designed for simple edits to content and images. 
+- The agent can handle mass edits on request. 
+
+### Flexible Styling
+- Multiple page layouts
+- Can skin content by simply. selecting themes. 
+- Custom themes can be added. 
+---
+<!-- layout: title-image -->
+# Comparing Manual versus Factory Course Creation
+
+![Timelines for manual and factory course creation](images/manual-vs-factory-timeline.svg)
+---
+
 <!-- layout: navigation -->
 # Chapter 1
 
