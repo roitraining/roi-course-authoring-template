@@ -224,7 +224,6 @@ Preview before the class. Can generate PDFs for students from the viewer
 
 ![Slide drawer in list view](images/viewer-drawer-list.png)
 ---
-<!-- layout: stacked -->
 # The Thumbnail Tray
 
 - The grid icon in the drawer header switches from titles to thumbnails
@@ -252,7 +251,8 @@ Preview before the class. Can generate PDFs for students from the viewer
 # Mark Up the Slide, Not the File
 
 - The dock on the right is for the live class: pen, highlighter, pointer, flipchart, clear, delete all
-- Pick a color, then draw. Pen colors include black, blue, green, and red
+- Pick a color, then draw. 
+- Flipchart opens a blank page to draw on
 - **Clear** erases this slide. **Delete all** erases every slide in this browser
 - Those strokes stay in this browser. They are not written into the Markdown
 
