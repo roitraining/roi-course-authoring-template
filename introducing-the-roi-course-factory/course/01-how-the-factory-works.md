@@ -357,6 +357,17 @@ Preview before the class. Can generate PDFs for students from the viewer
 
 ![The same slide after increasing the type size](images/viewer-font-size.png)
 ---
+# Do Now: Using the Viewer
+
+1. Open the [slides viewer](https://slidesv.roitraining.com/).
+2. Use the arrow keys to move through a few slides of the sample course.
+3. Try a couple of themes, then keep the one you like.
+4. Switch to full screen.
+5. Try the pen, the highlighter, and the pointer.
+6. Open the flipchart and sketch on it.
+7. Close the flipchart, then press Escape to leave full screen.
+8. Click the print icon and save the PDF on your machine.
+---
 <!-- layout: navigation -->
 # Chapter 1
 
