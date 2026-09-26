@@ -28,15 +28,15 @@
   <text x="1179" y="232" fill="#ffffff" font-family="Inter, system-ui, sans-serif" font-size="20" font-weight="700" text-anchor="middle">Testing, editing</text>
   <text x="1425" y="232" fill="#ffffff" font-family="Inter, system-ui, sans-serif" font-size="22" font-weight="700" text-anchor="middle">Maintenance</text>
 
-  <!-- Factory timeline. Same scale. Weights 18 / 10 / 14 / 6. -->
+  <!-- Factory timeline. Planning matches. Content and maintenance are much shorter. Testing and editing a little shorter. -->
   <rect x="340" y="400" width="1212" height="112" rx="18" fill="#e7eef6"/>
   <rect x="340" y="400" width="218" height="112" rx="16" fill="#1e71d6"/>
-  <rect x="568" y="400" width="122" height="112" rx="16" fill="#082445"/>
-  <rect x="700" y="400" width="164" height="112" rx="16" fill="#6a55e4"/>
-  <rect x="874" y="400" width="74" height="112" rx="16" fill="#bd35c2"/>
+  <rect x="568" y="400" width="68" height="112" rx="16" fill="#082445"/>
+  <rect x="646" y="400" width="128" height="112" rx="16" fill="#6a55e4"/>
+  <rect x="784" y="400" width="40" height="112" rx="14" fill="#bd35c2"/>
 
   <text x="449" y="464" fill="#ffffff" font-family="Inter, system-ui, sans-serif" font-size="22" font-weight="700" text-anchor="middle">Planning</text>
-  <text x="1100" y="464" fill="#495f7a" font-family="Inter, system-ui, sans-serif" font-size="24" font-weight="700">Time saved</text>
+  <text x="856" y="464" fill="#495f7a" font-family="Inter, system-ui, sans-serif" font-size="24" font-weight="700">Time saved</text>
 
   <!-- Phase judgments -->
   <g filter="url(#soft)">
