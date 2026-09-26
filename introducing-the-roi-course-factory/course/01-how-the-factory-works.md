@@ -46,6 +46,7 @@
 
 - Comfortable cloning a Git repository and opening it in an editor
 - A current browser. Chrome or Edge when you will use the editor
+- A coding agent: Cursor, Claude Code, Visual Studio Code with CoPilot, or Antigravity
 - No prior experience with this viewer, this editor, or these skills
 
 ![Prerequisites](images/prerequisites.png)
@@ -69,8 +70,8 @@ Introducing the ROI Course Factory
 
 - **Introduction**
 - Using the Viewer
-- Using the Editor
 - Creating a Course
+- Using the Editor
 ---
 # One Factory, Two Lines
 
@@ -212,8 +213,8 @@ Preview before the class. Can generate PDFs for students from the viewer
 
 - Introduction
 - **Using the Viewer**
-- Using the Editor
 - Creating a Course
+- Using the Editor
 ---
 # Open the Viewer
 
@@ -237,16 +238,7 @@ Preview before the class. Can generate PDFs for students from the viewer
 
 [https://labv.roitraining.com/?lab=https://github.com/roitraining/roi-course-authoring-template/tree/main/introducing-the-roi-course-factory/labs/lab-01-create-a-short-web-course](https://labv.roitraining.com/?lab=https://github.com/roitraining/roi-course-authoring-template/tree/main/introducing-the-roi-course-factory/labs/lab-01-create-a-short-web-course)
 ---
-<!-- layout: stacked -->
-# The Toolbar Is the Whole Console
 
-- **Folder** opens a course. **Printer** builds a 16:9 handout
-- **Fullscreen** hides this bar. **Theme** restyles the slides
-- **Moon** switches light and dark. **Minus and plus** change type size
-- The annotation dock sits on the slide, not in this bar
-
-![Viewer toolbar over a content slide](images/viewer-toolbar.png)
----
 <!-- layout: stacked -->
 # Open a Course from Your Machine
 
@@ -257,6 +249,7 @@ Preview before the class. Can generate PDFs for students from the viewer
 
 ![Open Course dialog on the Local tab](images/viewer-open-local.png)
 ---
+
 <!-- layout: stacked -->
 # Open a Course from GitHub
 
@@ -267,6 +260,7 @@ Preview before the class. Can generate PDFs for students from the viewer
 
 ![Open Course dialog on the GitHub tab](images/viewer-open-github.png)
 ---
+
 # What the Viewer Expects in the Folder
 
 - Chapter files named like `00-introduction.md` and `01-how-the-factory-works.md`
@@ -277,6 +271,52 @@ Preview before the class. Can generate PDFs for students from the viewer
 > [!IMPORTANT]
 > Open the course folder, not a random parent directory full of unrelated Markdown. The viewer treats the Markdown it finds there as the course.
 ---
+
+<!-- layout: default -->
+# The Viewer Toolbar 
+
+- **Folder** opens a course. 
+- **Printer** builds a 16:9 handout
+- **Fullscreen** hides this bar
+- **Theme** restyles the slides
+- **Moon** switches light and dark. 
+- **Minus and plus** change type size
+
+![Viewer toolbar over a content slide](images/viewer-toolbar.png)
+---
+
+<!-- layout: default -->
+# The Annotation Controls 
+
+- **Pen**
+- **Highlighter** 
+- **Flipchart** opens a blank canvas
+- **Broom** erases the current slide
+- **Trash can** erases all slides 
+
+![Viewer toolbar over a content slide](images/annotation-controls.png)
+---
+
+<!-- layout: card-layout -->
+# Four Ways to Point at the Slide
+
+### Pen
+- Draw a line the room can see. Press P.
+- Choose a color before you draw, or you will get the last one.
+
+### Highlighter
+- Lay a translucent stroke over a phrase. Press H.
+- Yellow, green, or blue. It does not cover the words completely.
+
+### Pointer
+- Drop one pointer on the spot you mean. Press O.
+- A second click moves it. You do not get a trail of pointers.
+
+### Flipchart
+- Open a blank sheet over the slide and sketch.
+- Close the sheet to come back to the slide. The slide is still there.
+---
+
 # The Slide Drawer
 
 - The hamburger opens **Course Slides**: every slide title, in order
@@ -286,6 +326,7 @@ Preview before the class. Can generate PDFs for students from the viewer
 
 ![Slide drawer in list view](images/viewer-drawer-list.png)
 ---
+
 # The Thumbnail Tray
 
 - The grid icon in the drawer header switches from titles to thumbnails
@@ -310,35 +351,7 @@ Preview before the class. Can generate PDFs for students from the viewer
 > [!TIP]
 > Fullscreen is for the room. Leave it when you need the chapter menu, the theme, or a different course.
 ---
-# Mark Up the Slide, Not the File
 
-- The dock on the right is for the live class: pen, highlighter, pointer, flipchart, clear, delete all
-- Pick a color, then draw. 
-- Flipchart opens a blank page to draw on
-- **Clear** erases this slide. **Delete all** erases every slide in this browser
-- Those strokes stay in this browser. They are not written into the Markdown
-
-![Pen selected, with the color swatches open](images/viewer-annotations.png)
----
-<!-- layout: card-layout -->
-# Four Ways to Point at the Slide
-
-### Pen
-- Draw a line the room can see. Press P.
-- Choose a color before you draw, or you will get the last one.
-
-### Highlighter
-- Lay a translucent stroke over a phrase. Press H.
-- Yellow, green, or blue. It does not cover the words completely.
-
-### Pointer
-- Drop one pointer on the spot you mean. Press O.
-- A second click moves it. You do not get a trail of pointers.
-
-### Flipchart
-- Open a blank sheet over the slide and sketch.
-- Close the sheet to come back to the slide. The slide is still there.
----
 # Themes Change the Look, Not the Words
 
 - The theme menu restyles type, color, and the title slide
@@ -348,7 +361,8 @@ Preview before the class. Can generate PDFs for students from the viewer
 
 ![The same slide in the ROI Alt theme](images/viewer-theme-alt.png)
 ---
-# Type Size Is for the Room You Are In
+
+# Change the Font Size so Everyone Can See
 
 - Minus and plus shrink or enlarge the slide text
 - Use it when the back row cannot read a code sample, or when a slide is cramped
@@ -373,8 +387,155 @@ Preview before the class. Can generate PDFs for students from the viewer
 
 - Introduction
 - Using the Viewer
-- **Using the Editor**
+- **Creating a Course**
+- Using the Editor
+---
+# Start from the Template, Not a Blank File
+
+- On GitHub, use **Use this template** so the new repo is yours, or clone the template and push it to a new repo
+- Open that repo in your agent. Do not start from an empty directory and hope the rules come along
+- The template is not the viewer. You do not need the viewer source in the course repo
+- Leave this Course Factory folder as a sample. Do your new course in its own clone
+
+```bash
+git clone https://github.com/roitraining/roi-course-authoring-template.git web-development-course
+```
+---
+<!-- layout: 2-column -->
+# Course Folder and Lab Folder
+
+### course/
+- One Markdown file per chapter: `00-introduction.md`, then `01-…`
+- Shared `images/` for every chapter, including the stock welcome and agenda art
+- This is the folder you open in the slides viewer
+
+### labs/
+- One folder per lab: `labs/lab-01-short-name/`
+- Inside it: `lab.md` and `images/`
+- Open that folder in the lab viewer at labv.roitraining.com
+
+<!-- below-columns -->
+
+> [!IMPORTANT]
+> A chapter ends with a lab stub: title and time only. The steps live in `lab.md`. Do not paste the lab URL onto the slide. A person adds that link later.
+---
+<!-- layout: card-layout -->
+# The Skills Are the House Style
+
+### Course Generator
+- Builds the intro spine, the chapter order, and the layouts the viewer accepts.
+- It will not invent an instructor bio or write the lab steps on a slide.
+
+### Lab Generator
+- Builds one lab folder: overview, tasks, a bonus, and a closing.
+- Steps are second person. Setup belongs in Task 1.
+
+### What you still decide
+- Audience, prerequisites, length, and the story of the course.
+- The skill cannot guess who is in the room.
+
+### When the agent drifts
+- Tell it to read the Course Generator and Lab Generator skills and follow them.
+- The template’s agent files already point at those skills. Say it again if you must.
+---
+# Any Agent That Can Use Skills
+
+- **Cursor**, **Claude Code**, **Visual Studio Code** with Copilot, and **Antigravity** are the ones we already point at the skills
+- The repo carries `.cursorrules`, `CLAUDE.md`, `AGENTS.md`, and Copilot instructions so the agent finds the skills
+- Any other coding agent that can read a skill file can do this work
+- If it starts inventing layouts, stop it and name the skill. Do not argue with a draft that ignored the rules
+
+> [!TIP]
+> You drive every step. A strong agent with a vague prompt still writes the wrong course quickly.
+---
+<!-- layout: 2-column -->
+# A Weak Brief and a Strong One
+
+### Weak
+- “Write a course on web development.”
+- No audience, so you get a beginner textbook
+- No length, so you get a four-day dump
+- No outline, so chapter 1 is a surprise
+
+### Strong
+- Title, audience, prerequisites, and hours
+- “Outline only. Wait for approval.”
+- One chapter at a time after that
+- Name the Course Generator skill
+
+<!-- below-columns -->
+
+> [!NOTE]
+> Experienced authors get better drafts because they edit the brief, not because they type faster.
+---
+# Approve the Outline Before Any Chapter Exists
+
+- Ask for chapters, sections, and lab titles. Tell the agent not to write files yet
+- Check the altitude: intermediate people who will use this at work, unless you truly asked for beginners
+- Check the clock: a chapter is roughly 90 to 120 minutes of lecture, plus a lab
+- Send it back if the story is wrong. Rewriting an outline is cheap. Rewriting eight chapters is not
+
+> [!TIP]
+> Specify the target audience, the prerequisites, and the course length in the same message as the title. Those three lines change the draft more than extra adjectives.
+---
+# A Prompt You Can Reuse
+
+- Keep the constraints in the prompt. Do not rely on the agent to remember the hallway conversation
+- “Do not write files yet” is the line that saves you an hour
+- After you approve, ask for the introduction and chapter 1 only
+- Preview that much in the viewer before you let it continue
+
+```text
+Using the Course Generator skill, outline a 3-hour course
+titled "Understanding Web Development with HTML, CSS, and JavaScript."
+
+Audience: professionals who work with web teams and need to
+read, sketch, and lightly change pages.
+Prerequisites: files and folders, a text editor, and a current
+browser. No prior HTML.
+Length: 3 hours, including one short lab.
+
+Do not write chapter files yet. Return chapters, sections,
+and the lab title only. Wait for approval.
+```
+---
+<!-- layout: 3-column -->
+# Preview, Then Polish, Then Share
+
+### Preview
+- Open the course folder in the viewer
+- Teach the draft to yourself, out loud
+- Stop on any slide you would not say in class
+
+### Polish
+- Fix layout and images in the editor
+- Send the agent back when the story is wrong
+- Be specific: which slide, what to change
+
+### Share
+- Commit and push the folder you meant
+- Paste the course folder URL on the GitHub tab
+- Copy the share link and send that to the instructor
+
+<!-- below-columns -->
+
+> [!WARNING]
+> Do not regenerate `welcome.png`, `agenda.png`, or the other stock images. Copy the files that shipped with the template.
+---
+# Lab: Create a Short Web Development Course
+
+**Time:** 20 minutes
+
+- [Open Lab](https://labv.roitraining.com/?lab=https://github.com/roitraining/roi-course-authoring-template/tree/main/introducing-the-roi-course-factory/labs/lab-01-create-a-short-web-course)
+---
+
+<!-- layout: navigation -->
+# Chapter 1
+
+- Introduction
+- Using the Viewer
 - Creating a Course
+- **Using the Editor**
 ---
 # You Edit on a Clone, Nowhere Else
 
@@ -514,150 +675,6 @@ Preview before the class. Can generate PDFs for students from the viewer
 
 > [!WARNING]
 > Switching chapters, or opening another folder, asks you to save, discard, or cancel. Discard throws away the unsaved Markdown for this chapter. The image file you already added stays on disk.
----
-<!-- layout: navigation -->
-# Chapter 1
-
-- Introduction
-- Using the Viewer
-- Using the Editor
-- **Creating a Course**
----
-# Start from the Template, Not a Blank File
-
-- On GitHub, use **Use this template** so the new repo is yours, or clone the template and push it to a new repo
-- Open that repo in your agent. Do not start from an empty directory and hope the rules come along
-- The template is not the viewer. You do not need the viewer source in the course repo
-- Leave this Course Factory folder as a sample. Do your new course in its own clone
-
-```bash
-git clone https://github.com/roitraining/roi-course-authoring-template.git web-development-course
-```
----
-<!-- layout: 2-column -->
-# Course Folder and Lab Folder
-
-### course/
-- One Markdown file per chapter: `00-introduction.md`, then `01-…`
-- Shared `images/` for every chapter, including the stock welcome and agenda art
-- This is the folder you open in the slides viewer
-
-### labs/
-- One folder per lab: `labs/lab-01-short-name/`
-- Inside it: `lab.md` and `images/`
-- Open that folder in the lab viewer at labv.roitraining.com
-
-<!-- below-columns -->
-
-> [!IMPORTANT]
-> A chapter ends with a lab stub: title and time only. The steps live in `lab.md`. Do not paste the lab URL onto the slide. A person adds that link later.
----
-<!-- layout: card-layout -->
-# The Skills Are the House Style
-
-### Course Generator
-- Builds the intro spine, the chapter order, and the layouts the viewer accepts.
-- It will not invent an instructor bio or write the lab steps on a slide.
-
-### Lab Generator
-- Builds one lab folder: overview, tasks, a bonus, and a closing.
-- Steps are second person. Setup belongs in Task 1.
-
-### What you still decide
-- Audience, prerequisites, length, and the story of the course.
-- The skill cannot guess who is in the room.
-
-### When the agent drifts
-- Tell it to read the Course Generator and Lab Generator skills and follow them.
-- The template’s agent files already point at those skills. Say it again if you must.
----
-# Any Agent That Can Use Skills
-
-- **Cursor**, **Claude Code**, **Visual Studio Code** with Copilot, and **Antigravity** are the ones we already point at the skills
-- The repo carries `.cursorrules`, `CLAUDE.md`, `AGENTS.md`, and Copilot instructions so the agent finds the skills
-- Any other coding agent that can read a skill file can do this work
-- If it starts inventing layouts, stop it and name the skill. Do not argue with a draft that ignored the rules
-
-> [!TIP]
-> You drive every step. A strong agent with a vague prompt still writes the wrong course quickly.
----
-<!-- layout: 2-column -->
-# A Weak Brief and a Strong One
-
-### Weak
-- “Write a course on web development.”
-- No audience, so you get a beginner textbook
-- No length, so you get a four-day dump
-- No outline, so chapter 1 is a surprise
-
-### Strong
-- Title, audience, prerequisites, and hours
-- “Outline only. Wait for approval.”
-- One chapter at a time after that
-- Name the Course Generator skill
-
-<!-- below-columns -->
-
-> [!NOTE]
-> Experienced authors get better drafts because they edit the brief, not because they type faster.
----
-# Approve the Outline Before Any Chapter Exists
-
-- Ask for chapters, sections, and lab titles. Tell the agent not to write files yet
-- Check the altitude: intermediate people who will use this at work, unless you truly asked for beginners
-- Check the clock: a chapter is roughly 90 to 120 minutes of lecture, plus a lab
-- Send it back if the story is wrong. Rewriting an outline is cheap. Rewriting eight chapters is not
-
-> [!TIP]
-> Specify the target audience, the prerequisites, and the course length in the same message as the title. Those three lines change the draft more than extra adjectives.
----
-# A Prompt You Can Reuse
-
-- Keep the constraints in the prompt. Do not rely on the agent to remember the hallway conversation
-- “Do not write files yet” is the line that saves you an hour
-- After you approve, ask for the introduction and chapter 1 only
-- Preview that much in the viewer before you let it continue
-
-```text
-Using the Course Generator skill, outline a 3-hour course
-titled "Understanding Web Development with HTML, CSS, and JavaScript."
-
-Audience: professionals who work with web teams and need to
-read, sketch, and lightly change pages.
-Prerequisites: files and folders, a text editor, and a current
-browser. No prior HTML.
-Length: 3 hours, including one short lab.
-
-Do not write chapter files yet. Return chapters, sections,
-and the lab title only. Wait for approval.
-```
----
-<!-- layout: 3-column -->
-# Preview, Then Polish, Then Share
-
-### Preview
-- Open the course folder in the viewer
-- Teach the draft to yourself, out loud
-- Stop on any slide you would not say in class
-
-### Polish
-- Fix layout and images in the editor
-- Send the agent back when the story is wrong
-- Be specific: which slide, what to change
-
-### Share
-- Commit and push the folder you meant
-- Paste the course folder URL on the GitHub tab
-- Copy the share link and send that to the instructor
-
-<!-- below-columns -->
-
-> [!WARNING]
-> Do not regenerate `welcome.png`, `agenda.png`, or the other stock images. Copy the files that shipped with the template.
----
-# Lab: Create a Short Web Development Course
-
-**Time:** 90 minutes
 ---
 <!-- layout: 2-column -->
 # What You Learned
