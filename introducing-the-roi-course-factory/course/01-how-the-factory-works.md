@@ -6,18 +6,14 @@
 Introducing the ROI Course Factory
 
 # Chapter 1: How the Factory Works
-
 ---
-
 # Chapter 1: Objectives
 
-- Name the viewer, the editor, the skills, and the template, and say what each one is for
+- Introduce the viewers, the editor, the skills, and the template, and say what each one is for
 - Open a course locally or from GitHub and present it with the drawer, annotations, themes, and type size
 - Edit slides on a local clone: change layouts, images, and Markdown, then save
 - Start a new course from the template with a clear brief and an outline you approve
-
 ---
-
 <!-- layout: navigation -->
 # Chapter 1
 
@@ -25,9 +21,7 @@ Introducing the ROI Course Factory
 - Using the Viewer
 - Using the Editor
 - Creating a Course
-
 ---
-
 # One Factory, Two Lines
 
 - **Two assembly lines** build every class: a slides line and a labs line
@@ -37,39 +31,32 @@ Introducing the ROI Course Factory
 
 > [!NOTE]
 > The lines run side by side and ship together. The room sees one class, with a deck and a lab manual.
-
 ---
-
 <!-- layout: full-bleed -->
 # Factory Lines Diagram
 
 ![Two assembly lines, slides and labs, finishing as one course](images/factory-lines-diagram.svg)
-
 ---
-
-
 <!-- layout: card-layout -->
-# Four Pieces, One Class
+# Four Main Components of the Factory
 
 ### Viewers
 - The Slides Viewer is used by the instructor to present. 
-- The Lab viewer is used by students to do the labs. 
-- The viewers are read-only designed for the classroom
+- The Lab Viewer is used by students to do the labs. 
+- The viewers are read-only and designed for the classroom
 
 ### Editor
 - Editing staff use this to change a slide on a local clone.
-- Save writes the Markdown file in that folder.
+- Saves changes to the Markdown file in that folder.
 
-### Skills
+### Agent Skills
 - Course Generator and Lab Generator are the rules the agent follows.
 - They keep decks and labs in the ROI shape without you restating it.
 
 ### Template
 - This is the GitHub repo you clone to start a course.
 - It holds the folder layout, the stock images, and the skills.
-
 ---
-
 # The Loop You Will Actually Use
 
 - **Brief** the agent inside a clone of the template
@@ -79,18 +66,16 @@ Introducing the ROI Course Factory
 
 > [!NOTE]
 > The room never needs the editor. Instructors live in the viewer. Authors and editors live in the repo.
-
 ---
-
 <!-- layout: 2-column -->
-# What Is the Course, and What Is Just This Browser
+# What Is the Course, and What is the Viewer
 
-### In the Markdown file
+### Course is markdown and images
 - Slide text, layout comments, and images
 - Chapter files and the course title in the footer
 - This is what you commit and what the next person opens
 
-### Only in this browser
+### Viewer controls the look
 - Theme, light or dark, and type size
 - Pen, highlighter, pointer, and flipchart
 - Handy while you teach, gone for the next instructor
@@ -99,18 +84,79 @@ Introducing the ROI Course Factory
 
 > [!IMPORTANT]
 > If it is not in the Markdown, it is not part of the course.
-
 ---
+# Course Markdown Example
 
+
+```markdown
+# Open the Viewer
+
+- Start at slidesv.roitraining.com
+- Open a local folder or a GitHub URL
+- The viewer presents the file and does not save it
+
+ ---
+
+# Theme and Type Size
+
+- The theme restyles the slides
+- Plus and minus change type size for this browser
+
+> [!NOTE]
+> Theme and type size stay in this browser. They are not written into the file.
+
+ ---
+
+<!-- layout: 2-column -->
+# Two Ways to Open
+
+### Local
+- Choose the folder of chapter files
+- Several Markdown files become chapters
+
+### GitHub
+- Paste a repo, a folder, or a file URL
+- Copy the share link for the class
+
+ ---
+
+<!-- layout: stacked -->
+# The Toolbar
+
+- Folder opens a course
+- Fullscreen hides the bar
+- The annotation dock sits on the slide
+
+![Viewer toolbar](images/viewer-toolbar.png)
+
+ ---
+
+<!-- layout: navigation -->
+# Chapter 1
+
+- **Using the Viewer**
+- Using the Editor
+- Creating a Course
+```
+---
+<!-- layout: card-layout -->
 # Who Does What
 
-- **Authors** brief the agent, approve the outline, and reject a draft that misses the audience
-- **Editing staff** clone the repo and use the editor for layouts, images, and wording
-- **Instructors** open the viewer and teach. They mark up the slide. They do not rewrite the file
-- **Everyone** previews before the class. A slide that looks fine in the editor can still be too tall on the stage
+### Authors
+- Brief the agent, approve the outline, and reject a draft that misses the audience
+- Tell the agent to generate the course, and make changes
 
+### Editing staff
+Clone the repo and use the editor for layouts, images, and wording
+
+Editing staff can also use the agent if they wish
+
+### Instructors
+Open the viewer and teach. They mark up the slide. They do not rewrite the file
+### Everyone
+
+Preview before the class. Can generate PDFs for students from the viewer
 ---
-
 <!-- layout: navigation -->
 # Chapter 1
 
@@ -118,9 +164,7 @@ Introducing the ROI Course Factory
 - **Using the Viewer**
 - Using the Editor
 - Creating a Course
-
 ---
-
 # Open the Viewer
 
 - **Start here:** [slidesv.roitraining.com](https://slidesv.roitraining.com/)
@@ -130,9 +174,7 @@ Introducing the ROI Course Factory
 
 > [!TIP]
 > Bookmark the viewer. You do not install it, and you do not put the viewer source in the course repo.
-
 ---
-
 <!-- layout: stacked -->
 # The Toolbar Is the Whole Console
 
@@ -142,9 +184,7 @@ Introducing the ROI Course Factory
 - The annotation dock sits on the slide, not in this bar
 
 ![Viewer toolbar over a content slide](images/viewer-toolbar.png)
-
 ---
-
 <!-- layout: stacked -->
 # Open a Course from Your Machine
 
@@ -154,9 +194,7 @@ Introducing the ROI Course Factory
 - This is a read. Closing the tab does not change the files
 
 ![Open Course dialog on the Local tab](images/viewer-open-local.png)
-
 ---
-
 <!-- layout: stacked -->
 # Open a Course from GitHub
 
@@ -169,9 +207,7 @@ Introducing the ROI Course Factory
 > The class can follow along if the repo is readable from the viewer. A private repo they cannot fetch will not open.
 
 ![Open Course dialog on the GitHub tab](images/viewer-open-github.png)
-
 ---
-
 # What the Viewer Expects in the Folder
 
 - Chapter files named like `00-introduction.md` and `01-how-the-factory-works.md`
@@ -181,9 +217,7 @@ Introducing the ROI Course Factory
 
 > [!IMPORTANT]
 > Open the course folder, not a random parent directory full of unrelated Markdown. The viewer treats the Markdown it finds there as the course.
-
 ---
-
 <!-- layout: stacked -->
 # The Slide Drawer
 
@@ -193,9 +227,7 @@ Introducing the ROI Course Factory
 - Use this when someone asks you to return to an earlier picture
 
 ![Slide drawer in list view](images/viewer-drawer-list.png)
-
 ---
-
 <!-- layout: stacked -->
 # The Thumbnail Tray
 
@@ -205,16 +237,12 @@ Introducing the ROI Course Factory
 - Either view jumps to that slide. Neither one edits it
 
 ![Slide drawer in thumbnail view](images/viewer-drawer-thumbnails.png)
-
 ---
-
 <!-- layout: title-image -->
 # Fullscreen
 
 ![Fullscreen hides the toolbar and keeps the annotation dock](images/viewer-fullscreen.png)
-
 ---
-
 # Present Without Hunting for the Mouse
 
 - **Right arrow** or **Space** advances. **Left arrow** goes back. **Home** and **End** jump to the ends
@@ -224,9 +252,7 @@ Introducing the ROI Course Factory
 
 > [!TIP]
 > Fullscreen is for the room. Leave it when you need the chapter menu, the theme, or a different course.
-
 ---
-
 <!-- layout: stacked -->
 # Mark Up the Slide, Not the File
 
@@ -236,9 +262,7 @@ Introducing the ROI Course Factory
 - Those strokes stay in this browser. They are not written into the Markdown
 
 ![Pen selected, with the color swatches open](images/viewer-annotations.png)
-
 ---
-
 <!-- layout: card-layout -->
 # Four Ways to Point at the Slide
 
@@ -257,9 +281,7 @@ Introducing the ROI Course Factory
 ### Flipchart
 - Open a blank sheet over the slide and sketch.
 - Close the sheet to come back to the slide. The slide is still there.
-
 ---
-
 <!-- layout: stacked -->
 # Themes Change the Look, Not the Words
 
@@ -269,9 +291,7 @@ Introducing the ROI Course Factory
 - Switching themes does not edit the file, and it does not travel with a share link as content
 
 ![The same slide in the ROI Alt theme](images/viewer-theme-alt.png)
-
 ---
-
 <!-- layout: stacked -->
 # Type Size Is for the Room You Are In
 
@@ -281,9 +301,7 @@ Introducing the ROI Course Factory
 - It does not change the Markdown, and a colleague’s browser starts at the normal size
 
 ![The same slide after increasing the type size](images/viewer-font-size.png)
-
 ---
-
 <!-- layout: navigation -->
 # Chapter 1
 
@@ -291,9 +309,7 @@ Introducing the ROI Course Factory
 - Using the Viewer
 - **Using the Editor**
 - Creating a Course
-
 ---
-
 # You Edit on a Clone, Nowhere Else
 
 - Clone the course repo first. The editor opens that folder on your machine
@@ -303,9 +319,7 @@ Introducing the ROI Course Factory
 
 > [!IMPORTANT]
 > The viewer is for presenting. The editor is for changing files. Do not expect Save on a course you opened from GitHub in the viewer.
-
 ---
-
 <!-- layout: stacked -->
 # What You See When the Editor Opens
 
@@ -315,9 +329,7 @@ Introducing the ROI Course Factory
 - Until a folder is open, those fields stay disabled on purpose
 
 ![Slide editor before a course folder is open](images/editor-shell.png)
-
 ---
-
 <!-- layout: 3-column -->
 # The Inspector Does Three Jobs
 
@@ -335,9 +347,7 @@ Introducing the ROI Course Factory
 - This is the slide, as text
 - Type here when the menus are the wrong tool
 - The preview follows each keystroke. Save is what writes the file
-
 ---
-
 # Layouts Are a Comment, Then a Shape
 
 - Each slide may start with a layout comment. No comment means the default stack of title and bullets
@@ -345,9 +355,7 @@ Introducing the ROI Course Factory
 - The layout menu writes that comment for you. You can also type it
 - A two-column slide starts with the comment `<!-- layout: 2-column -->` on its own line
 - The next three slides are the layouts, not pictures of them. This is what the room sees
-
 ---
-
 <!-- layout: 2-column -->
 # Two Columns: Put a Choice Side by Side
 
@@ -365,9 +373,7 @@ Introducing the ROI Course Factory
 
 > [!NOTE]
 > Two columns start at each `###` heading. Use them for a contrast, not for a second topic.
-
 ---
-
 <!-- layout: 3-column -->
 # Three Columns: Three Parallel Options
 
@@ -385,9 +391,7 @@ Introducing the ROI Course Factory
 - Title and image, image only, full bleed, or stacked
 - Use these when the picture is the point
 - Keep a heading so the drawer still has a name
-
 ---
-
 <!-- layout: card-layout -->
 # Cards: Four Ideas, No Bullet Noise
 
@@ -406,9 +410,7 @@ Introducing the ROI Course Factory
 ### Title
 - The cover and the chapter divider.
 - Logo, course name, and a short subtitle. You rarely edit these mid-class.
-
 ---
-
 # Put a Picture on the Slide
 
 - **Add image** copies your file into the course `images/` folder and inserts the Markdown link
@@ -422,9 +424,7 @@ Introducing the ROI Course Factory
 
 > [!TIP]
 > Name the file for the slide, not `image1.png`. The alt text is what a colleague sees if the file is missing.
-
 ---
-
 <!-- layout: 2-column -->
 # Add a New File, or Reuse One
 
@@ -439,9 +439,7 @@ Introducing the ROI Course Factory
 - Choose one and click **Use**
 - No second copy is made
 - Stock art such as `welcome.png` is already there. Use it. Do not redraw it
-
 ---
-
 # Add, Duplicate, Delete, Save
 
 - Right-click a slide in the list, or right-click the stage: **Add slide**, **Duplicate slide**, **Delete slide**
@@ -451,9 +449,7 @@ Introducing the ROI Course Factory
 
 > [!WARNING]
 > Switching chapters, or opening another folder, asks you to save, discard, or cancel. Discard throws away the unsaved Markdown for this chapter. The image file you already added stays on disk.
-
 ---
-
 <!-- layout: navigation -->
 # Chapter 1
 
@@ -461,9 +457,7 @@ Introducing the ROI Course Factory
 - Using the Viewer
 - Using the Editor
 - **Creating a Course**
-
 ---
-
 # Start from the Template, Not a Blank File
 
 - On GitHub, use **Use this template** so the new repo is yours, or clone the template and push it to a new repo
@@ -474,9 +468,7 @@ Introducing the ROI Course Factory
 ```bash
 git clone https://github.com/roitraining/roi-course-authoring-template.git web-development-course
 ```
-
 ---
-
 <!-- layout: 2-column -->
 # Course Folder and Lab Folder
 
@@ -494,9 +486,7 @@ git clone https://github.com/roitraining/roi-course-authoring-template.git web-d
 
 > [!IMPORTANT]
 > A chapter ends with a lab stub: title and time only. The steps live in `lab.md`. Do not paste the lab URL onto the slide. A person adds that link later.
-
 ---
-
 <!-- layout: card-layout -->
 # The Skills Are the House Style
 
@@ -515,9 +505,7 @@ git clone https://github.com/roitraining/roi-course-authoring-template.git web-d
 ### When the agent drifts
 - Tell it to read the Course Generator and Lab Generator skills and follow them.
 - The template’s agent files already point at those skills. Say it again if you must.
-
 ---
-
 # Any Agent That Can Use Skills
 
 - **Cursor**, **Claude Code**, **Visual Studio Code** with Copilot, and **Antigravity** are the ones we already point at the skills
@@ -527,9 +515,7 @@ git clone https://github.com/roitraining/roi-course-authoring-template.git web-d
 
 > [!TIP]
 > You drive every step. A strong agent with a vague prompt still writes the wrong course quickly.
-
 ---
-
 <!-- layout: 2-column -->
 # A Weak Brief and a Strong One
 
@@ -549,9 +535,7 @@ git clone https://github.com/roitraining/roi-course-authoring-template.git web-d
 
 > [!NOTE]
 > Experienced authors get better drafts because they edit the brief, not because they type faster.
-
 ---
-
 # Approve the Outline Before Any Chapter Exists
 
 - Ask for chapters, sections, and lab titles. Tell the agent not to write files yet
@@ -561,9 +545,7 @@ git clone https://github.com/roitraining/roi-course-authoring-template.git web-d
 
 > [!TIP]
 > Specify the target audience, the prerequisites, and the course length in the same message as the title. Those three lines change the draft more than extra adjectives.
-
 ---
-
 # A Prompt You Can Reuse
 
 - Keep the constraints in the prompt. Do not rely on the agent to remember the hallway conversation
@@ -584,9 +566,7 @@ Length: 3 hours, including one short lab.
 Do not write chapter files yet. Return chapters, sections,
 and the lab title only. Wait for approval.
 ```
-
 ---
-
 <!-- layout: 3-column -->
 # Preview, Then Polish, Then Share
 
@@ -609,15 +589,11 @@ and the lab title only. Wait for approval.
 
 > [!WARNING]
 > Do not regenerate `welcome.png`, `agenda.png`, or the other stock images. Copy the files that shipped with the template.
-
 ---
-
 # Lab: Create a Short Web Development Course
 
 **Time:** 90 minutes
-
 ---
-
 <!-- layout: 2-column -->
 # What You Learned
 
@@ -630,9 +606,7 @@ and the lab title only. Wait for approval.
 - Edited slides on a local clone, then saved
 - Changed layouts, images, and Markdown
 - Started from the template with a brief and an outline you approved
-
 ---
-
 # Quiz 1 of 3
 
 **Where do you change slide Markdown?**
@@ -641,9 +615,7 @@ and the lab title only. Wait for approval.
 - B. In the editor, after you open a local course folder
 - C. With the pen tool, which writes the strokes into the file
 - D. In the theme menu, which stores a second copy of the deck
-
 ---
-
 # Quiz 1: Answer
 
 **Where do you change slide Markdown?**
@@ -654,9 +626,7 @@ and the lab title only. Wait for approval.
 - The editor saves the chapter file on your machine. You commit from Git
 - Pen strokes and the theme stay in this browser
 - Chrome or Edge is required because the editor needs folder write access
-
 ---
-
 # Quiz 2 of 3
 
 **What should you settle before the agent writes chapter files?**
@@ -665,9 +635,7 @@ and the lab title only. Wait for approval.
 - B. Audience, prerequisites, length, and an outline you have approved
 - C. A custom theme, so the draft matches the classroom
 - D. The lab URL, so the stub can link to the manual
-
 ---
-
 # Quiz 2: Answer
 
 **What should you settle before the agent writes chapter files?**
@@ -678,9 +646,7 @@ and the lab title only. Wait for approval.
 - An approved outline is cheaper to fix than a finished chapter
 - Themes and pen color are presentation choices, not authoring inputs
 - The lab stub carries a title and a time. A person adds the URL later
-
 ---
-
 <!-- layout: 2-column -->
 # Quiz 3 of 3: Discussion
 
@@ -691,9 +657,7 @@ An author tells the agent only: “Write a 3-hour web course.” The agent retur
 - What is missing from that brief?
 - What will you check before anyone teaches from the file?
 - What do you send back, in one message?
-
 ---
-
 <!-- layout: 2-column -->
 # Quiz 3: Discussion Points
 
@@ -709,9 +673,7 @@ An author tells the agent only: “Write a 3-hour web course.” The agent retur
 - “The agent knows our style, so a one-line prompt is enough”
 - Teaching from the file because it looks long
 - Asking for all chapters again before anyone has seen slide one in the viewer
-
 ---
-
 <!-- layout: stacked -->
 # Questions and Answers
 
