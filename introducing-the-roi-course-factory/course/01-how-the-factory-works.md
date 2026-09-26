@@ -189,9 +189,9 @@ Preview before the class. Can generate PDFs for students from the viewer
 # Open a Course from Your Machine
 
 - Choose **Local**, then **Choose Folder**
-- Point at the folder that holds the chapter Markdown files and `images/`
+- Point to the folder that holds the chapter Markdown files and `images/`
 - Several Markdown files in that folder become chapters in the chapter menu
-- This is a read. Closing the tab does not change the files
+- This is read-only. Closing the tab does not change the files
 
 ![Open Course dialog on the Local tab](images/viewer-open-local.png)
 ---
@@ -202,9 +202,6 @@ Preview before the class. Can generate PDFs for students from the viewer
 - A folder URL is the usual choice: the viewer lists each chapter file
 - **Open** loads it. **Copy share link** gives you a URL that reopens this course
 - Recent GitHub courses stay on this browser so you can jump back
-
-> [!NOTE]
-> The class can follow along if the repo is readable from the viewer. A private repo they cannot fetch will not open.
 
 ![Open Course dialog on the GitHub tab](images/viewer-open-github.png)
 ---
@@ -218,7 +215,6 @@ Preview before the class. Can generate PDFs for students from the viewer
 > [!IMPORTANT]
 > Open the course folder, not a random parent directory full of unrelated Markdown. The viewer treats the Markdown it finds there as the course.
 ---
-<!-- layout: stacked -->
 # The Slide Drawer
 
 - The hamburger opens **Course Slides**: every slide title, in order
@@ -253,7 +249,6 @@ Preview before the class. Can generate PDFs for students from the viewer
 > [!TIP]
 > Fullscreen is for the room. Leave it when you need the chapter menu, the theme, or a different course.
 ---
-<!-- layout: stacked -->
 # Mark Up the Slide, Not the File
 
 - The dock on the right is for the live class: pen, highlighter, pointer, flipchart, clear, delete all
@@ -282,7 +277,6 @@ Preview before the class. Can generate PDFs for students from the viewer
 - Open a blank sheet over the slide and sketch.
 - Close the sheet to come back to the slide. The slide is still there.
 ---
-<!-- layout: stacked -->
 # Themes Change the Look, Not the Words
 
 - The theme menu restyles type, color, and the title slide
@@ -292,7 +286,6 @@ Preview before the class. Can generate PDFs for students from the viewer
 
 ![The same slide in the ROI Alt theme](images/viewer-theme-alt.png)
 ---
-<!-- layout: stacked -->
 # Type Size Is for the Room You Are In
 
 - Minus and plus shrink or enlarge the slide text
@@ -320,7 +313,6 @@ Preview before the class. Can generate PDFs for students from the viewer
 > [!IMPORTANT]
 > The viewer is for presenting. The editor is for changing files. Do not expect Save on a course you opened from GitHub in the viewer.
 ---
-<!-- layout: stacked -->
 # What You See When the Editor Opens
 
 - **Open folder** picks the course directory. **Save** writes the current chapter
