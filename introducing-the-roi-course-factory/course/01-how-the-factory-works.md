@@ -6,9 +6,7 @@
 # Introducing the ROI Course Factory
 
 ## Author, edit, and present from one Markdown workflow
-
 ---
-
 <!-- layout: panel-right -->
 # Welcome!
 
@@ -20,16 +18,12 @@
 - Let’s get started!
 
 ![Welcome](images/welcome.png)
-
 ---
-
 # Course Objectives
 
 - Teach a class from Markdown you can preview, revise, and hand to the next instructor
 - Use the viewer, the editor, the skills, and the authoring template as one workflow
-
 ---
-
 <!-- layout: panel-left -->
 # Agenda
 
@@ -37,9 +31,7 @@
 - Lab 1: Creating a Course
 
 ![Agenda](images/agenda.png)
-
 ---
-
 <!-- layout: panel-right -->
 # Who Should Attend
 
@@ -48,9 +40,7 @@
 - Editing staff who will correct slides, images, and layouts
 
 ![Who Should Attend](images/who-should-attend.png)
-
 ---
-
 <!-- layout: panel-left -->
 # Prerequisites
 
@@ -59,9 +49,7 @@
 - No prior experience with this viewer, this editor, or these skills
 
 ![Prerequisites](images/prerequisites.png)
-
 ---
-
 <!-- layout: title -->
 ![ROI Logo](images/roi-logo-with-name.png)
 
@@ -239,12 +227,12 @@ Preview before the class. Can generate PDFs for students from the viewer
 ---
 # How the Viewers Work
 
-- The slides viewer opens the folder named in the `course` parameter
+- The slides viewer opens the folder named in the __`course`__ parameter
    - This link opens this course:
 
 [https://slidesv.roitraining.com/?course=https://github.com/roitraining/roi-course-authoring-template/tree/main/introducing-the-roi-course-factory/course](https://slidesv.roitraining.com/?course=https://github.com/roitraining/roi-course-authoring-template/tree/main/introducing-the-roi-course-factory/course)
 
-- The lab viewer opens the folder named in the `lab` parameter
+- The lab viewer opens the folder named in the __`lab`__ parameter
    - This link opens the lab in this course:
 
 [https://labv.roitraining.com/?lab=https://github.com/roitraining/roi-course-authoring-template/tree/main/introducing-the-roi-course-factory/labs/lab-01-create-a-short-web-course](https://labv.roitraining.com/?lab=https://github.com/roitraining/roi-course-authoring-template/tree/main/introducing-the-roi-course-factory/labs/lab-01-create-a-short-web-course)
