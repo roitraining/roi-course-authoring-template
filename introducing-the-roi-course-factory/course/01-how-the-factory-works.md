@@ -7,6 +7,13 @@
 
 ## Author, edit, and present from one Markdown workflow
 ---
+
+<!-- layout: full-bleed -->
+# The ROI COurse Factory Illustrated
+
+![ROI Course Factory](images/infographic.png)
+
+---
 <!-- layout: panel-right -->
 # Welcome!
 
@@ -51,6 +58,7 @@
 
 ![Prerequisites](images/prerequisites.png)
 ---
+
 <!-- layout: title -->
 ![ROI Logo](images/roi-logo-with-name.png)
 
@@ -107,13 +115,6 @@ Introducing the ROI Course Factory
 ### Template
 - This is the GitHub repo you clone to start a course.
 - It holds the folder layout, the stock images, and the skills.
----
-
-<!-- layout: full-bleed -->
-# The ROI COurse Factory Illustrated
-
-![ROI Course Factory](images/infographic.png)
-
 ---
 
 # The Loop You Will Actually Use
