@@ -108,6 +108,14 @@ Introducing the ROI Course Factory
 - This is the GitHub repo you clone to start a course.
 - It holds the folder layout, the stock images, and the skills.
 ---
+
+<!-- layout: full-bleed -->
+# The ROI COurse Factory Illustrated
+
+![ROI Course Factory](images/infographic.png)
+
+---
+
 # The Loop You Will Actually Use
 
 - **Brief** the agent inside a clone of the template
