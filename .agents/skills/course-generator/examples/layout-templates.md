@@ -89,7 +89,7 @@ Do **not** invent a fictional instructor: leave Name / Background / Contact info
 ```markdown
 # Course Objectives
 
-- **Build and operate production Terraform workflows** with remote state, modules, and safe apply practices
+- Build and operate production Terraform workflows with remote state, modules, and safe apply practices
 - Get productive with Terraform core workflow and providers
 - Manage remote state, locking, and collaboration
 - Design reusable modules and workspaces
