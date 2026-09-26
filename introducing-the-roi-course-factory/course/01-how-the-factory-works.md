@@ -34,6 +34,7 @@
 # Agenda
 
 - Chapter 1: How the Factory Works
+- Lab 1: Creating a Course
 
 ![Agenda](images/agenda.png)
 
