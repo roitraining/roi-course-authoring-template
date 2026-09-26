@@ -240,12 +240,12 @@ Preview before the class. Can generate PDFs for students from the viewer
 # How the Viewers Work
 
 - The slides viewer opens the folder named in the `course` parameter
-- This link opens this course:
+   - This link opens this course:
 
 [https://slidesv.roitraining.com/?course=https://github.com/roitraining/roi-course-authoring-template/tree/main/introducing-the-roi-course-factory/course](https://slidesv.roitraining.com/?course=https://github.com/roitraining/roi-course-authoring-template/tree/main/introducing-the-roi-course-factory/course)
 
 - The lab viewer opens the folder named in the `lab` parameter
-- This link opens the lab in this course:
+   - This link opens the lab in this course:
 
 [https://labv.roitraining.com/?lab=https://github.com/roitraining/roi-course-authoring-template/tree/main/introducing-the-roi-course-factory/labs/lab-01-create-a-short-web-course](https://labv.roitraining.com/?lab=https://github.com/roitraining/roi-course-authoring-template/tree/main/introducing-the-roi-course-factory/labs/lab-01-create-a-short-web-course)
 ---
