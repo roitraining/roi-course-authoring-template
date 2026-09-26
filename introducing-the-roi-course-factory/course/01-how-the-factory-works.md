@@ -676,6 +676,15 @@ and the lab title only. Wait for approval.
 > [!WARNING]
 > Switching chapters, or opening another folder, asks you to save, discard, or cancel. Discard throws away the unsaved Markdown for this chapter. The image file you already added stays on disk.
 ---
+# Do Now: Using the Editor
+
+1. Open the [Slide Editor](https://md-to-html-slides-editor-1077635956541.us-east4.run.app/). Use Chrome or Edge.
+2. Click **Open folder** and choose the `course` folder from the lab (`web-development-course/course`).
+3. Scroll through the slides the agent wrote.
+4. Change the wording on one slide, then click **Save**.
+5. Change that slide’s layout, check the preview, and save again.
+6. Experiment with making changes to the slides.
+---
 <!-- layout: 2-column -->
 # What You Learned
 
