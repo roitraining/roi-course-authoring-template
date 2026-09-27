@@ -1,4 +1,6 @@
 <!-- course-title: Introducing the ROI Course Factory -->
+<!-- course-theme: roi-alt-theme -->
+
 
 <!-- layout: title -->
 ![ROI Logo](images/roi-logo-with-name.png)
