@@ -107,6 +107,7 @@ Use zero-padded indexes and short kebab-case slugs.
 ### Per-file rules
 
 - Put the **same** `<!-- course-title: NNN: Short Name -->` at the top of **every** file (viewer footer).
+- Put the **same** `<!-- course-theme: roi-theme -->` at the top of **every** file (viewer default theme).
 - Each file is its own slide deck fragment: slides separated by a lone `---` line.
 - Do **not** collapse a **multi-chapter** course into a single Markdown file out of convenience.
 

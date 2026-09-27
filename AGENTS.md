@@ -15,6 +15,7 @@
 
 - Prefer multi-file courses (`00-introduction.md`, `01-….md`, …) under `course/`; short single-deck courses may use one file.
 - Same `<!-- course-title: … -->` in every chapter file.
+- Same `<!-- course-theme: … -->` in every chapter file.
 - No ampersand (`&`) in slide or lab titles/body text (use “and”).
 - Content chapters: Lab stub → What You Learned → Quizzes (default) → Questions and Answers.
 - Lab stub on slides: **title and time only** (no lab URL—humans add the link later).
