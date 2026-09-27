@@ -439,15 +439,12 @@ git clone https://github.com/roitraining/roi-course-authoring-template.git web-d
 <!-- below-columns -->
 
 > [!NOTE]
-> Experienced authors get better drafts because they edit the brief, not because they type faster.
+> Providing a detailed outline will save you time in the long run. The initial generated course will be closer to what you want. 
 ---
 
 # A Prompt You Can Reuse
 
-- Keep the constraints in the prompt. Do not rely on the agent to remember the hallway conversation
-- “Do not write files yet” is the line that saves you an hour
-- After you approve, ask for the introduction and chapter 1 only
-- Preview that much in the viewer before you let it continue
+- Supply details about the course, the audience, the length, and provide an outline. 
 
 ```text
 Use the Course Generator skill and the Lab Generator skill.
