@@ -1,7 +1,6 @@
 <!-- course-title: Introducing the ROI Course Factory -->
 <!-- course-theme: roi-alt-theme -->
 
-
 <!-- layout: title -->
 ![ROI Logo](images/roi-logo-with-name.png)
 
@@ -9,12 +8,10 @@
 
 ## Author, edit, and present from one Markdown workflow
 ---
-
 <!-- layout: full-bleed -->
 # The ROI COurse Factory Illustrated
 
 ![ROI Course Factory](images/infographic.png)
-
 ---
 <!-- layout: panel-right -->
 # Welcome!
@@ -60,7 +57,6 @@
 
 ![Prerequisites](images/prerequisites.png)
 ---
-
 <!-- layout: title -->
 ![ROI Logo](images/roi-logo-with-name.png)
 
@@ -86,9 +82,10 @@ Introducing the ROI Course Factory
 # One Factory, Two Lines
 
 - **Two assembly lines** build every class: a slides line and a labs line
-- **Authors** set the job on both lines: audience, prerequisites, length, and an outline they approve
-- **Agents** draft from the matching skill. **Editors** finish layout, images, and wording on a local clone
-- **Instructors** receive one course. They present the slides and send students into the labs
+- **Authors** define the course, audience, length, and an outline
+- **Agents** draft from the matching skill
+- **Editors** finish layout, images, and wording
+- **Instructors** present the slides and send students into the labs
 
 > [!NOTE]
 > The lines run side by side and ship together. The room sees one class, with a deck and a lab manual.
@@ -118,7 +115,6 @@ Introducing the ROI Course Factory
 - This is the GitHub repo you clone to start a course.
 - It holds the folder layout, the stock images, and the skills.
 ---
-
 <!-- layout: 2-column -->
 # What Is the Course, and What is the Viewer
 
@@ -137,7 +133,6 @@ Introducing the ROI Course Factory
 > [!IMPORTANT]
 > If it is not in the Markdown, it is not part of the course.
 ---
-
 <!-- layout: card-layout -->
 # Who Does What
 
@@ -174,14 +169,13 @@ Preview before the class. Can generate PDFs for students from the viewer
 ### Flexible Styling
 - Multiple page layouts
 - Can skin content by simply. selecting themes. 
-- Custom themes can be added. 
+- Custom themes can be added.
 ---
 <!-- layout: title-image -->
 # Comparing Manual versus Factory Course Creation
 
 ![Timelines for manual and factory course creation](images/manual-vs-factory-timeline.svg)
 ---
-
 <!-- layout: navigation -->
 # Chapter 1
 
@@ -212,7 +206,6 @@ Preview before the class. Can generate PDFs for students from the viewer
 
 [https://labv.roitraining.com/?lab=https://github.com/roitraining/roi-course-authoring-template/tree/main/introducing-the-roi-course-factory/labs/lab-01-create-a-short-web-course](https://labv.roitraining.com/?lab=https://github.com/roitraining/roi-course-authoring-template/tree/main/introducing-the-roi-course-factory/labs/lab-01-create-a-short-web-course)
 ---
-
 <!-- layout: stacked -->
 # Open a Course from Your Machine
 
@@ -223,7 +216,6 @@ Preview before the class. Can generate PDFs for students from the viewer
 
 ![Open Course dialog on the Local tab](images/viewer-open-local.png)
 ---
-
 <!-- layout: stacked -->
 # Open a Course from GitHub
 
@@ -234,7 +226,6 @@ Preview before the class. Can generate PDFs for students from the viewer
 
 ![Open Course dialog on the GitHub tab](images/viewer-open-github.png)
 ---
-
 # What the Viewer Expects in the Folder
 
 - Chapter files named like `00-introduction.md` and `01-how-the-factory-works.md`
@@ -245,7 +236,6 @@ Preview before the class. Can generate PDFs for students from the viewer
 > [!IMPORTANT]
 > Open the course folder, not a random parent directory full of unrelated Markdown. The viewer treats the Markdown it finds there as the course.
 ---
-
 <!-- layout: default -->
 # The Viewer Toolbar 
 
@@ -258,7 +248,6 @@ Preview before the class. Can generate PDFs for students from the viewer
 
 ![Viewer toolbar over a content slide](images/viewer-toolbar.png)
 ---
-
 <!-- layout: default -->
 # The Annotation Controls 
 
@@ -270,7 +259,6 @@ Preview before the class. Can generate PDFs for students from the viewer
 
 ![Viewer toolbar over a content slide](images/annotation-controls.png)
 ---
-
 <!-- layout: card-layout -->
 # Four Ways to Point at the Slide
 
@@ -290,7 +278,6 @@ Preview before the class. Can generate PDFs for students from the viewer
 - Open a blank sheet over the slide and sketch.
 - Close the sheet to come back to the slide. The slide is still there.
 ---
-
 # The Slide Drawer
 
 - The hamburger opens **Course Slides**: every slide title, in order
@@ -300,7 +287,6 @@ Preview before the class. Can generate PDFs for students from the viewer
 
 ![Slide drawer in list view](images/viewer-drawer-list.png)
 ---
-
 # The Thumbnail Tray
 
 - The grid icon in the drawer header switches from titles to thumbnails
@@ -325,7 +311,6 @@ Preview before the class. Can generate PDFs for students from the viewer
 > [!TIP]
 > Fullscreen is for the room. Leave it when you need the chapter menu, the theme, or a different course.
 ---
-
 # Themes Change the Look, Not the Words
 
 - The theme menu restyles type, color, and the title slide
@@ -335,7 +320,6 @@ Preview before the class. Can generate PDFs for students from the viewer
 
 ![The same slide in the ROI Alt theme](images/viewer-theme-alt.png)
 ---
-
 # Change the Font Size so Everyone Can See
 
 - Minus and plus shrink or enlarge the slide text
@@ -439,9 +423,8 @@ git clone https://github.com/roitraining/roi-course-authoring-template.git web-d
 <!-- below-columns -->
 
 > [!NOTE]
-> Providing a detailed outline will save you time in the long run. The initial generated course will be closer to what you want. 
+> Providing a detailed outline will save you time in the long run. The initial generated course will be closer to what you want.
 ---
-
 # A Prompt You Can Reuse
 
 - Supply details about the course, the audience, the length, and provide an outline. 
@@ -523,7 +506,6 @@ On each chapter, the lab stub is a title and a time only.
 
 - [Open Lab](https://labv.roitraining.com/?lab=https://github.com/roitraining/roi-course-authoring-template/tree/main/introducing-the-roi-course-factory/labs/lab-01-create-a-short-web-course)
 ---
-
 <!-- layout: navigation -->
 # Chapter 1
 
@@ -532,15 +514,15 @@ On each chapter, the lab stub is a title and a time only.
 - Creating a Course
 - **Using the Editor**
 ---
-# You Edit on a Clone, Nowhere Else
+# Edit on a Clone on Your Local Machine
 
 - Clone the course repo first. The editor opens that folder on your machine
-- It does not open a GitHub URL, and it does not commit or push
+  - It does not open a GitHub URL, and it does not commit or push
 - Use **Chrome or Edge**. Other browsers cannot grant the folder write access it needs
-- When you are done, commit from Git the way you already do
+- When you are done, commit and push to GitHub to publish your changes
 
 > [!IMPORTANT]
-> The viewer is for presenting. The editor is for changing files. Do not expect Save on a course you opened from GitHub in the viewer.
+> The viewer is for presenting. The editor is for changing files. You can't edit a course opened from GitHub in the viewer.
 ---
 # What You See When the Editor Opens
 
