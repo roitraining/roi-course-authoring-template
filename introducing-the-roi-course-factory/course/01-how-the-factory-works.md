@@ -315,7 +315,7 @@ Preview before the class. Can generate PDFs for students from the viewer
 
 ![Fullscreen hides the toolbar and keeps the annotation dock](images/viewer-fullscreen.png)
 ---
-# Present Without Hunting for the Mouse
+# Present Without the Mouse
 
 - **Right arrow** or **Space** advances. **Left arrow** goes back. **Home** and **End** jump to the ends
 - **F** toggles fullscreen. The toolbar hides. The annotation dock stays
