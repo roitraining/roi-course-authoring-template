@@ -366,10 +366,10 @@ Preview before the class. Can generate PDFs for students from the viewer
 ---
 # Start from the Template, Not a Blank File
 
-- On GitHub, use **Use this template** so the new repo is yours, or clone the template and push it to a new repo
-- Open that repo in your agent. Do not start from an empty directory and hope the rules come along
+- Copy the contents of the ROI Course Authoring Template when creating a new course
+- This template includes the agent Skills, a Sample course, and `course` and `labs` folders
 - The template is not the viewer. You do not need the viewer source in the course repo
-- Leave this Course Factory folder as a sample. Do your new course in its own clone
+- The command below, clones the repo into a new folder
 
 ```bash
 git clone https://github.com/roitraining/roi-course-authoring-template.git web-development-course
@@ -423,7 +423,7 @@ git clone https://github.com/roitraining/roi-course-authoring-template.git web-d
 > You drive every step. A strong agent with a vague prompt still writes the wrong course quickly.
 ---
 <!-- layout: 2-column -->
-# A Weak Brief and a Strong One
+# A Weak Prompt and a Strong One
 
 ### Weak
 - “Write a course on web development.”
@@ -433,25 +433,15 @@ git clone https://github.com/roitraining/roi-course-authoring-template.git web-d
 
 ### Strong
 - Title, audience, prerequisites, and hours
-- “Outline only. Wait for approval.”
-- One chapter at a time after that
-- Name the Course Generator skill
+- Inlcude an outline if you have one
+- Tell the agent to use the Course and/or Lab Generator Skills
 
 <!-- below-columns -->
 
 > [!NOTE]
 > Experienced authors get better drafts because they edit the brief, not because they type faster.
 ---
-# Approve the Outline Before Any Chapter Exists
 
-- Ask for chapters, sections, and lab titles. Tell the agent not to write files yet
-- Check the altitude: intermediate people who will use this at work, unless you truly asked for beginners
-- Check the clock: a chapter is roughly 90 to 120 minutes of lecture, plus a lab
-- Send it back if the story is wrong. Rewriting an outline is cheap. Rewriting eight chapters is not
-
-> [!TIP]
-> Specify the target audience, the prerequisites, and the course length in the same message as the title. Those three lines change the draft more than extra adjectives.
----
 # A Prompt You Can Reuse
 
 - Keep the constraints in the prompt. Do not rely on the agent to remember the hallway conversation
@@ -460,17 +450,51 @@ git clone https://github.com/roitraining/roi-course-authoring-template.git web-d
 - Preview that much in the viewer before you let it continue
 
 ```text
-Using the Course Generator skill, outline a 3-hour course
-titled "Understanding Web Development with HTML, CSS, and JavaScript."
+Use the Course Generator skill and the Lab Generator skill.
+Read both skills and follow them.
 
+Build a complete half-day course and its three labs.
+Write every chapter file and every lab.
+
+Course title: Understanding Web Development with HTML, CSS, and JavaScript
 Audience: professionals who work with web teams and need to
-read, sketch, and lightly change pages.
+read, sketch, and lightly change pages. Not a first-week bootcamp.
 Prerequisites: files and folders, a text editor, and a current
-browser. No prior HTML.
-Length: 3 hours, including one short lab.
+browser. No prior HTML required.
+Length: half a day, about 4 hours, including three short labs.
 
-Do not write chapter files yet. Return chapters, sections,
-and the lab title only. Wait for approval.
+Follow this outline.
+
+Introduction
+- Title, welcome, objectives, agenda, who should attend, prerequisites
+
+Chapter 1: HTML and the Structure of a Page
+- Documents and elements
+- Text, links, and images
+- How a page is organized
+Lab: Build a Simple Page (20 minutes)
+
+Chapter 2: CSS and How the Page Looks
+- Selectors and the cascade
+- The box model and simple layout
+- Type, color, and spacing
+Lab: Style the Page (20 minutes)
+
+Chapter 3: JavaScript and Behavior in the Browser
+- Finding elements on the page
+- Responding to events
+- Reading and changing what the visitor sees
+Lab: Make the Page Respond (20 minutes)
+
+Write these files:
+- course/00-introduction.md
+- one Markdown file per chapter under course/
+- labs/lab-01-build-a-simple-page/lab.md
+- labs/lab-02-style-the-page/lab.md
+- labs/lab-03-make-the-page-respond/lab.md
+
+Reuse the stock images already in course/images/.
+On each chapter, the lab stub is a title and a time only.
 ```
 ---
 <!-- layout: 3-column -->
