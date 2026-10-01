@@ -10,6 +10,8 @@ It does **not** include the slide or lab viewer apps—only what instructors nee
 | `course/` | Slide Markdown + shared `images/` (stock graphics + sample) |
 | `labs/` | One folder per lab (`lab.md` + `images/`) |
 | `.agents/skills/course-generator/` | Rules and layout templates for slide courses |
+| `.agents/skills/course-graphics-designer/` | Visual polish pass: layouts, SVG, generated images, screenshots |
+| `.agents/skills/course-editor/` | Proofreading pass: spelling, grammar, house-style typography |
 | `.agents/skills/lab-generator/` | Rules and templates for hands-on labs |
 | `.cursorrules`, `CLAUDE.md`, `AGENTS.md`, `.github/copilot-instructions.md` | Point every common coding agent at the skills |
 
@@ -20,9 +22,11 @@ It does **not** include the slide or lab viewer apps—only what instructors nee
 3. **Ask the agent** to create a course, for example:
    - *“Using the Course Generator skill, outline a 1-day intermediate course on … then write the chapter files under `course/`.”*
 4. **Put slides under `course/`** (multi-file: `00-introduction.md`, `01-….md`, …) and keep shared graphics in `course/images/`.
-5. **Preview slides** in the hosted HTML Slides Viewer (paste your GitHub course folder URL):
+5. **Ask for a graphics pass** with the Course Graphics Designer skill after the draft exists.
+6. **Ask for an editor pass** with the Course Editor skill (spelling, grammar, typography).
+7. **Preview slides** in the hosted HTML Slides Viewer (paste your GitHub course folder URL):
    - https://slidesv.roitraining.com/
-6. **Labs** go under `labs/lab-NN-slug/` with `lab.md` (see Lab Generator skill). Preview at https://labv.roitraining.com/ (paste the lab folder URL).
+8. **Labs** go under `labs/lab-NN-slug/` with `lab.md` (see Lab Generator skill). Preview at https://labv.roitraining.com/ (paste the lab folder URL).
 
 Full workflow: **[AUTHORING.md](AUTHORING.md)**.
 

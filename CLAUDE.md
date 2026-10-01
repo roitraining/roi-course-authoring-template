@@ -9,6 +9,16 @@ Before creating or editing **slide decks**, read and follow:
 - `.agents/skills/course-generator/SKILL.md`
 - `.agents/skills/course-generator/examples/layout-templates.md`
 
+Before polishing **course visuals** (layouts, diagrams, generated images, screenshots), read and follow:
+
+- `.agents/skills/course-graphics-designer/SKILL.md`
+- `.agents/skills/course-graphics-designer/examples/visual-patterns.md`
+
+Before **proofreading** courses for spelling, grammar, and house-style typography, read and follow:
+
+- `.agents/skills/course-editor/SKILL.md`
+- `.agents/skills/course-editor/examples/editing-patterns.md`
+
 Before creating or editing **labs**, read and follow:
 
 - `.agents/skills/lab-generator/SKILL.md`

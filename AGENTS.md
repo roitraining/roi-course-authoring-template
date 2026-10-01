@@ -3,6 +3,8 @@
 ## Skills
 
 - **Slide courses:** Always read and follow `.agents/skills/course-generator/SKILL.md` and `.agents/skills/course-generator/examples/layout-templates.md` when creating, outlining, editing, or validating slides.
+- **Course graphics:** After a course is drafted (or when polishing visuals), read and follow `.agents/skills/course-graphics-designer/SKILL.md` and `.agents/skills/course-graphics-designer/examples/visual-patterns.md`. Improve layouts and graphics without breaking viewer rules.
+- **Course editing:** For spelling, grammar, and house-style typography (smart quotes, no em-dashes, no ampersands), read and follow `.agents/skills/course-editor/SKILL.md` and `.agents/skills/course-editor/examples/editing-patterns.md`. Do not break code, directives, or product names.
 - **Labs:** Always read and follow `.agents/skills/lab-generator/SKILL.md` and `.agents/skills/lab-generator/examples/lab-template.md` when creating or editing files under `labs/`.
 
 ## Repository layout

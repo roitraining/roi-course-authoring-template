@@ -5,6 +5,16 @@ When drafting or modifying **presentation slides** in this repository, follow:
 - [.agents/skills/course-generator/SKILL.md](.agents/skills/course-generator/SKILL.md)
 - [.agents/skills/course-generator/examples/layout-templates.md](.agents/skills/course-generator/examples/layout-templates.md)
 
+When polishing **course visuals** (layouts, SVG diagrams, generated images, screenshot placeholders), follow:
+
+- [.agents/skills/course-graphics-designer/SKILL.md](.agents/skills/course-graphics-designer/SKILL.md)
+- [.agents/skills/course-graphics-designer/examples/visual-patterns.md](.agents/skills/course-graphics-designer/examples/visual-patterns.md)
+
+When **proofreading** for spelling, grammar, and house-style typography, follow:
+
+- [.agents/skills/course-editor/SKILL.md](.agents/skills/course-editor/SKILL.md)
+- [.agents/skills/course-editor/examples/editing-patterns.md](.agents/skills/course-editor/examples/editing-patterns.md)
+
 When drafting or modifying **labs**, follow:
 
 - [.agents/skills/lab-generator/SKILL.md](.agents/skills/lab-generator/SKILL.md)

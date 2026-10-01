@@ -22,7 +22,7 @@ Pointer files in this repo (`.cursorrules`, `CLAUDE.md`, `AGENTS.md`, `.github/c
 
 If the agent seems unaware of the rules, say explicitly:
 
-> Read `.agents/skills/course-generator/SKILL.md` and `.agents/skills/lab-generator/SKILL.md`, then follow them.
+> Read `.agents/skills/course-generator/SKILL.md`, `.agents/skills/course-graphics-designer/SKILL.md`, `.agents/skills/course-editor/SKILL.md`, and `.agents/skills/lab-generator/SKILL.md`, then follow them.
 
 ## 3. Course layout (slides)
 
@@ -73,9 +73,11 @@ Suggested sequence:
 1. Share audience, duration, and objectives.
 2. Ask for an **outline** (chapters → sections → labs) and confirm it.
 3. Ask the agent to **write** `course/00-introduction.md` and each chapter file.
-4. Ask the agent to **write** each lab under `labs/lab-NN-slug/` using the Lab Generator skill.
-5. Ask it to run each skill’s **validation checklist**.
-6. You review slides and labs in their viewers; fix content and visuals as needed.
+4. Ask the agent to run a **graphics pass** with the Course Graphics Designer skill (layouts, SVG, generated images, screenshot TODOs).
+5. Ask the agent to run an **editor pass** with the Course Editor skill (spelling, grammar, smart quotes, no em-dashes or ampersands).
+6. Ask the agent to **write** each lab under `labs/lab-NN-slug/` using the Lab Generator skill.
+7. Ask it to run each skill’s **validation checklist**.
+8. You review slides and labs in their viewers; fix content and visuals as needed.
 
 ## 6. Preview
 
@@ -105,5 +107,9 @@ Use the [HTML Lab Viewer](https://labv.roitraining.com/) and paste a GitHub URL 
 
 - Course: [.agents/skills/course-generator/SKILL.md](.agents/skills/course-generator/SKILL.md)  
 - Course templates: [.agents/skills/course-generator/examples/layout-templates.md](.agents/skills/course-generator/examples/layout-templates.md)  
+- Course graphics: [.agents/skills/course-graphics-designer/SKILL.md](.agents/skills/course-graphics-designer/SKILL.md)  
+- Graphics patterns: [.agents/skills/course-graphics-designer/examples/visual-patterns.md](.agents/skills/course-graphics-designer/examples/visual-patterns.md)  
+- Course editor: [.agents/skills/course-editor/SKILL.md](.agents/skills/course-editor/SKILL.md)  
+- Editing patterns: [.agents/skills/course-editor/examples/editing-patterns.md](.agents/skills/course-editor/examples/editing-patterns.md)  
 - Labs: [.agents/skills/lab-generator/SKILL.md](.agents/skills/lab-generator/SKILL.md)  
 - Lab template: [.agents/skills/lab-generator/examples/lab-template.md](.agents/skills/lab-generator/examples/lab-template.md)  
