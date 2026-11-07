@@ -1,7 +1,9 @@
 # Course Generator Slide Layout Templates
 
 Copy and paste these templates when building decks for the HTML Slides Viewer.
-See [SKILL.md](../SKILL.md) for course structure, timing, and file-layout rules (multi-file default; short-course exception).
+See [SKILL.md](../SKILL.md) for phases and teaching craft,
+[../../shared/course-spine.md](../../shared/course-spine.md) for required slide order, and
+[../../shared/slide-markdown-rules.md](../../shared/slide-markdown-rules.md) for the formatting gates.
 
 ---
 
@@ -29,10 +31,11 @@ Copy the **stock** files from `course/images/` in this template (do not regenera
 
 **Short-course exception:** one Markdown file (e.g. `course.md`) is fine for a thin single-sitting deck. Split when the outline becomes multi-chapter.
 
-Every Markdown file starts with the **same** course-title metadata (or once at the top of a single-file short course):
+Every Markdown file starts with the **same** course-title and course-theme metadata (or once at the top of a single-file short course):
 
 ```markdown
 <!-- course-title: 815: Hands-On Terraform -->
+<!-- course-theme: roi-alt-theme -->
 ```
 
 ---
@@ -57,7 +60,7 @@ Chapter divider variant:
 
 815: Hands-On Terraform
 
-# Chapter 2: State & Remote Backends
+# Chapter 2: State and Remote Backends
 ```
 
 ---
@@ -172,8 +175,8 @@ Repeat before **each** section. Same list every time; move the bold.
 
 - **Why State Matters**
 - Remote Backends
-- State Locking & Conflicts
-- Drift & Recovery
+- State Locking and Conflicts
+- Drift and Recovery
 ```
 
 Later in the chapter:
@@ -184,8 +187,8 @@ Later in the chapter:
 
 - Why State Matters
 - **Remote Backends**
-- State Locking & Conflicts
-- Drift & Recovery
+- State Locking and Conflicts
+- Drift and Recovery
 ```
 
 ---
@@ -566,8 +569,147 @@ Questions?
 
 **Default: each content `0N-….md` chapter:** Title → Chapter Objectives → (Navigation → section slides) × N → Lab stub → What You Learned → Quizzes (2 MCQ + 1 discussion, with answers) → Questions and Answers
 
-**No quizzes on:** Introduction; course-summary / office-hours closers; very short chapters or when the user declines
+**No quizzes on:** Introduction; course-summary / office-hours closers; or when the user declines. Quizzes are practice, not a way to add slides.
 
 **Short-course exception:** the same spine may live in one file (e.g. `course.md`) when the deck is a single sitting.
 
 Ensure `images/` includes the stock set when authoring from this template: `roi-logo-with-name.png`, `welcome.png`, `agenda.png`, `who-should-attend.png`, `prerequisites.png`, `qa.png`.
+
+---
+
+## 19. Spine skeleton (spine phase output for one chapter)
+
+This is what a content chapter looks like after the **spine** phase. Every spine slide is final. Each section has its Navigation slide and **one placeholder slide**. Quiz slides carry titles and a `TODO CONTENT` marker. The **content** phase replaces each placeholder with the section’s teaching slides, writes the quizzes, and removes every `TODO CONTENT` marker.
+
+The `TODO CONTENT` comment tells the next phase what to build. The visible bullets keep the slide readable if someone previews the spine in the viewer.
+
+```markdown
+<!-- course-title: 815: Hands-On Terraform -->
+<!-- course-theme: roi-alt-theme -->
+
+<!-- layout: title -->
+![ROI Logo](images/roi-logo-with-name.png)
+
+815: Hands-On Terraform
+
+# Chapter 2: State and Remote Backends
+
+---
+
+# Chapter 2: Objectives
+
+- Explain why local state fails for teams
+- Configure a remote backend with locking
+- Recover from common state drift scenarios
+
+---
+
+<!-- layout: navigation -->
+# Chapter 2
+
+- **Why State Matters**
+- Remote Backends
+- Drift and Recovery
+
+---
+
+# Why State Matters
+
+<!-- TODO CONTENT: Section 2.1. Teaching point: state is Terraform’s record of what exists; local state breaks as soon as two people apply. Examples: two laptops applying the same stack; secrets visible in a state file. -->
+
+- Teaching point: state is Terraform’s record of real infrastructure
+
+---
+
+<!-- layout: navigation -->
+# Chapter 2
+
+- Why State Matters
+- **Remote Backends**
+- Drift and Recovery
+
+---
+
+# Remote Backends
+
+<!-- TODO CONTENT: Section 2.2. Teaching point: a remote backend with locking gives the team one source of truth. Examples: gcs backend block; migrating with terraform init -migrate-state. -->
+
+- Teaching point: one shared, locked source of truth
+
+---
+
+<!-- layout: navigation -->
+# Chapter 2
+
+- Why State Matters
+- Remote Backends
+- **Drift and Recovery**
+
+---
+
+# Drift and Recovery
+
+<!-- TODO CONTENT: Section 2.3. Teaching point: detect drift with plan, then choose import, refresh, or rebuild deliberately. -->
+
+- Teaching point: detect drift, then recover deliberately
+
+---
+
+# Lab 2: Configure Remote State
+
+**Time:** 30 minutes
+
+---
+
+# What You Learned
+
+- Explained why local state fails for teams
+- Configured a remote backend with locking
+- Recovered from common state drift scenarios
+
+---
+
+# Quiz 1 of 3
+
+<!-- TODO CONTENT: Multiple choice A-D on this chapter’s content. -->
+
+---
+
+# Quiz 1: Answer
+
+<!-- TODO CONTENT: Restate question, Correct: X, rationale bullets. -->
+
+---
+
+# Quiz 2 of 3
+
+<!-- TODO CONTENT: Multiple choice A-D on this chapter’s content. -->
+
+---
+
+# Quiz 2: Answer
+
+<!-- TODO CONTENT: Restate question, Correct: X, rationale bullets. -->
+
+---
+
+<!-- layout: 2-column -->
+# Quiz 3 of 3: Discussion
+
+<!-- TODO CONTENT: ### Prompt and ### Discuss columns. -->
+
+---
+
+<!-- layout: 2-column -->
+# Quiz 3: Discussion Points
+
+<!-- TODO CONTENT: ### Strong Answers Mention and ### Watch For columns. -->
+
+---
+
+# Questions and Answers
+
+Questions?
+```
+
+To find unfinished work: search the course for `TODO CONTENT`.

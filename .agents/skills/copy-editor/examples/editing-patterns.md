@@ -1,4 +1,4 @@
-# Course Editor — Editing Patterns
+# Copy Editor — Editing Patterns
 
 Safe copy-edit patterns for ROI Course Factory Markdown.
 
@@ -8,7 +8,7 @@ Safe copy-edit patterns for ROI Course Factory Markdown.
 
 ```markdown
 <!-- course-title: 815: Hands-On Terraform -->
-<!-- course-theme: roi-theme -->
+<!-- course-theme: roi-alt-theme -->
 <!-- layout: 2-column -->
 <!-- TODO IMAGE: Screenshot of the BigQuery console -->
 
@@ -120,7 +120,7 @@ Do **not** change these to dictionary spellings when used as product/tech names:
 | LinkedIn | Linkedin |
 | npm | NPM (unless referring to the org stylization in a logo context) |
 
-If the course mixes two accepted forms (`Postgres` vs `PostgreSQL`), prefer consistency with the dominant form already in that chapter rather than inventing a new standard mid-pass.
+If the course mixes two accepted forms (`Postgres` vs `PostgreSQL`), prefer consistency with the dominant form already in that chapter rather than inventing a new standard mid-pass. Record the choice in the glossary.
 
 ---
 
@@ -137,7 +137,32 @@ If the course mixes two accepted forms (`Postgres` vs `PostgreSQL`), prefer cons
 
 ---
 
-## 7. Minimal edit principle
+## 7. Consistency
+
+**Before**
+
+```markdown
+# Hands On Terraform
+…
+- Use Big Query for analytics
+- Export to BigQuery when the job finishes
+```
+
+**After**
+
+```markdown
+# Hands-On Terraform
+…
+- Use BigQuery for analytics
+- Export to BigQuery when the job finishes
+```
+
+Pick one form per term and apply it across every chapter in scope. Do not
+invent a spelling that contradicts the vendor.
+
+---
+
+## 8. Minimal edit principle
 
 **Before (over-editing — don’t do this)**
 

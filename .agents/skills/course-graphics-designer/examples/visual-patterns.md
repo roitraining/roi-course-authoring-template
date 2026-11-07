@@ -1,7 +1,13 @@
 # Course Graphics Designer — Visual Patterns
 
 Copy these patterns when polishing decks for the HTML Slides Viewer.
-Viewer syntax must match [../../course-generator/examples/layout-templates.md](../../course-generator/examples/layout-templates.md).
+Viewer syntax must match [../../course-generator/examples/layout-templates.md](../../course-generator/examples/layout-templates.md)
+and pass [../../shared/slide-markdown-rules.md](../../shared/slide-markdown-rules.md).
+
+**SVG quality bar:** before creating or replacing a diagram, read
+[../../shared/svg-craft.md](../../shared/svg-craft.md). Layout recipes below
+(auto-split, stacked, title-image) are fine. The old three-box SVG starter is
+gone on purpose; do not recreate it.
 
 ---
 
@@ -9,8 +15,8 @@ Viewer syntax must match [../../course-generator/examples/layout-templates.md](.
 
 | Need | Choose | Example filename |
 | :--- | :--- | :--- |
-| Labeled flow with accurate words | SVG | `images/ch02-apply-flow.svg` |
-| Architecture boxes and arrows | SVG | `images/ch03-module-graph.svg` |
+| Spatial / mechanical picture that still teaches muted | SVG (must pass svg-craft.md) | `images/ch01-grid-to-classes.svg` |
+| Parallel options (no picture needed) | `2-column` / `card-layout`, skip the SVG | — |
 | Team collaboration metaphor | Generated photo (`1:1` or `16:9`) | `images/ch01-pair-programming.jpg` |
 | Complex infographic scene | Generated (`16:9`), minimal text | `images/ch04-pipeline-overview.png` |
 | Cloud console step | Screenshot or TODO | `images/ch02-s3-versioning-screenshot.png` |
@@ -162,40 +168,57 @@ Acceptable outcome: wired path + clear TODO for the human. Do not fake the conso
 
 ---
 
-## 9. SVG starter (square flow)
+## 9. SVG: weak vs strong (same slide)
 
-Save as `images/ch01-plan-apply-loop.svg` (adjust `viewBox` for wide/tall needs).
+Do **not** copy a three-box flow. Source of truth and accept/reject snippets:
+[../../shared/svg-craft.md](../../shared/svg-craft.md).
 
-```svg
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 800" role="img" aria-label="Plan apply loop">
-  <rect width="800" height="800" fill="#f5f7fa"/>
-  <rect x="80" y="160" width="200" height="120" rx="16" fill="#1f4b99"/>
-  <rect x="300" y="160" width="200" height="120" rx="16" fill="#1f4b99"/>
-  <rect x="520" y="160" width="200" height="120" rx="16" fill="#1f4b99"/>
-  <text x="180" y="230" text-anchor="middle" fill="#ffffff" font-family="Arial, Helvetica, sans-serif" font-size="36">Plan</text>
-  <text x="400" y="230" text-anchor="middle" fill="#ffffff" font-family="Arial, Helvetica, sans-serif" font-size="36">Apply</text>
-  <text x="620" y="230" text-anchor="middle" fill="#ffffff" font-family="Arial, Helvetica, sans-serif" font-size="36">Review</text>
-  <path d="M280 220 H300" stroke="#334155" stroke-width="8" fill="none"/>
-  <path d="M500 220 H520" stroke="#334155" stroke-width="8" fill="none"/>
-  <path d="M620 280 V360 H180 V280" stroke="#334155" stroke-width="8" fill="none"/>
-  <text x="400" y="420" text-anchor="middle" fill="#334155" font-family="Arial, Helvetica, sans-serif" font-size="32">Safe team loop</text>
-</svg>
+**Before (weak):** slide title “Features In, Label Out.” Graphic is three rounded
+navy cards labeled `X`, `f(X)`, `y`, gray canvas, orange arrows, a banner that
+repeats the heading. A human deletes this.
+
+```markdown
+<!-- layout: stacked -->
+# Features In, Label Out
+
+- Features are a vector `X`
+- The model is a function `f`
+- The label is `y`
+
+![Features in, label out](images/ch01-x-to-y.svg)
 ```
 
-Prefer this over a generated diagram when labels must be spelled correctly.
+**After (strong):** the picture **is** the mapping. Transparent canvas. ROI Alt
+colors. Labels are `8 x 8`, `64`, `10`. No title in the SVG.
+
+```markdown
+<!-- layout: stacked -->
+# Features In, Label Out
+
+- An 8-by-8 digit is 64 numbers, not a picture the model “sees”
+- `Linear(64, 10)` maps that vector onto ten class scores
+- The largest score is the predicted digit
+
+![Eight by eight pixels flatten to 64 values, then a weight band lights one of ten classes](images/ch01-grid-to-classes.svg)
+```
+
+If the idea is just two named options (train vs test as bullet lists), skip the
+SVG and use `2-column`. Only draw when the object itself (pile vs sealed stack)
+carries the contrast.
 
 ---
 
-## 10. Before / after thinking
+## 10. Before / after thinking (layout pacing)
 
 **Before (weak):** four default bullet slides in a row, no visuals.
 
 **After (stronger):**
 
 1. Default thesis slide (text)
-2. Auto-split with square SVG
-3. `2-column` comparison (text)
-4. `stacked` wide flow diagram
-5. `title-image` architecture closer
+2. Auto-split with a square SVG that passes svg-craft.md
+3. `2-column` comparison (text, no diagram of labeled cards)
+4. `stacked` wide diagram that encodes the concept
+5. `title-image` closer when the picture is the teaching point
 
-Same teaching points; better pacing and retention.
+Same teaching points; better pacing and retention. Never fill a pacing gap with
+rounded rectangles.
