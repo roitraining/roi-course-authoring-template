@@ -34,7 +34,7 @@ Copy the **stock** files from `course/images/` in this template (do not regenera
 Every Markdown file starts with the **same** course-title and course-theme metadata (or once at the top of a single-file short course):
 
 ```markdown
-<!-- course-title: 815: Hands-On Terraform -->
+<!-- course-title: Hands-On Terraform -->
 <!-- course-theme: roi-alt-theme -->
 ```
 
@@ -46,10 +46,7 @@ Every Markdown file starts with the **same** course-title and course-theme metad
 <!-- layout: title -->
 ![ROI Logo](images/roi-logo-with-name.png)
 
-# Course 815:
 # Hands-On Terraform
-
-## Infrastructure as Code for Cloud Teams
 ```
 
 Chapter divider variant:
@@ -58,7 +55,7 @@ Chapter divider variant:
 <!-- layout: title -->
 ![ROI Logo](images/roi-logo-with-name.png)
 
-815: Hands-On Terraform
+Hands-On Terraform
 
 # Chapter 2: State and Remote Backends
 ```
@@ -451,14 +448,14 @@ Generate custom diagrams/infographics/photos into `images/` when you can; use TO
 
 ---
 
-## 14. Lab stub (end of chapter - no lab body)
+## 14. Lab slide
 
-Do **not** write lab steps here. Do **not** add the lab URL. Humans add the link later. Labs are authored separately with the Lab Generator skill.
+The Course Generator inserts this after the lab’s navigation slide. The title is the lab name. The body is one line. Do not write a time, a URL, or lab steps. A person adds the link later. The Lab Generator writes the manual.
 
 ```markdown
-# Lab 2: Configure Remote State
+# Configure Remote State
 
-**Time:** 30 minutes
+Lab link: TODO
 ```
 
 ---
@@ -565,32 +562,30 @@ Questions?
 
 ## 18. Assemble files
 
-**Default: `00-introduction.md`:** Title → Welcome (`panel-right` + `welcome.png`) → Course Objectives → Agenda (`panel-left` + `agenda.png`) → Who Should Attend (`panel-right` + `who-should-attend.png`) → Prerequisites (`panel-left` + `prerequisites.png`)
+**Spine, `00-introduction.md`:** Title → Welcome (`panel-right` + `welcome.png`) → Course Objectives → Agenda (`panel-left` + `agenda.png`) → Who Should Attend (`panel-right` + `who-should-attend.png`) → Prerequisites (`panel-left` + `prerequisites.png`)
 
-**Default: each content `0N-….md` chapter:** Title → Chapter Objectives → (Navigation → section slides) × N → Lab stub → What You Learned → Quizzes (2 MCQ + 1 discussion, with answers) → Questions and Answers
+**Spine, each content `0N-….md` chapter:** Title → Chapter Objectives → one navigation slide per section (a lab is a section) → What You Learned → Questions and Answers (`Questions?`)
 
-**No quizzes on:** Introduction; course-summary / office-hours closers; or when the user declines. Quizzes are practice, not a way to add slides.
+**Course Generator then inserts:** teaching slides after each navigation slide that is not a lab; one lab slide after each lab navigation item; three quizzes (2 multiple choice with answers, then a discussion and discussion points) after What You Learned and before Questions and Answers.
 
-**Short-course exception:** the same spine may live in one file (e.g. `course.md`) when the deck is a single sitting.
+No quizzes in the introduction. Omit the chapter quizzes only when the user says so.
 
-Ensure `images/` includes the stock set when authoring from this template: `roi-logo-with-name.png`, `welcome.png`, `agenda.png`, `who-should-attend.png`, `prerequisites.png`, `qa.png`.
+Ensure `images/` includes the stock set: `roi-logo-with-name.png`, `welcome.png`, `agenda.png`, `who-should-attend.png`, `prerequisites.png`, `qa.png`. Do not regenerate them.
 
 ---
 
-## 19. Spine skeleton (spine phase output for one chapter)
+## 19. Spine skeleton
 
-This is what a content chapter looks like after the **spine** phase. Every spine slide is final. Each section has its Navigation slide and **one placeholder slide**. Quiz slides carry titles and a `TODO CONTENT` marker. The **content** phase replaces each placeholder with the section’s teaching slides, writes the quizzes, and removes every `TODO CONTENT` marker.
-
-The `TODO CONTENT` comment tells the next phase what to build. The visible bullets keep the slide readable if someone previews the spine in the viewer.
+This is a content chapter after the **spine** skill. There are no teaching slides, no quizzes, and no lab slide yet.
 
 ```markdown
-<!-- course-title: 815: Hands-On Terraform -->
+<!-- course-title: Hands-On Terraform -->
 <!-- course-theme: roi-alt-theme -->
 
 <!-- layout: title -->
 ![ROI Logo](images/roi-logo-with-name.png)
 
-815: Hands-On Terraform
+Hands-On Terraform
 
 # Chapter 2: State and Remote Backends
 
@@ -598,9 +593,9 @@ The `TODO CONTENT` comment tells the next phase what to build. The visible bulle
 
 # Chapter 2: Objectives
 
-- Explain why local state fails for teams
-- Configure a remote backend with locking
-- Recover from common state drift scenarios
+- Explain why local state fails for a team and how a remote backend fixes it
+- Explain why two people applying from laptops lose updates
+- Configure a remote backend and migrate the existing state
 
 ---
 
@@ -608,16 +603,7 @@ The `TODO CONTENT` comment tells the next phase what to build. The visible bulle
 # Chapter 2
 
 - **Why State Matters**
-- Remote Backends
-- Drift and Recovery
-
----
-
-# Why State Matters
-
-<!-- TODO CONTENT: Section 2.1. Teaching point: state is Terraform’s record of what exists; local state breaks as soon as two people apply. Examples: two laptops applying the same stack; secrets visible in a state file. -->
-
-- Teaching point: state is Terraform’s record of real infrastructure
+- Lab: Configure Remote State
 
 ---
 
@@ -625,85 +611,15 @@ The `TODO CONTENT` comment tells the next phase what to build. The visible bulle
 # Chapter 2
 
 - Why State Matters
-- **Remote Backends**
-- Drift and Recovery
-
----
-
-# Remote Backends
-
-<!-- TODO CONTENT: Section 2.2. Teaching point: a remote backend with locking gives the team one source of truth. Examples: gcs backend block; migrating with terraform init -migrate-state. -->
-
-- Teaching point: one shared, locked source of truth
-
----
-
-<!-- layout: navigation -->
-# Chapter 2
-
-- Why State Matters
-- Remote Backends
-- **Drift and Recovery**
-
----
-
-# Drift and Recovery
-
-<!-- TODO CONTENT: Section 2.3. Teaching point: detect drift with plan, then choose import, refresh, or rebuild deliberately. -->
-
-- Teaching point: detect drift, then recover deliberately
-
----
-
-# Lab 2: Configure Remote State
-
-**Time:** 30 minutes
+- **Lab: Configure Remote State**
 
 ---
 
 # What You Learned
 
-- Explained why local state fails for teams
-- Configured a remote backend with locking
-- Recovered from common state drift scenarios
-
----
-
-# Quiz 1 of 3
-
-<!-- TODO CONTENT: Multiple choice A-D on this chapter’s content. -->
-
----
-
-# Quiz 1: Answer
-
-<!-- TODO CONTENT: Restate question, Correct: X, rationale bullets. -->
-
----
-
-# Quiz 2 of 3
-
-<!-- TODO CONTENT: Multiple choice A-D on this chapter’s content. -->
-
----
-
-# Quiz 2: Answer
-
-<!-- TODO CONTENT: Restate question, Correct: X, rationale bullets. -->
-
----
-
-<!-- layout: 2-column -->
-# Quiz 3 of 3: Discussion
-
-<!-- TODO CONTENT: ### Prompt and ### Discuss columns. -->
-
----
-
-<!-- layout: 2-column -->
-# Quiz 3: Discussion Points
-
-<!-- TODO CONTENT: ### Strong Answers Mention and ### Watch For columns. -->
+- Explained why local state fails for a team and how a remote backend fixes it
+- Explained why two people applying from laptops lose updates
+- Configured a remote backend and migrated the existing state
 
 ---
 
@@ -712,4 +628,12 @@ The `TODO CONTENT` comment tells the next phase what to build. The visible bulle
 Questions?
 ```
 
-To find unfinished work: search the course for `TODO CONTENT`.
+The content skill inserts teaching slides after the first navigation slide. After the lab navigation slide it inserts one slide, and nothing else about the lab:
+
+```markdown
+# Configure Remote State
+
+Lab link: TODO
+```
+
+It then inserts the three quizzes between What You Learned and Questions and Answers.

@@ -1,261 +1,208 @@
 ---
 name: course-generator
 description: >
-  Authors high-quality ROI Training slide courses for instructor-led classrooms
-  (intermediate/advanced professionals), delivered as Markdown for the HTML
-  Slides Viewer. Works in phases like a human author: spine first, then
-  content, then refine. Use when building a course spine, writing or filling
-  chapter content, refining slides, converting docs to slides, or choosing
-  layout directives.
+  Writes the teaching slides for an ROI Training course after the spine exists.
+  Reads plan/course-outline.md and the chapter files, then teaches each section
+  thoroughly with layouts that make the point clear. Use when filling chapter
+  content, refining slides, or choosing layout directives. Does not build the
+  spine.
 ---
 
 # Course Generator Skill
 
-## Mission (primary)
+## Mission
 
-Your job is to write **great training courses**: decks an instructor can teach from
-and professionals can learn from. Optimize for clear objectives, accurate substance,
-concrete examples, and classroom pacing.
+Your job is to **teach the course**. A student at the level named in the outline should be able to learn each topic from the slides: the idea, a concrete example, and a contrast or failure when the topic has one. An instructor should be able to teach from the deck without inventing the missing explanation.
 
-Structure, house style, and viewer syntax **serve that mission**. They are not the
-mission. When house style and teaching quality conflict, **teaching quality wins**,
-without breaking viewer hard constraints.
+That is the goal. House style, slide counts, and matching one chapter’s length to another are not. When a rule and the teaching disagree, **teaching wins**.
 
-**Non-negotiable constraint:** Output must compile correctly in the **HTML Slides
-Viewer**. Invalid layout comments, missing `---`, or broken fences produce a broken
-class, not a stylistic preference.
+**Non-negotiable constraint:** the deck must compile in the **HTML Slides Viewer**. An invalid layout comment, a missing `---`, or a broken code fence is a broken class, not a style choice.
 
-Prefer scannable instructor-led slides - not beginner textbooks pasted into Markdown.
-
-**Default theme:** every chapter file starts with `<!-- course-title: … -->` then `<!-- course-theme: roi-alt-theme -->`. Do not emit `roi-theme` unless the user asks for that theme.
+**Default theme:** ROI Alt Theme. Leave `<!-- course-title: … -->` and `<!-- course-theme: roi-alt-theme -->` as the spine wrote them. Do not emit `roi-theme` unless the user asks for that theme.
 
 ---
 
-## Mandatory reads (every run)
+## Mandatory reads
 
 1. [../shared/slide-markdown-rules.md](../shared/slide-markdown-rules.md): viewer syntax, typography, images, conformance checklist
-2. [../shared/course-spine.md](../shared/course-spine.md): required slide order for the intro and every chapter
-3. [examples/layout-templates.md](examples/layout-templates.md): copy-paste syntax for every layout and the spine skeleton. Copy these; do not invent directives
-4. [../shared/svg-craft.md](../shared/svg-craft.md): when to draw, transparent canvas, ROI Alt palette, concept-encoding gate. **Read this before creating any SVG.**
-5. **`plan/course-outline.md`** when it exists: the approved plan from the Course Architect
+2. [examples/layout-templates.md](examples/layout-templates.md): copy the layout syntax. Do not invent directives
+3. [../shared/svg-craft.md](../shared/svg-craft.md): read this before creating any SVG
+4. `plan/course-outline.md`: topics, order, audience, and labs
+5. The chapter files under `course/`: the spine you fill
 
-### When there is no outline
+Leave the frame in [../shared/course-spine.md](../shared/course-spine.md) intact. The spine skill already wrote it. Insert teaching, quizzes, and the lab slide where that file says. Do not score lab times, quiz counts, or spine order as errors.
 
-If `plan/course-outline.md` is missing, or the user’s outline lacks per-section
-teaching points, timing, or lab plans, **recommend running the Course Architect
-skill first** and say why: generating without a solid outline is the main
-cause of inconsistent courses. Proceed without one only if the user confirms,
-and only for a short course.
+### When the inputs are missing
+
+- If `plan/course-outline.md` is missing, stop. Say to run the Course Architect.
+- If `course/00-introduction.md` or the chapter files are missing, stop. Say to run the Course Spine Generator.
 
 ---
 
-## 1. Work in phases (like a good author)
+## 1. What you write
 
-A good author does not write slide 1, then slide 2, until the end. They build
-the frame of the whole course first, then fill it in, then go back and improve
-it. That keeps the whole course in view and stops the deck drifting.
+Read the outline and the chapter spine before you add a slide. Default to **one chapter per run** on a long course. A short course can be filled in one run. Do that work, then stop.
 
-**Do only the phase you are asked for, then stop.** If the prompt does not name
-a phase, ask which one, or default to **spine** when no chapter files exist yet.
+Leave these slides as the spine wrote them:
 
-| Phase | Builds | Stops when |
-| :--- | :--- | :--- |
-| **spine** | Every chapter file and every spine slide; one placeholder slide per section | All files exist and pass the spine checklist |
-| **content** | Teaching slides for the requested chapter(s), plus quizzes and real images | Every `TODO CONTENT` marker in scope is gone |
-| **refine** | Improvements across the whole course | The refine checklist passes |
+- Introduction: title, Welcome, course objectives, agenda, who should attend, prerequisites
+- Each chapter: chapter title, chapter objectives, navigation, What You Learned, Questions and Answers
 
-### Phase: spine
+If the teaching shows an objective is wrong, tell the user. Do not silently rewrite it.
 
-Build the full frame of the course from the outline. **Do not write teaching
-slides.**
+### Teaching slides
 
-1. Create `course/00-introduction.md` with the complete intro spine (Title,
-   Welcome!, Course Objectives, Agenda, Who Should Attend, Prerequisites). The
-   intro is short enough to finish completely in this phase.
-2. Create one file per content chapter with:
-   - Chapter title and Chapter N: Objectives (final wording from the outline)
-   - For each section: the Navigation slide, then **one placeholder slide**
-     carrying the section title, its teaching point, and the example it must include
-   - Lab stub (title and time only)
-   - What You Learned (past tense of the objectives)
-   - The six quiz slide titles with a `TODO CONTENT` marker (quizzes need the finished content)
-   - Questions and Answers
-3. Make sure the stock images exist in `course/images/`.
-4. Run the spine checklist in [../shared/course-spine.md](../shared/course-spine.md) and the conformance checklist in [../shared/slide-markdown-rules.md](../shared/slide-markdown-rules.md).
+For each navigation item that is not a lab, insert the teaching slides after that navigation slide and before the next one. A section is done when a student at the outline’s level can learn the topic. A programming section includes code the student can read.
 
-Placeholder slide format (see the spine skeleton in [examples/layout-templates.md](examples/layout-templates.md)):
+One slide is not the goal. Matching another section’s length is not the goal. Do not add a slide to hit a count or to fill the day. Do not stop because a slogan fits on one slide.
+
+### Layouts
+
+Choose the layout that teaches the point. Copy the syntax from [examples/layout-templates.md](examples/layout-templates.md).
+
+- A comparison is `2-column`
+- Three parallel items are `3-column` or `card-layout`
+- A diagram that carries the idea is `stacked`, `title-image`, or auto-split (a bullet list and an image on the same slide, with no layout comment)
+- A short worked example can stay on the default layout
+
+Vary the layouts through the chapter so the student is not reading the same bullet stack for every idea. Do not pick a layout only to be different. Do not leave more than three default bullet slides in a row when another layout would teach the next point more clearly.
+
+### Lab placeholder
+
+For each navigation item that is a lab, insert one slide after that navigation slide. The title is the lab name from the outline. The body is one line:
 
 ```markdown
-# Providers and Authentication
-
-<!-- TODO CONTENT: Section 1.2. Teaching point: providers are plugins that translate HCL into API calls; authenticate with short-lived credentials, never keys in code. Example: a short-lived token, not a key in the file. -->
-
-- Teaching point: providers translate configuration into API calls
+Lab link: TODO
 ```
 
-### Phase: content
+Do not invent a URL, a time, or lab steps. A person adds the link later.
 
-Fill the sections of the chapter(s) the user names. Default to **one chapter
-per run** for long courses; a whole short course is fine in one run.
+### Quizzes
 
-1. Re-read the outline section by section and the chapter’s existing spine.
-2. Replace each placeholder with the teaching slides that section needs. A slide exists only if it teaches something the section does not already teach: the idea, a concrete example or demo, a contrast, or a failure mode. Stop when those are covered. Do not add or cut slides to approach a number. The same length as another section is not a problem. A different length is not a problem.
-3. Write the three quizzes from the content you just wrote (see §4). Quizzes practice the chapter. They are not a way to add slides.
-4. Create diagrams and images as you go (see §5). Create an SVG only if it passes the [../shared/svg-craft.md](../shared/svg-craft.md) gate; otherwise use `2-column` / `card-layout` or skip the image. Add `TODO IMAGE` placeholders where only a human can capture the asset.
-5. Leave every spine slide in place. If the content shows the objectives are wrong, tell the user rather than silently rewriting them.
-6. Remove every `TODO CONTENT` marker in scope, then run both checklists.
-7. In the summary, one ballpark sentence: “At 2–3 minutes a teaching slide, plus labs and the spine, this chapter (or course) is about N minutes against the request of X.” Do not add, cut, or rewrite slides in response to that sentence.
+After What You Learned and before Questions and Answers, add three quizzes. Copy the templates from [examples/layout-templates.md](examples/layout-templates.md).
 
-### Phase: refine
+- **Quiz 1 and 2:** multiple choice A–D, each followed by an answer slide that restates the question, gives `**Correct: X.**`, and lists short rationale bullets
+- **Quiz 3:** a `2-column` discussion (`### Prompt`, `### Discuss`), then a `2-column` Discussion Points slide (`### Strong Answers Mention`, `### Watch For`)
 
-Read the **whole course** as an author reviewing their own draft, then improve it:
+Quizzes practice this chapter: application, decisions, and misconceptions, not trivia. Distractors are plausible. The discussion works in class for 2–4 minutes. Quizzes are not a way to add slides. Do not put them in the introduction. Omit them when the user declines.
 
-- Cut a slide that repeats a point already taught, or that only restates the title
-- Do not cut a slide that still carries an example, contrast, or failure the others do not
-- Do not add a slide to differ from another chapter, to look thorough, or to fill time
-- Split a slide only when it teaches two ideas. Merge two slides only when they teach the same idea. Do not split or merge to change a count
-- Close gaps: a concept used before it is taught, a missing example, an objective with no supporting slides
-- Rewrite weak bullets: vague thesis, definitions with no example, hype
-- Vary layouts where there are more than 3 default slides in a row
+### When you finish the chapter
 
-Report what you changed and why, by chapter. End with the same ballpark sentence as the content phase. Do not edit again to move that number.
+Remove nothing the spine owns. In the summary, one ballpark sentence: “At 2–3 minutes a teaching slide, plus the spine slides in this chapter, this chapter is about N minutes.” Do not add, cut, or rewrite slides to move that number.
 
 ---
 
-## 2. Audience and product context
+## 2. Audience
 
-- **Default audience**: intermediate professionals (e.g. programmers teaching programmers, managers with experience).
-- **Advanced** courses when the topic warrants it; **beginner** only when the user explicitly asks.
-- Duration of the request may be about **1–2 hours** or **multi-day**. Write the slides the teaching needs. Report how that compares to the request. Do not resize the deck to match it.
+Teach the people named in the outline’s Who Should Attend and Prerequisites. Do not assume intermediate professionals when the outline says beginners, and do not talk down to experienced people.
+
+Write the slides the topic needs. Report how that compares with the requested duration. Do not resize the deck to match it.
 
 ---
 
-## 3. Teaching craft (house style, not the mission)
+## 3. Teaching craft
 
-Write for an instructor at the front of the room: one clear point per slide, enough
-detail to teach, no filler.
+Write for an instructor at the front of the room: one clear point per slide, enough detail to teach, no filler.
 
-### What “good” looks like
+### What good looks like
 
-- Tangible objectives students can actually achieve
-- Right altitude for the stated audience (default: intermediate/advanced)
-- Concrete examples, contrasts, failure modes, and decision rules - not only definitions
+- A student can do the thing the chapter objective names
+- The altitude matches the outline’s audience
+- Concrete examples, contrasts, failure modes, and decision rules, not only definitions
 - Slides an instructor can talk from without reading paragraphs aloud
-- Professional tone: direct, concrete, minimal hype
+- A direct, concrete tone
 
-### Usual pattern (house style)
+### Usual pattern
 
-- About **3–4 main bullets**; **first bullet is the thesis** of the slide
-- Supporting bullets develop that thesis (exemplify, warn, or operationalize) - not a new topic
-- Optional sub-bullets (**0–3**) for how / e.g. / watch-for
-- **Two bullet levels maximum**; deeper structure → table, **2-column** / **3-column**, or a new slide
-- Prefer **one-line, scannable** bullets
+- About 3–4 main bullets. The first bullet is the thesis of the slide
+- Supporting bullets develop that thesis. They do not start a new topic
+- Optional sub-bullets (0–3) for how, an example, or what to watch for
+- Two bullet levels maximum. Deeper structure becomes a table, columns, cards, or a new slide
+- Prefer one-line bullets
 
 ### Use judgment
 
-- Prefer this pattern because it keeps decks consistent and teachable
-- Depart when another shape teaches better (worked example, comparison table, code snippet, diagram-led slide, quiz)
-- Do **not** sacrifice clarity, accuracy, or usefulness to “satisfy the bullet count”
-- Never invent deep outline trees (**3+ levels**) or walls of prose
-- Mix layouts; deepen selectively with examples and contrasts - not with more generic bullets
-- Include code samples in programming courses
+Prefer that pattern because it keeps a deck teachable. Leave it when another shape teaches better: a worked example, a comparison, a code sample, or a diagram. Do not sacrifice clarity to satisfy a bullet count. Do not write walls of prose.
+
+Layout choice is part of teaching. Use the layout that makes the point clear, and vary layouts across the chapter. Include code in a programming course.
 
 ### Accuracy
 
-Fast-moving facts (API signatures, CLI flags, model names, console labels,
-versions, prices) go stale in model memory. When you have web or tool access,
-check them per [../shared/verify-current-facts.md](../shared/verify-current-facts.md).
-When you cannot, write the most accurate version you can and list the
-unverified claims in your end-of-turn summary so the Technical Editor checks them.
+Fast-moving facts (API signatures, CLI flags, model names, console labels, versions, prices) go stale in model memory. When you have web or tool access, check them per [../shared/verify-current-facts.md](../shared/verify-current-facts.md). When you cannot, write the most accurate version you can and list the unverified claims in the summary so the Technical Editor can check them.
 
 ---
 
-## 4. Chapter quizzes
+## 4. Images
 
-Quizzes are the default for content chapters. Placement and slide format are
-fixed by [../shared/course-spine.md](../shared/course-spine.md); copy the quiz
-templates from [examples/layout-templates.md](examples/layout-templates.md).
+Create the visual while you write the slide. The Course Graphics Designer polishes later.
 
-- **Quiz 1 and 2:** multiple choice A–D, each followed by an answer slide that restates the question, gives `**Correct: X.**`, and lists short rationale bullets.
-- **Quiz 3:** a `2-column` discussion (`### Prompt`, `### Discuss`), then a `2-column` Discussion Points slide (`### Strong Answers Mention`, `### Watch For`).
+Read [../shared/svg-craft.md](../shared/svg-craft.md) first. Ship an SVG only if a spatial, mechanical, or contrast picture teaches better than type, the canvas is transparent, the colors are ROI Alt only, there is no heading that restates the slide title, and the graphic would still teach if the bullets were muted. If the file is boxes containing the slide’s words, do not emit it. Use columns or cards, or skip the image. A strong text layout beats a weak diagram.
 
-**Quality bar:** test application, decisions, and misconceptions from **this
-chapter’s content**, not trivia or gotchas. Distractors are plausible. Discussion
-prompts work in class for 2–4 minutes.
+- Diagrams that pass the gate: SVG. Labels you control are never misspelled
+- Photos, metaphors, rich scenes: generated images with little or no text in the image
+- Real product UI: a real screenshot when you can capture it. Otherwise a `TODO IMAGE` placeholder. Never fake a product screenshot
+- Prefer `title-image`, `image-only`, `full-bleed`, `stacked`, or auto-split when a visual should dominate, stand alone, fill the slide, sit below the content, or sit beside the bullets
+- Do not omit a needed visual silently. Prefer a placeholder over a weak text-only slide. Prefer no SVG over a row of rounded rectangles
 
-Quizzes are practice of what the chapter taught, not a way to add slides. Omit
-them on the introduction, a course-summary or closing chapter, or when the user
-declines.
+Paths, names, stock images, and TODO syntax: [../shared/slide-markdown-rules.md](../shared/slide-markdown-rules.md) §7.
 
 ---
 
-## 5. Images (create while you write)
+## 5. Refine
 
-Visuals are part of course quality - not optional decoration. Create them during
-the content phase; the Course Graphics Designer polishes them later.
+When asked to refine, read the whole course as an author reviewing a draft.
 
-**SVG gate:** read [../shared/svg-craft.md](../shared/svg-craft.md) first. Ship
-an SVG only if a spatial, mechanical, or contrast picture teaches better than
-type, the canvas is transparent, colors are ROI Alt only, there is no heading
-that restates the slide title, and the graphic would still teach if you muted
-the bullets for five seconds. If you can describe the file as “boxes containing
-the slide’s words,” do not emit it. Use `2-column` / `card-layout`, or skip the
-image. A strong text layout beats a weak diagram.
+- Cut a slide that repeats a point already taught, or that only restates the title
+- Do not cut a slide that still carries an example, contrast, or failure the others do not
+- Add the example a topic is missing
+- Change a layout when a run of default slides hides the point
+- Do not restyle a slide that already teaches
+- Do not add a slide to look busy, to differ from another chapter, or to fill time
+- Split a slide only when it teaches two ideas. Merge two slides only when they teach the same idea
+- Close a gap: a concept used before it is taught, or an objective with no supporting slides
+- Rewrite a vague thesis, a definition with no example, and hype
 
-- Diagrams that pass the gate: **SVG** (labels you control are never misspelled).
-- Photos, metaphors, rich scenes: generated images with little or no text in the image.
-- Real product UI: real screenshots when you can capture them; otherwise a `TODO IMAGE` placeholder. Never fake a product screenshot.
-- Prefer `title-image`, `image-only`, `full-bleed`, `stacked`, or auto-split when a visual should dominate, stand alone, fill the slide, sit below content, or sit beside bullets.
-- Never omit a needed visual silently; prefer a placeholder over a weak text-only slide. Prefer no SVG over a row of rounded rectangles.
-
-Paths, naming, stock images, shapes, and TODO syntax: [../shared/slide-markdown-rules.md](../shared/slide-markdown-rules.md) §7.
+Report what you changed and why, by chapter. End with the same ballpark sentence as a content run. Do not edit again to move that number.
 
 ---
 
 ## 6. Explicit non-goals
 
-- **Do not write lab manuals**: only the lab stub slide (title and time; no URL). Lab Generator writes labs.
-- **Do not invent an instructor bio**: use the Welcome placeholders.
-- **Do not work past the requested phase**: a spine run produces no teaching slides.
-- **Do not change the outline’s objectives or structure silently**: propose changes to the user.
-- **Do not collapse a multi-chapter course into one file** (short single-deck courses are fine).
-- **Do not regenerate or replace stock images**.
+- Do not build or rebuild the spine. The Course Spine Generator does that.
+- Do not write lab manuals or lab steps. The lab slide is `Lab link: TODO`.
+- Do not invent an instructor bio.
+- Do not change the outline’s topics or objectives silently. Propose the change.
+- Do not regenerate or replace stock images.
 
 ---
 
-## 7. Validation checklist
+## 7. Checklist
 
-Run at the end of every phase.
+### Before you start
 
-### Every phase
-
-- [ ] [../shared/slide-markdown-rules.md](../shared/slide-markdown-rules.md) conformance checklist passes
-- [ ] [../shared/course-spine.md](../shared/course-spine.md) spine checklist passes
-- [ ] Chapters, sections, and objectives match `plan/course-outline.md` (or differences are reported)
-
-### After spine
-
-- [ ] Every chapter file exists, with every Navigation slide and one placeholder per section
-- [ ] Every file has `<!-- course-theme: roi-alt-theme -->` immediately after `course-title` (unless the user named another theme)
-- [ ] Every section placeholder and quiz slide carries a `TODO CONTENT` marker
-- [ ] No teaching slides written
+- [ ] `plan/course-outline.md` is present
+- [ ] The introduction and chapter files are present
 
 ### After content
 
-- [ ] No `TODO CONTENT` markers left in the chapters in scope
-- [ ] Every teaching slide adds an idea, example, contrast, or failure the section did not already have
-- [ ] No slide was added or cut to change a count
-- [ ] Slides have a clear thesis and concrete examples, contrasts, or decision rules
-- [ ] Quizzes test application of this chapter’s content
-- [ ] Images created or wired with `TODO IMAGE` placeholders
-- [ ] Every SVG passes [../shared/svg-craft.md](../shared/svg-craft.md): transparent canvas, ROI Alt colors only, no duplicate heading, concept encoded not restated
-- [ ] No SVG that is boxes containing the slide’s words; those slides use columns/cards or have no diagram
-- [ ] Unverified volatile facts listed in the summary
-- [ ] One ballpark sentence versus the requested duration, and no edits made to chase it
+- [ ] [../shared/slide-markdown-rules.md](../shared/slide-markdown-rules.md) passes
+- [ ] Spine slides are still in place and were not rewritten
+- [ ] Every non-lab section has the idea, a concrete example, and a contrast or failure when the topic has one
+- [ ] A programming section includes code
+- [ ] Layouts teach the point and vary through the chapter. No more than three default bullet slides in a row when another layout would teach more clearly
+- [ ] Each lab navigation item is followed by one slide whose body is `Lab link: TODO`
+- [ ] Three quizzes sit after What You Learned and before Questions and Answers, and they practice this chapter
+- [ ] The introduction has no quizzes and no new teaching slides
+- [ ] Theme remains `roi-alt-theme` unless the user named another
+- [ ] Images are created or marked `TODO IMAGE`
+- [ ] Every SVG passes [../shared/svg-craft.md](../shared/svg-craft.md). No SVG is boxes containing the slide’s words
+- [ ] Unverified volatile facts are listed in the summary
+- [ ] One ballpark sentence is in the summary, and no edit was made to chase it
 
 ### After refine
 
-- [ ] No duplicate, padded, or off-objective slides
-- [ ] No concept used before it is taught
-- [ ] Every objective has supporting slides and a quiz or lab that exercises it
-- [ ] Change summary written for the human, including the ballpark sentence and no follow-up edits to chase it
+- [ ] A repeated or title-only slide was cut
+- [ ] A missing example was added
+- [ ] A run of default slides that hid a point was given a layout that teaches it
+- [ ] No concept is used before it is taught
+- [ ] The change summary names what changed, by chapter, and includes the ballpark sentence

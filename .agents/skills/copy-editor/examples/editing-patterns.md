@@ -1,4 +1,4 @@
-# Copy Editor — Editing Patterns
+# Copy Editor: Editing Patterns
 
 Safe copy-edit patterns for ROI Course Factory Markdown.
 
@@ -7,7 +7,7 @@ Safe copy-edit patterns for ROI Course Factory Markdown.
 ## 1. Protect these regions
 
 ```markdown
-<!-- course-title: 815: Hands-On Terraform -->
+<!-- course-title: Hands-On Terraform -->
 <!-- course-theme: roi-alt-theme -->
 <!-- layout: 2-column -->
 <!-- TODO IMAGE: Screenshot of the BigQuery console -->
@@ -133,7 +133,7 @@ If the course mixes two accepted forms (`Postgres` vs `PostgreSQL`), prefer cons
 | `terriform` | Fix to `Terraform` |
 | `its` vs `it’s` | Fix from sentence meaning |
 | `JSON` / `YAML` / `HTML` | Keep all caps |
-| Unusual API name matching nearby code | Keep; mention in report if unsure |
+| Unusual API name matching nearby code | Keep; record it in the glossary |
 
 ---
 
@@ -164,7 +164,7 @@ invent a spelling that contradicts the vendor.
 
 ## 8. Minimal edit principle
 
-**Before (over-editing — don’t do this)**
+**Before (over-editing: do not do this)**
 
 Turning four short bullets into a paragraph essay, or changing “Configure a remote backend with locking” to a new objective.
 

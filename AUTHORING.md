@@ -34,7 +34,7 @@ should not need global machine setup.
 
 If the agent seems unaware of the rules, say explicitly:
 
-> Read `.agents/skills/course-architect/SKILL.md`, `.agents/skills/course-generator/SKILL.md`, `.agents/skills/course-graphics-designer/SKILL.md`, `.agents/skills/technical-editor/SKILL.md`, `.agents/skills/copy-editor/SKILL.md`, `.agents/skills/lab-generator/SKILL.md`, and `.agents/skills/lab-tester/SKILL.md`, then follow them.
+> Read `PIPELINE.md` and the skill for the current step, then follow it. One fresh session per step.
 
 ## 3. Course layout (slides)
 
@@ -82,9 +82,9 @@ Follow:
 
 See also [labs/README.md](labs/README.md) and the sample at `labs/lab-01-sample-lab-viewer-format/lab.md`.
 
-### Lab stubs on slides
+### Lab slides
 
-Chapter endings include a **lab stub** with the **lab title and time only**. Do **not** add the lab URL in the stub—humans add the link later. Do not write full lab steps in the slide deck.
+After a lab’s navigation slide, the Course Generator adds one slide. The title is the lab name. The body is `Lab link: TODO`. Do not add a time or a URL. A person adds the link later. Do not write lab steps on the slide.
 
 ## 5. Preview
 
@@ -103,13 +103,13 @@ Use the [HTML Lab Viewer](https://labv.roitraining.com/) and paste a GitHub URL 
 ## 6. What not to do
 
 - Do not skip the outline when you have no plan, or only a thin bullet list.
-- Do not ask Course Generator to write the whole course in one pass; use **spine**, then **content**.
+- Do not ask one session to write the whole course. Follow PIPELINE.md: spine, then content, then the later steps.
 - Do not paste an entire multi-chapter course into one mega-file (unless you intentionally author a short single-file workshop).
 - Do not invent instructor bios on the Welcome slide.
 - Do not use `&` in slide titles/body (write “and”; use **Questions and Answers**, not “Q&A”).
 - Do not regenerate the stock intro/outro images—reuse the files in `course/images/`.
 - Do not put full lab procedures in slide Markdown—use `labs/` and the Lab Generator skill.
-- Do not put a lab URL on the course lab stub (title and time only; humans add the link later).
+- Do not put a time or a lab URL on the lab slide. The body stays `Lab link: TODO` until a person adds the link.
 - Do not use Qwiklabs `ql-*` tags or fragments in Lab Viewer manuals.
 - Do not reuse the authoring session for technical review, copy edit, or lab testing.
 
@@ -122,7 +122,9 @@ Use the [HTML Lab Viewer](https://labv.roitraining.com/) and paste a GitHub URL 
 - SVG craft: [.agents/skills/shared/svg-craft.md](.agents/skills/shared/svg-craft.md)
 - Verify current facts: [.agents/skills/shared/verify-current-facts.md](.agents/skills/shared/verify-current-facts.md)
 - Architect: [.agents/skills/course-architect/SKILL.md](.agents/skills/course-architect/SKILL.md)
+- Spine: [.agents/skills/course-spine-generator/SKILL.md](.agents/skills/course-spine-generator/SKILL.md)
 - Course: [.agents/skills/course-generator/SKILL.md](.agents/skills/course-generator/SKILL.md)
+- Instructor review: [.agents/skills/instructor-review/SKILL.md](.agents/skills/instructor-review/SKILL.md)
 - Course templates: [.agents/skills/course-generator/examples/layout-templates.md](.agents/skills/course-generator/examples/layout-templates.md)
 - Course graphics: [.agents/skills/course-graphics-designer/SKILL.md](.agents/skills/course-graphics-designer/SKILL.md)
 - Graphics patterns: [.agents/skills/course-graphics-designer/examples/visual-patterns.md](.agents/skills/course-graphics-designer/examples/visual-patterns.md)

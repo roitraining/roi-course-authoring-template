@@ -57,8 +57,8 @@ For each volatile claim you check, record:
 - Source URL (or the command you ran) and the date you checked
 
 When you cannot verify a volatile claim (no web access, no credentials,
-ambiguous docs), mark it **unverified** for the human. Do not guess, and do not
-silently keep or change it.
+ambiguous docs), mark it **unverified** in the review log and leave it unchanged.
+Do not guess, and do not invent a replacement.
 
 When writing new content without verification, prefer wording that ages well
 (“the current Gemini Pro model”) only if exact names do not matter for the

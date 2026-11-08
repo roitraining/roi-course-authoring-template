@@ -8,9 +8,9 @@
 #   scripts/new-course.sh ../my-terraform-course
 #   scripts/new-course.sh ../my-terraform-course --github roitraining/my-terraform-course --private
 #
-# The script copies this template (without git history, the sample course, or
-# the factory demo), runs git init, and makes the first commit. With --github
-# it creates a GitHub repo and pushes.
+# The script copies this template (without git history, the sample course, the
+# factory demo, or a leftover course outline), runs git init, and makes the
+# first commit. With --github it creates a GitHub repo and pushes.
 set -euo pipefail
 
 usage() {
@@ -126,6 +126,7 @@ RSYNC_EXCLUDES=(
   --exclude 'course/images/sample-diagram.png'
   --exclude 'course/images/sample-team-of-programmers.png'
   --exclude 'labs/lab-01-sample-lab-viewer-format'
+  --exclude 'plan/course-outline.md'
 )
 
 if command -v rsync >/dev/null 2>&1; then
@@ -141,6 +142,7 @@ else
   rm -f "$DEST/course/viewer-toolbar.png"
   rm -f "$DEST/course/images/sample-diagram.png"
   rm -f "$DEST/course/images/sample-team-of-programmers.png"
+  rm -f "$DEST/plan/course-outline.md"
   find "$DEST" -name '.DS_Store' -delete
 fi
 

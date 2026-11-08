@@ -14,12 +14,14 @@ to author content with an AI coding agent.
 | `reviews/` | Technical Editor and Copy Editor reports |
 | `scripts/new-course.sh` | Create a new course repo from this template |
 | `.agents/skills/course-architect/` | Plan the course before any slides |
-| `.agents/skills/course-generator/` | Spine, then content, then refine |
-| `.agents/skills/course-graphics-designer/` | Visual polish pass after content |
-| `.agents/skills/technical-editor/` | Accuracy, currency, teachability |
+| `.agents/skills/course-spine-generator/` | Opening file and chapter frame, after the outline is approved |
+| `.agents/skills/course-generator/` | Teaching slides, quizzes, and `Lab link: TODO` |
+| `.agents/skills/instructor-review/` | Teaching edits before any human review |
+| `.agents/skills/course-graphics-designer/` | Visual polish after Instructor Review |
+| `.agents/skills/technical-editor/` | Accuracy and currency |
 | `.agents/skills/copy-editor/` | Spelling, grammar, typography, consistency |
-| `.agents/skills/lab-generator/` | Solution-first lab manuals |
-| `.agents/skills/lab-tester/` | Run a lab as a student; report only |
+| `.agents/skills/lab-generator/` | Labs that practice the slides; solution first |
+| `.agents/skills/lab-tester/` | Run a lab as a student; report for Lab Generator |
 | `.agents/skills/shared/` | Viewer formatting rules every editing skill must follow |
 | `.cursorrules`, `CLAUDE.md`, `AGENTS.md`, `.github/copilot-instructions.md` | Point every common coding agent at the skills |
 
@@ -28,7 +30,7 @@ to author content with an AI coding agent.
 1. **Create your course repo** with `scripts/new-course.sh` (ask an agent to run it), or GitHub → *Use this template*.
 2. **Open the repo** in Cursor, VS Code (Copilot), Claude Code, Antigravity, or another agent-capable editor.
 3. **Follow [PIPELINE.md](PIPELINE.md)** one step per fresh agent session:
-   Architect → spine → content → graphics → labs → lab tests → technical review → copy edit.
+   Architect → spine → content → instructor review → graphics → technical edit → labs → lab test → apply the test → copy edit.
 4. **Preview slides** in the hosted HTML Slides Viewer (paste your GitHub course folder URL):
    - https://slidesv.roitraining.com/
 5. **Preview labs** at https://labv.roitraining.com/ (paste the lab folder URL).

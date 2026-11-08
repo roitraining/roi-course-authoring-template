@@ -108,8 +108,8 @@ Introducing the ROI Course Factory
 - Saves changes to the Markdown file in that folder.
 
 ### Agent Skills
-- Course Generator and Lab Generator are the rules the agent follows.
-- They keep decks and labs in the ROI shape without you restating it.
+- Follow PIPELINE.md, one skill per fresh session.
+- Architect, spine, content, instructor review, graphics, technical edit, labs, lab test, then copy edit.
 
 ### Template
 - This is the GitHub repo you clone to start a course.
@@ -375,14 +375,14 @@ git clone https://github.com/roitraining/roi-course-authoring-template.git web-d
 <!-- below-columns -->
 
 > [!IMPORTANT]
-> A chapter ends with a lab stub: title and time only. The steps live in `lab.md`. Do not paste the lab URL onto the slide. A person adds that link later.
+> A lab slide is the lab name and the line `Lab link: TODO`. The steps live in `lab.md`. A person adds the URL later.
 ---
 <!-- layout: card-layout -->
 # The Skills Are the House Style
 
 ### Course Generator
-- Builds the intro spine, the chapter order, and the layouts the viewer accepts.
-- It will not invent an instructor bio or write the lab steps on a slide.
+- Writes the teaching slides after the spine exists, plus the quizzes.
+- The lab slide body is `Lab link: TODO`. It does not write the lab steps.
 
 ### Lab Generator
 - Builds one lab folder: overview, tasks, a bonus, and a closing.
@@ -393,7 +393,7 @@ git clone https://github.com/roitraining/roi-course-authoring-template.git web-d
 - The skill cannot guess who is in the room.
 
 ### When the agent drifts
-- Tell it to read the Course Generator and Lab Generator skills and follow them.
+- Tell it to read the skill for this pipeline step and follow it.
 - The template’s agent files already point at those skills. Say it again if you must.
 ---
 # Any Agent That Can Use Skills
@@ -418,7 +418,7 @@ git clone https://github.com/roitraining/roi-course-authoring-template.git web-d
 ### Strong
 - Title, audience, prerequisites, and hours
 - Inlcude an outline if you have one
-- Tell the agent to use the Course and/or Lab Generator Skills
+- Tell the agent which PIPELINE.md step to run, and name that skill
 
 <!-- below-columns -->
 
@@ -430,8 +430,10 @@ git clone https://github.com/roitraining/roi-course-authoring-template.git web-d
 - Supply details about the course, the audience, the length, and provide an outline. 
 
 ```text
-Use the Course Generator skill and the Lab Generator skill.
-Read both skills and follow them.
+This class uses one prompt so you can preview a draft. In production, follow PIPELINE.md, one skill per fresh session, and approve the outline before any slides.
+
+Use the Course Spine Generator, then the Course Generator, then the Lab Generator.
+Read each skill and follow it.
 
 Build a complete half-day course and its three labs.
 Write every chapter file and every lab.
@@ -452,19 +454,19 @@ Chapter 1: HTML and the Structure of a Page
 - Documents and elements
 - Text, links, and images
 - How a page is organized
-Lab: Build a Simple Page (20 minutes)
+Lab: Build a Simple Page
 
 Chapter 2: CSS and How the Page Looks
 - Selectors and the cascade
 - The box model and simple layout
 - Type, color, and spacing
-Lab: Style the Page (20 minutes)
+Lab: Style the Page
 
 Chapter 3: JavaScript and Behavior in the Browser
 - Finding elements on the page
 - Responding to events
 - Reading and changing what the visitor sees
-Lab: Make the Page Respond (20 minutes)
+Lab: Make the Page Respond
 
 Write these files:
 - course/00-introduction.md
@@ -474,7 +476,8 @@ Write these files:
 - labs/lab-03-make-the-page-respond/lab.md
 
 Reuse the stock images already in course/images/.
-On each chapter, the lab stub is a title and a time only.
+On each chapter, the lab slide title is the lab name and the body is `Lab link: TODO`.
+Do not write a time or a URL.
 ```
 ---
 <!-- layout: 3-column -->
@@ -713,7 +716,7 @@ On each chapter, the lab stub is a title and a time only.
 - Those three facts plus a title change the altitude and the size of the draft
 - An approved outline is cheaper to fix than a finished chapter
 - Themes and pen color are presentation choices, not authoring inputs
-- The lab stub carries a title and a time. A person adds the URL later
+- The lab slide says `Lab link: TODO`. A person adds the URL later
 ---
 <!-- layout: 2-column -->
 # Quiz 3 of 3: Discussion

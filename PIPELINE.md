@@ -5,10 +5,8 @@ Each step is a **new agent session** that reads and writes **files on disk**,
 not chat history. That keeps the work portable across Cursor, VS Code + Copilot,
 Claude Code, and Antigravity.
 
-**Goal, not replacement:** for each day of training, plan on about one day of
-human technical verification and one to two hours of human copy editing. The
-pipeline should get the draft close enough that those humans are reviewing,
-not rebuilding.
+The skills make the course as clean as they can before a person reads it.
+A person approves the outline, and later reads the finished course and adds the lab URLs.
 
 If a skill seems unaware of the rules, tell it to read the skill file listed
 in that step before doing any work.
@@ -19,8 +17,8 @@ in that step before doing any work.
 
 | Tier | Use for |
 | :--- | :--- |
-| **Best available** | Architecture, spine, content, labs |
-| **Different model** from the one that wrote the course | Technical review |
+| **Best available** | Architecture, spine, content, instructor review, graphics, labs |
+| **Different model** from the one that wrote the course | Technical review, and lab testing when you can |
 | **Cheaper** | Copy editing |
 
 “Best available” means the strongest model you can give a long, careful task.
@@ -34,8 +32,7 @@ Architecture should run in a **planning mode** if the tool has one (for example 
 
 **Model:** any. **Fresh session:** not required.
 
-**Who runs it:** ask an agent to run the script, or run it yourself. The script is
-deterministic; the agent helps with naming, `git`, and `gh` authentication.
+**Who runs it:** ask an agent to run the script, or run it yourself.
 
 ```bash
 # From a clone of this template (Git Bash or WSL on Windows):
@@ -44,8 +41,9 @@ scripts/new-course.sh ../my-course-folder --github owner/repo --private
 ```
 
 The script copies the template **without** `.git`, `course/sample-course.md`,
-`introducing-the-roi-course-factory/`, sample course images, and the sample lab.
-It runs `git init`, makes the first commit, and optionally creates a GitHub repo.
+`introducing-the-roi-course-factory/`, sample course images, the sample lab,
+and any `plan/course-outline.md` left in the template. It runs `git init`,
+makes the first commit, and optionally creates a GitHub repo.
 
 **Human checkpoint:** open the new folder in your editor. Confirm you are not
 still inside the template repo.
@@ -63,250 +61,264 @@ exactly what to install or run. Do not create the GitHub repo unless I named it.
 
 ## Step 1: Course architecture
 
-**Purpose:** a detailed outline good enough that later steps do not guess.
+**Purpose:** a catalog outline. Title and length, two short description paragraphs, one-line objectives, who should attend, prerequisites, lab titles, and a two-level outline.
 
 **Skill:** `.agents/skills/course-architect/SKILL.md`
 
-**Model:** best available, in planning mode. **Fresh session:** yes (first session in the new repo).
+**Model:** best available, in planning mode. **Fresh session:** yes.
 
 **Input:** your request, or an existing outline.
 **Output:** `plan/course-outline.md`
 
-If you already have a detailed outline, say so. The skill **assesses** it, fills
-gaps, and stops if it already passes. Do not skip this step when there is no
-outline or only a thin bullet list.
-
-**Human checkpoint (required):** read the outline. Fix audience, duration, labs,
-and anything it invented. Downstream steps treat this file as the contract.
+**Human checkpoint (required):** read the outline. Fix the audience, the length, and the lab titles. Do not start the spine until you approve this file.
 
 **Copy-paste prompt**
 
 ```text
 Read .agents/skills/course-architect/SKILL.md and follow it.
-Create a course outline for: AUDIENCE, DURATION, TOPIC, OUTCOMES, LAB ENVIRONMENT.
-Write plan/course-outline.md. Sections follow teaching points, not a slide count.
-Ask me only what you cannot infer. End with one duration estimate and do not
-resize the outline to match it. Stop for my approval. Do not write slides or labs.
-```
-
-Assess an existing outline:
-
-```text
-Read .agents/skills/course-architect/SKILL.md and follow it in Assess mode.
-The outline is at PATH (or pasted below). Grade it, fill gaps, write
-plan/course-outline.md, and list every change. If it already passes, say so
-and stop.
+Write plan/course-outline.md. Ask only what you cannot infer.
+Do not write slides or labs. Stop for my approval.
 ```
 
 ---
 
 ## Step 2: Course spine
 
-**Purpose:** every chapter file and every boiler slide, with one placeholder per section. No teaching slides yet.
+**Purpose:** the opening file and the frame of every chapter. No teaching slides yet.
 
-**Skill:** `.agents/skills/course-generator/SKILL.md` (phase: **spine**)
+**Skill:** `.agents/skills/course-spine-generator/SKILL.md`
 
 **Model:** best available. **Fresh session:** yes.
 
-**Input:** approved `plan/course-outline.md`
-**Output:** `course/00-introduction.md`, `course/01-….md`, …, stock images in `course/images/`
-
-**Human checkpoint:** skim the files. Confirm chapters, section names, lab titles, and times. Search for `TODO CONTENT` to see placeholders.
+**Input:** the approved `plan/course-outline.md`
+**Output:** `course/00-introduction.md`, `course/01-….md`, …, using the stock images in `course/images/`
 
 **Copy-paste prompt**
 
 ```text
-Read .agents/skills/course-generator/SKILL.md and follow the spine phase only.
+Read .agents/skills/course-spine-generator/SKILL.md and follow it.
 Use the approved outline in plan/course-outline.md. Write the chapter files
-under course/. Do not write teaching slides. Stop when the spine checklist passes.
+under course/. Do not write teaching slides, quizzes, or lab steps.
+Stop when the spine checklist passes.
 ```
 
 ---
 
 ## Step 3: Course content
 
-**Purpose:** fill the placeholders with teaching slides, quizzes, and graphics.
+**Purpose:** teach each section. Add quizzes, and one lab slide whose body is `Lab link: TODO`.
 
-**Skill:** `.agents/skills/course-generator/SKILL.md` (phase: **content**, then optional **refine**)
+**Skill:** `.agents/skills/course-generator/SKILL.md`
 
-**Model:** best available. **Fresh session:** yes (one chapter per session on long courses).
+**Model:** best available. **Fresh session:** yes (one chapter per session on a long course).
 
-**Input:** spine files + outline
-**Output:** filled chapter Markdown and images; no `TODO CONTENT` left in scope
-
-Default to **one chapter per run** on a multi-day course.
-
-**Human checkpoint:** preview the chapter at https://slidesv.roitraining.com/. Note gaps; the refine phase or Technical Editor will take a full pass.
+**Input:** the spine files and the outline
+**Output:** teaching slides in the chapter files
 
 **Copy-paste prompt**
 
 ```text
-Read .agents/skills/course-generator/SKILL.md and
-.agents/skills/shared/svg-craft.md and follow the content phase.
-Fill chapter N (file course/0N-….md) from plan/course-outline.md. Replace every
-TODO CONTENT placeholder in that file, write the quizzes, and create or TODO
-the images. A slide exists only when it teaches something the section does not
-already teach. Do not add or cut slides to change a count. Create an SVG only
-if it passes the svg-craft gate; otherwise use columns or skip the diagram.
-End with one ballpark sentence and do not edit to chase it. Do not start
-another chapter. Stop when the content checklist passes.
-```
-
-Optional refine, after all chapters are filled:
-
-```text
-Read .agents/skills/course-generator/SKILL.md and follow the refine phase on
-the whole course. Cut a slide that repeats a point already taught. Do not cut a
-needed example, and do not add or merge slides to change a count. Close gaps
-and vary layouts. Do not change the outline’s objectives silently. Report what
-you changed by chapter, then one ballpark sentence. Do not edit again to move
-that number.
+Read .agents/skills/course-generator/SKILL.md and follow it.
+Fill chapter N (file course/0N-….md). Teach each section from the outline
+and the spine. Leave the spine slides as they are. After each lab navigation
+item, add one slide whose body is exactly "Lab link: TODO". Add the three
+quizzes after What You Learned. Do not write a lab manual. Do not start
+another chapter.
 ```
 
 ---
 
-## Step 3b: Graphics polish
+## Step 4: Instructor review
 
-**Purpose:** see the whole deck and improve layouts and visuals. Course Generator already created graphics while writing; this is the polish pass.
+**Purpose:** an expert instructor reads the slides and edits gaps, demos, Do Nows, and discussions.
+
+**Skill:** `.agents/skills/instructor-review/SKILL.md`
+
+**Model:** best available. **Fresh session:** yes.
+
+**Input:** the chapter files under `course/`
+**Output:** edited slides, plus a short summary of what changed
+
+**Copy-paste prompt**
+
+```text
+Read .agents/skills/instructor-review/SKILL.md and follow it.
+Read the course under course/ and make the edits. Do not grade it against
+the outline. Do not wait for approval.
+```
+
+---
+
+## Step 5: Graphics
+
+**Purpose:** improve layouts and diagrams across the whole deck, including slides the instructor review added.
 
 **Skill:** `.agents/skills/course-graphics-designer/SKILL.md`
 
-**Model:** best available or a capable vision-capable model. **Fresh session:** yes.
+**Model:** best available. **Fresh session:** yes.
 
-**Input:** filled course (no `TODO CONTENT`)
+**Input:** the course after instructor review
 **Output:** updated layouts and `course/images/` assets
 
-Skip this step if chapters still contain `TODO CONTENT`.
-
-**Human checkpoint:** spot-check diagrams for accuracy; Technical Editor will also check them.
+Do not run this step on a spine-only course.
 
 **Copy-paste prompt**
 
 ```text
 Read .agents/skills/course-graphics-designer/SKILL.md and
 .agents/skills/shared/svg-craft.md and follow them.
-Polish the course under course/ after the content phase. Do not rewrite
-objectives or quizzes. Do not regenerate stock intro images. Redraw or delete
-SVGs that fail the svg-craft gate. Stop if TODO CONTENT markers are still present.
+Polish the course under course/. Do not rewrite objectives or quiz answers.
+Do not regenerate stock intro images. Leave every lab slide as
+"Lab link: TODO". Redraw or delete SVGs that fail the svg-craft gate.
 ```
 
 ---
 
-## Step 4: Technical review
+## Step 6: Technical review
 
-**Purpose:** accuracy, currency, and teachability. Verify facts that change; do not trust model memory for APIs, CLIs, model names, or console labels.
+**Purpose:** accuracy and currency. Fix a mistake you can verify. Record the rest.
 
 **Skill:** `.agents/skills/technical-editor/SKILL.md`
 
-**Model:** a **different** model from the one that generated the course. **Fresh session:** required.
+**Model:** a **different** model from the one that wrote the course. **Fresh session:** required.
 
-**Input:** `course/`, `plan/course-outline.md`, any `labs/*/test-report.md`
-**Output:** `reviews/technical-review.md`; only clear, low-risk verified fixes in the Markdown
-
-**Human checkpoint (the main human day):** work the must-fix and should-fix list. This is the one-day-per-training-day review.
+**Input:** `course/`
+**Output:** corrected slides and `reviews/technical-review.md`
 
 **Copy-paste prompt**
 
 ```text
 Read .agents/skills/technical-editor/SKILL.md and follow it in this fresh session.
-Review the course under course/ against plan/course-outline.md. Verify volatile
-facts from current docs or --help; do not trust memory. Check for missing
-teaching (an objective with no example, a concept used before it is taught).
-Do not score chapter length or sameness, and do not add or cut slides to change
-a count. Write reviews/technical-review.md. Apply only clear, verified,
-low-risk fixes. Do not copy-edit and do not rewrite the curriculum.
+Read the course under course/. Verify volatile facts from current docs or
+--help. Fix every mistake you can establish. Do not grade teaching, the
+outline, or the spine. Write reviews/technical-review.md as a record of the
+edits. Do not copy-edit.
 ```
 
 ---
 
-## Step 5: Copy editing
+## Step 7: Lab creation
 
-**Purpose:** spelling, grammar, typography, and consistency.
-
-**Skill:** `.agents/skills/copy-editor/SKILL.md`
-
-**Model:** cheaper. **Fresh session:** required.
-
-**Input:** reviewed course
-**Output:** in-place language fixes + `reviews/copy-edit-report.md`
-
-**Human checkpoint:** one to two hours confirming the report and skimming the deck.
-
-**Copy-paste prompt**
-
-```text
-Read .agents/skills/copy-editor/SKILL.md and follow it in this fresh session.
-Copy-edit the course under course/ (and labs/ if they exist). Fix spelling,
-grammar, smart quotes, em-dashes, ampersands, and consistency. Do not change
-meaning, code, or layout directives. Write reviews/copy-edit-report.md.
-```
-
----
-
-## Step 6: Lab creation
-
-**Purpose:** build the finished solution first, then write the steps that get a student there.
+**Purpose:** for each lab, read the slides that lead up to it, build the solution, then write the steps.
 
 **Skill:** `.agents/skills/lab-generator/SKILL.md`
 
-**Model:** best available. **Fresh session:** yes. Can start after the outline is approved; does not have to wait for copy editing.
+**Model:** best available. **Fresh session:** yes. One lab per session on a long course.
 
-**Input:** lab plan in `plan/course-outline.md`
+**Input:** the teaching slides before that lab’s slide
 **Output:** `labs/lab-NN-slug/lab.md`, `images/`, `solution/` (and `starter/` if needed)
 
-**Human checkpoint:** skim the solution and the task list before testing.
+Do not start labs from the outline alone. The slides have to exist, and the technical review should already have corrected them.
 
 **Copy-paste prompt**
 
 ```text
 Read .agents/skills/lab-generator/SKILL.md and follow it.
-Build Lab N from the lab plan in plan/course-outline.md. Create the finished
-solution under labs/lab-NN-slug/solution/ first, then write lab.md as the path
-to that solution. Do not mark the lab as tested.
+Write the lab for the lab slide titled "LAB NAME" in course/.
+Read the slides that lead up to it. Build the solution first, then lab.md.
+Leave the slide body as "Lab link: TODO". Do not mark the lab as tested.
 ```
 
 ---
 
-## Step 7: Lab testing
+## Step 8: Lab testing
 
-**Purpose:** run the lab as a student and report what fails.
+**Purpose:** run the lab as a student and record what fails.
 
 **Skill:** `.agents/skills/lab-tester/SKILL.md`
 
-**Model:** capable; a different model from the author is a plus. **Fresh session:** required.
+**Model:** a different model from the one that wrote the lab, when you can. **Fresh session:** required.
 
-**Input:** one named lab folder
-**Output:** `labs/lab-NN-slug/test-report.md` (does **not** rewrite the lab)
-
-Feed the report back to Lab Generator or to the Technical Editor. Then a human
-walks the lab once.
+**Input:** one lab folder, and the slides that lead into it
+**Output:** `labs/lab-NN-slug/test-report.md`. The lab files stay unchanged.
 
 **Copy-paste prompt**
 
 ```text
 Read .agents/skills/lab-tester/SKILL.md and follow it in this fresh session.
-Test labs/lab-NN-slug/ as a student. Do not edit lab.md. Write
-labs/lab-NN-slug/test-report.md. If a step fails or looks out of date, verify
-against current docs or --help and record the source.
+Test labs/lab-NN-slug/ as a student. Read the slides that lead up to this lab.
+Do not edit lab.md. Write labs/lab-NN-slug/test-report.md with a concrete fix
+for each failure.
 ```
 
 ---
 
-## Suggested order
+## Step 9: Apply the lab test
+
+**Purpose:** fix what the test report proved.
+
+**Skill:** `.agents/skills/lab-generator/SKILL.md`
+
+**Model:** best available. **Fresh session:** yes.
+
+**Input:** `labs/lab-NN-slug/test-report.md` and the lab files
+**Output:** the corrected lab
+
+**Copy-paste prompt**
 
 ```text
-0 Setup → 1 Architect (approve) → 2 Spine → 3 Content → 3b Graphics
-                                         → 6 Labs → 7 Lab tests
-Then: 4 Technical review (reads lab test reports) → 5 Copy edit → human sign-off
+Read .agents/skills/lab-generator/SKILL.md and follow it.
+Apply every proved failure in labs/lab-NN-slug/test-report.md.
+Do not leave a suggested fix unused. Do not mark the lab as tested.
 ```
 
-Labs (6–7) can run in parallel with content (3–3b) once the outline is approved.
+---
+
+## Step 10: Copy editing
+
+**Purpose:** spelling, grammar, house style, and consistency, in the slides and in any labs that exist.
+
+**Skill:** `.agents/skills/copy-editor/SKILL.md`
+
+**Model:** cheaper. **Fresh session:** required.
+
+**Input:** the course and the labs
+**Output:** in-place language fixes and `reviews/copy-edit-report.md`
+
+Run this once, after the lab fix pass, so the labs are included.
+
+**Copy-paste prompt**
+
+```text
+Read .agents/skills/copy-editor/SKILL.md and follow it in this fresh session.
+Copy-edit the course under course/ and every labs/**/lab.md.
+Fix spelling, grammar, smart quotes, em-dashes, ampersands, and consistency.
+Do not change meaning, code, or layout directives. Leave "Lab link: TODO"
+as written. Write reviews/copy-edit-report.md as a record of the edits.
+```
+
+---
+
+## Step 11: Human read
+
+Read the finished course and the labs. Add each lab URL on its slide in place of `Lab link: TODO`. That is the remaining human work.
+
+---
+
+## Order
+
+```text
+0 New repo
+1 Course Architect, then you approve the outline
+2 Course Spine Generator
+3 Course Generator
+4 Instructor Review
+5 Course Graphics Designer
+6 Technical Editor
+7 Lab Generator
+8 Lab Tester
+9 Lab Generator applies the test report
+10 Copy Editor
+11 You read the course and add the lab URLs
+```
+
+One fresh session per step. Do not start the labs until the slides exist.
 
 ---
 
 ## Shared rules
 
-Every skill that edits content must follow:
+Every skill that edits slides or labs follows:
 
 - `.agents/skills/shared/slide-markdown-rules.md`
 - `.agents/skills/shared/lab-markdown-rules.md`

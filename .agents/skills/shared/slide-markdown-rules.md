@@ -1,8 +1,8 @@
 # Slide Markdown Rules (HTML Slides Viewer)
 
 **Every skill that creates or edits slide Markdown must follow this file.** That
-includes Course Generator, Course Graphics Designer, Technical Editor, and Copy
-Editor.
+includes Course Spine Generator, Course Generator, Instructor Review, Course
+Graphics Designer, Technical Editor, and Copy Editor.
 
 The [HTML Slides Viewer](https://slidesv.roitraining.com/) parses these files
 directly. A missing `---`, a bad layout comment, or a broken code fence breaks
@@ -171,4 +171,4 @@ Run this after **any** edit to slide Markdown:
 - [ ] No em-dashes and no `&` in visible text or titles
 - [ ] Two bullet levels max
 - [ ] Images under `images/` with relative paths and alt text; stock images reused; TODOs where an asset is missing
-- [ ] Slide order still matches [course-spine.md](course-spine.md)
+- [ ] The frame in [course-spine.md](course-spine.md) is intact. Teaching slides, quizzes, and `Lab link: TODO` sit where that file says they go

@@ -39,6 +39,7 @@ cd web-development-course
 4. Confirm these paths exist before you prompt anything:
 
 ```text
+.agents/skills/course-spine-generator/SKILL.md
 .agents/skills/course-generator/SKILL.md
 .agents/skills/lab-generator/SKILL.md
 course/images/welcome.png
@@ -53,16 +54,18 @@ labs/
 
 ### Task 2: Build the course and the labs from one outline
 
-In this task, you paste one prompt. The outline is already in it. The agent writes the chapters and the three labs. You do not stop to approve an outline first.
+In this task, you paste one prompt. The outline is already in it. This class uses one prompt so you can preview a draft in a single sitting. In production, follow PIPELINE.md, one skill per fresh session, and approve the outline before any slides.
 
 1. In the agent you opened in Task 1, paste this prompt:
 
 ```text
-Use the Course Generator skill and the Lab Generator skill.
-Read both skills and follow them.
+This class uses one prompt so you can preview a draft. In production, follow PIPELINE.md, one skill per fresh session, and approve the outline before any slides.
+
+Use the Course Spine Generator, then the Course Generator, then the Lab Generator.
+Read each skill and follow it.
 
 Build a complete half-day course and its three labs.
-Do not stop after an outline. Write every chapter file and every lab.
+Write every chapter file and every lab.
 
 Course title: Understanding Web Development with HTML, CSS, and JavaScript
 Audience: professionals who work with web teams and need to
@@ -80,19 +83,19 @@ Chapter 1: HTML and the Structure of a Page
 - Documents and elements
 - Text, links, and images
 - How a page is organized
-Lab: Build a Simple Page (20 minutes)
+Lab: Build a Simple Page
 
 Chapter 2: CSS and How the Page Looks
 - Selectors and the cascade
 - The box model and simple layout
 - Type, color, and spacing
-Lab: Style the Page (20 minutes)
+Lab: Style the Page
 
 Chapter 3: JavaScript and Behavior in the Browser
 - Finding elements on the page
 - Responding to events
 - Reading and changing what the visitor sees
-Lab: Make the Page Respond (20 minutes)
+Lab: Make the Page Respond
 
 Write these files:
 - course/00-introduction.md
@@ -102,7 +105,8 @@ Write these files:
 - labs/lab-03-make-the-page-respond/lab.md
 
 Reuse the stock images already in course/images/.
-On each chapter, the lab stub is a title and a time only.
+On each chapter, the lab slide title is the lab name and the body is `Lab link: TODO`.
+Do not write a time or a URL.
 ```
 
 2. Let the agent finish. It should create the introduction, three chapter files, and three lab folders.
@@ -124,7 +128,7 @@ In this task, you open the new slides the way an instructor will.
 
 3. Use the chapter menu. Confirm you can open the introduction and all three chapters.
 
-4. On one chapter, jump to the lab stub. Confirm it shows a title and a time.
+4. On one chapter, jump to the lab slide. Confirm the body is `Lab link: TODO`.
 
 5. Open `labs/lab-01-build-a-simple-page/lab.md` in your editor. Confirm it has an overview, numbered tasks, and a closing. Skim the other two labs the same way.
 

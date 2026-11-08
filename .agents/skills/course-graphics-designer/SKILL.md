@@ -5,32 +5,21 @@ description: >
   layout variety, SVG graphics, generated images, and screenshot placeholders
   without breaking HTML Slides Viewer rules. Use when polishing a generated
   course, adding diagrams or graphics, improving slide layouts, choosing image
-  shapes, or acting as the Course Graphics Designer after Course Generator.
+  shapes, or acting as the Course Graphics Designer after Instructor Review
+  and before the Technical Editor.
 ---
 
 # Course Graphics Designer Skill
 
 ## Mission
 
-Take a course produced by the **Course Generator** skill and improve how it
-**looks and teaches visually**, while strictly following ROI Course Factory /
-HTML Slides Viewer rules.
+Take the course after Instructor Review and improve how it looks and teaches visually. Follow the HTML Slides Viewer rules.
 
-**Where you sit in the pipeline:** after Course Generator’s content (and
-refine) phase, and **before** the Technical Editor. Course Generator already
-creates graphics while it writes; you are the polish pass that sees the whole
-deck at once. The Technical Editor reviews your diagrams for accuracy after you.
-Run in a fresh session so you read the deck as it is, not as it was intended.
+**Where you sit in the pipeline:** after Instructor Review and before the Technical Editor. Instructor Review may have added demos, Do Nows, and discussions. The Course Generator may already have created graphics. You are the polish pass that sees the whole deck. The Technical Editor checks your diagrams for accuracy after you. Run in a fresh session so you read the deck as it is.
 
-Do not run on a spine-only course: if chapters still contain `TODO CONTENT`
-markers, stop and tell the user the content phase is not finished.
+Do not run on a spine-only course. If a chapter has navigation slides and no teaching slides after them, stop. The content step is not finished.
 
-You are a visual editor, not a rewrite of the curriculum. Preserve teaching
-substance. Change layouts, add visuals, and reshape slides so the deck is more
-interesting and clearer in class. **Never break the course.**
-
-**Bottom line:** improve the look of Course Generator output while following ROI
-Course Factory rules.
+You are a visual editor, not a rewrite of the curriculum. Preserve teaching substance. Change layouts, add visuals, and reshape slides so the deck is clearer in class. Never break the course.
 
 ---
 
@@ -39,10 +28,9 @@ Course Factory rules.
 Before editing slides, read and follow:
 
 1. [../shared/slide-markdown-rules.md](../shared/slide-markdown-rules.md) — hard viewer constraints, image paths, stock images, image shapes, conformance checklist
-2. [../shared/course-spine.md](../shared/course-spine.md) — slide order you must not break
-3. [../course-generator/examples/layout-templates.md](../course-generator/examples/layout-templates.md) — copy-paste layout syntax
-4. [../shared/svg-craft.md](../shared/svg-craft.md) — when to draw, transparent canvas, ROI Alt palette, concept-encoding gate. **Read this before creating or replacing any SVG.**
-5. [examples/visual-patterns.md](examples/visual-patterns.md) — layout recipes and weak-vs-strong SVG examples
+2. [../course-generator/examples/layout-templates.md](../course-generator/examples/layout-templates.md) — copy-paste layout syntax
+3. [../shared/svg-craft.md](../shared/svg-craft.md) — when to draw, transparent canvas, ROI Alt palette, concept-encoding gate. **Read this before creating or replacing any SVG.**
+4. [examples/visual-patterns.md](examples/visual-patterns.md) — layout recipes and weak-vs-strong SVG examples
 
 Do **not** invent layout directives, comment syntax, or image-path conventions.
 Copy templates from the Course Generator examples.
@@ -134,9 +122,10 @@ The rules most often broken during a graphics pass:
 - Use **only** valid layout directives from the Course Generator skill.
 - Layout comments stay on their own line; never nest HTML comments.
 - Do **not** put images into `2-column` / `3-column` / `card-layout` slides that are meant for text comparisons. Use auto-split, `stacked`, `title-image`, or `image-only` instead.
-- Preserve intro spine order and stock panel images; **never regenerate** stock art.
-- Preserve chapter spine: Title → Objectives → (Nav → sections) → Lab stub → What You Learned → Quizzes (if present) → Questions and Answers.
-- Lab stubs stay title + time only (no lab URL, no lab steps).
+- Preserve the introduction: title, Welcome, objectives, agenda, who should attend, prerequisites, and the stock panel images. Never regenerate stock art.
+- Preserve each chapter’s frame: title, objectives, navigation, teaching slides, What You Learned, quizzes, and Questions and Answers.
+- A lab slide stays the lab name and the body `Lab link: TODO`. Do not add a time, a URL, or steps.
+- Do not remove a demo, a Do Now, or a discussion.
 - No ampersands (`&`) in visible text; no em-dashes; use smart quotes outside code.
 - Code fences keep language tags.
 - Do **not** invent fake product screenshots when accuracy matters.
@@ -293,7 +282,9 @@ with `2-column` / `card-layout` and remove the file.
 - [ ] Same `course-title` and `course-theme` metadata as before (default remains `roi-alt-theme`)
 - [ ] Valid layout directives only; comments clean and unnested
 - [ ] Intro stock images untouched; still wired on Welcome / Agenda / Who Should Attend / Prerequisites
-- [ ] Chapter spine intact (including lab stub, What You Learned, quizzes if present, Questions and Answers)
+- [ ] Chapter frame intact: title, objectives, navigation, What You Learned, quizzes, and Questions and Answers
+- [ ] Lab slides still read `Lab link: TODO`, with no time and no URL
+- [ ] Demos, Do Nows, and discussions are still present
 - [ ] No ampersands or em-dashes in visible slide text; smart quotes outside code
 - [ ] Code fences still have language tags
 - [ ] Screenshot TODOs present wherever a real UI capture is required but missing

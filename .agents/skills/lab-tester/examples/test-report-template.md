@@ -16,7 +16,7 @@ exists, add a new dated `## Pass` section instead of overwriting.
 | Session | Fresh (yes / no) |
 | Environment | macOS, Terraform 1.x, gcloud, Cloud Shell (or local) |
 | Credentials | Available / not available |
-| Stated time | 30 minutes |
+| Time Required in lab.md | 30 minutes |
 | Time taken (required tasks) | (minutes, or not timed) |
 
 ### Overall
@@ -58,7 +58,17 @@ One-sentence reason: Task 2 step 4 uses a flag that no longer exists.
 - Console screenshots: no GUI session
 - State locking with two applies: only one identity available
 
+### Alignment with the slides
+
+The slides before this lab teach a versioned remote backend and a state migration.
+
+- Practiced: creating the bucket and migrating state.
+- Missing: the slides show a lock failure. No required task makes the student cause one.
+- Taught too early: none.
+
 ### Alignment with solution/
 
 - Following the steps as far as Task 2 did not produce `solution/main.tf` as written because apply never succeeded.
+
+A later Lab Generator pass applies the fixes in this report.
 ````

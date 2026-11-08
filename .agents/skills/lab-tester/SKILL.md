@@ -2,35 +2,33 @@
 name: lab-tester
 description: >
   Tests an ROI Training lab as a student would, without rewriting it. Runs the
-  steps, checks commands, UI labels, timing, and images, verifies stale facts
-  when a step fails, and writes labs/lab-NN-slug/test-report.md. Use when
-  testing a lab, verifying lab steps, checking a lab solution, or acting as
-  the Lab Tester after Lab Generator.
+  steps, checks that the lab practices the slides that lead into it, and writes
+  labs/lab-NN-slug/test-report.md for a later Lab Generator pass. Use when
+  testing a lab, verifying lab steps, or acting as the Lab Tester after Lab
+  Generator.
 ---
 
 # Lab Tester Skill
 
 ## Mission
 
-Prove that a named lab **works for a student**, or show exactly where it
-breaks. You are a tester, not an author: you follow `lab.md` as written, you
-do not rewrite it, and you leave a report the Lab Generator or a human can act on.
+Prove that a named lab works for a student, and that the work practices the slides that lead into it. Follow `lab.md` as written. Do not rewrite it.
 
-**Bottom line:** the human technical reviewer should not be the first person
-to discover that a command fails.
+When a command, a label, the order, or the fit with the slides fails, write the failure and a concrete fix in `test-report.md`. A later Lab Generator pass applies that report. Do not ask a person to repair the lab, and do not patch it yourself.
 
-**Run in a fresh agent session.** A session that wrote the lab will skip
-steps it “knows” and miss broken ordering.
+**Run in a fresh agent session.** A session that wrote the lab will skip steps it remembers and miss a broken order.
 
 ---
 
 ## Mandatory reads
 
-1. The lab’s `lab.md`, `solution/README.md` (report a missing `solution/` as a finding; still test `lab.md`), and any `starter/` files
-2. [../shared/lab-markdown-rules.md](../shared/lab-markdown-rules.md): structure and syntax to report against (do not edit)
-3. [../shared/verify-current-facts.md](../shared/verify-current-facts.md): when a step fails or looks out of date
-4. [examples/test-report-template.md](examples/test-report-template.md): report format
-5. The lab plan in `plan/course-outline.md` when it exists (expected outcome and time)
+1. The lab’s `lab.md`, `solution/README.md`, and any `starter/` files. A missing `solution/` is a finding. Still test `lab.md`.
+2. The teaching slides that lead up to this lab’s slide. Start after the previous lab slide, or at the first teaching slide when this is the first lab. Stop at the lab slide. Its body is `Lab link: TODO`.
+3. [../shared/lab-markdown-rules.md](../shared/lab-markdown-rules.md): structure and syntax to report against. Do not edit the lab to satisfy them.
+4. [../shared/verify-current-facts.md](../shared/verify-current-facts.md): when a step fails or looks out of date.
+5. [examples/test-report-template.md](examples/test-report-template.md): report format.
+
+The outline is not the lab plan. The slides define what the student should be able to do. **Time Required** in `lab.md` is the time you compare against.
 
 ---
 
@@ -38,33 +36,33 @@ steps it “knows” and miss broken ordering.
 
 ```text
 Lab test:
-- [ ] 1. Read lab.md and solution/ without editing
-- [ ] 2. Confirm starting state (accounts, tools, starter files)
+- [ ] 1. Read the preceding slides, lab.md, and solution/ without editing
+- [ ] 2. Confirm the starting state (accounts, tools, starter files)
 - [ ] 3. Execute every required task as a student, in order
 - [ ] 4. Attempt the Bonus Task if time and access allow
 - [ ] 5. Compare the result to solution/README.md
-- [ ] 6. Check images, timing, and structure
-- [ ] 7. Write labs/lab-NN-slug/test-report.md
+- [ ] 6. Compare the tasks to the preceding slides
+- [ ] 7. Check images, timing, and structure
+- [ ] 8. Write labs/lab-NN-slug/test-report.md
 ```
 
 ### How to run
 
-- Follow the steps **literally**. If a step says “click Create,” look for that label. Do not substitute a “better” command.
-- Restart numbering mentally per task, the way the student sees it.
-- Use the same tools the lab names (Cloud Shell vs local CLI, this console vs that).
-- Do not skip setup in Task 1 even if your environment is already configured, unless the report records that you started from a warmer state.
+- Follow the steps literally. If a step says “click Create,” look for that label. Do not substitute a different command.
+- Restart numbering per task, the way the student sees it.
+- Use the tools the lab names.
+- Do not skip setup in Task 1 because your environment is already configured, unless the report says you started from a warmer state.
 
 ### When a step fails or looks out of date
 
-Do **not** guess a fix into `lab.md`. Follow
-[../shared/verify-current-facts.md](../shared/verify-current-facts.md):
+Do not guess a fix into `lab.md`. Follow [../shared/verify-current-facts.md](../shared/verify-current-facts.md):
 
 1. Check current docs, release notes, or `--help`.
-2. Record the claim, result, source, and date in the report.
-3. Suggest a concrete fix (replacement command, new label, extra step).
+2. Record the claim, the result, the source, and the date.
+3. Write a concrete fix: the replacement command, the new label, or the extra step.
 4. Leave the lab file unchanged.
 
-Stable fundamentals (language syntax, Git basics) do not need lookups.
+Stable fundamentals, such as language syntax and Git basics, do not need a lookup.
 
 ---
 
@@ -72,64 +70,67 @@ Stable fundamentals (language syntax, Git basics) do not need lookups.
 
 | Check | Pass when |
 | :--- | :--- |
-| Commands | They run as written; flags exist; expected output appears |
-| UI labels | Menus, buttons, and fields match the current console |
-| Ordering | No step depends on something a later step creates |
-| Starting state | A new student can begin where Task 1 says |
-| Solution match | Following the steps produces what `solution/` describes |
-| Images | Every `images/…` path exists; alt text present; TODOs marked if placeholders |
-| Timing | A competent student can finish required tasks in the stated time |
-| Structure | Headings and alerts match [../shared/lab-markdown-rules.md](../shared/lab-markdown-rules.md) |
-| Secrets | No real project IDs, keys, or credentials committed |
+| Commands | They run as written. Flags exist. Expected output appears. |
+| UI labels | Menus, buttons, and fields match the current product. |
+| Ordering | No step depends on something a later step creates. |
+| Starting state | A new student can begin where Task 1 says. |
+| Solution match | Following the steps produces what `solution/` describes. |
+| Course fit | Each required task practices a skill from the slides that lead into this lab. No task needs a tool or an idea those slides never taught. A skill those slides assigned to this lab is actually practiced. |
+| Images | Every `images/…` path exists. Alt text is present. A placeholder is marked with TODO. |
+| Timing | A student at the course’s level can finish the required tasks in the **Time Required** stated in `lab.md`. |
+| Structure | Headings and alerts match [../shared/lab-markdown-rules.md](../shared/lab-markdown-rules.md). |
+| Secrets | No real project IDs, keys, or credentials are committed. |
 
-Mark each **task** pass, fail, or blocked (could not test).
+Mark each task pass, fail, or blocked.
 
 ---
 
 ## 3. Do not rewrite the lab
 
-- Do not edit `lab.md`, `solution/`, or images to “make it pass.”
-- Do not skip a broken step and continue as if it worked; stop that path, record it, and resume only if later tasks are independent.
-- If you notice a one-character typo that is the whole failure, still put it in the report rather than silently patching, unless the user explicitly asked you to apply tester fixes.
+- Do not edit `lab.md`, `solution/`, or images to make the lab pass.
+- Do not skip a broken step and continue as if it worked. Stop that path, record it, and resume only when a later task is independent.
+- A one-character typo that causes the failure still goes in the report. Do not patch it.
 
-Authors apply your report with the Lab Generator skill in a later session.
+The Lab Generator applies the report in a later session.
 
 ---
 
 ## 4. Report
 
-Write **`labs/lab-NN-slug/test-report.md`** using
-[examples/test-report-template.md](examples/test-report-template.md).
+Write **`labs/lab-NN-slug/test-report.md`** using [examples/test-report-template.md](examples/test-report-template.md). The file is the input to the next Lab Generator pass.
 
 Include:
 
-- Environment (OS, tools, versions, date, credentials available or not)
-- Per-task result: pass / fail / blocked
-- Step-by-step issues with the step number, what happened, and a suggested fix
-- Timing: estimated vs stated
-- What could not be tested and why
-- Verification log for any volatile claim you checked
+- Environment: OS, tools, versions, date, and whether credentials were available
+- Per-task result: pass, fail, or blocked
+- Each issue with the step number, what happened, and a concrete fix
+- Timing against **Time Required** in `lab.md`
+- Alignment with the preceding slides, and with `solution/`
+- What could not be tested, and why
+- A verification log for any volatile claim you checked
 
 If a report already exists, add a new dated pass section.
 
 ---
 
-## 5. Scope boundaries
+## 5. Scope
 
-**In scope:** executing and evaluating one named lab (or each lab the user lists).
+**In scope:** one named lab, or each lab in the list you were given. Execute it and evaluate it.
 
-**Out of scope:** writing the lab; writing slides; copy editing; claiming the
-lab is tested because you read it.
+**Out of scope:** writing or editing the lab, writing slides, copy editing, and calling the lab tested because you read it.
 
 ---
 
 ## 6. Validation checklist
 
 - [ ] Fresh session
-- [ ] Lab executed as a student (or blocked reasons recorded)
+- [ ] Preceding slides were read before the tasks were judged
+- [ ] The lab was executed as a student, or the blocked reason is recorded
 - [ ] Each required task is pass, fail, or blocked
-- [ ] Failures include step number, evidence, and a suggested fix
-- [ ] Volatile failures verified against current sources or marked unverified
-- [ ] Image paths checked
-- [ ] `lab.md` not rewritten
-- [ ] `labs/lab-NN-slug/test-report.md` written
+- [ ] Course fit is recorded: skills practiced, skills missing, and anything the slides never taught
+- [ ] Each failure has a step number, evidence, and a concrete fix
+- [ ] A volatile failure was checked against a current source, or marked unverified
+- [ ] Image paths were checked
+- [ ] Timing was compared with **Time Required** in `lab.md`
+- [ ] `lab.md` was not rewritten
+- [ ] `labs/lab-NN-slug/test-report.md` was written

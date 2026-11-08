@@ -1,119 +1,107 @@
 # Course Outline Template
 
-Copy this structure into `plan/course-outline.md`. Keep the headings exactly as
-shown; Course Generator and Lab Generator read them. Replace the example
-content (a 1-day Terraform course) with your own.
+Copy this structure into `plan/course-outline.md`. Keep the headings and the
+level of detail. Replace the Terraform course with the course you are planning.
+
+The outline has these sections and nothing else. A third level under a section
+is allowed for specific lessons or topics. This example does not need one.
 
 ---
 
-````markdown
-# Course Outline: 815: Hands-On Terraform
+# Course Title: Hands-On Terraform (2 days)
 
-## Course Header
+## Course Description
 
-| Field | Value |
-| :--- | :--- |
-| Code and title | 815: Hands-On Terraform |
-| Subtitle | Infrastructure as Code for Cloud Teams |
-| Audience | Cloud engineers and developers who deploy infrastructure |
-| Level | Intermediate |
-| Duration | 1 day (about 6 hours of instruction) |
-| Delivery | Instructor-led, in person or virtual |
-| Lab environment | Google Cloud project per student, Cloud Shell, Terraform 1.x |
-| Status | Draft for review |
+Infrastructure as Code is the process of creating computing infrastructure and deploying applications and databases with scripts and configuration. Doing that by hand does not scale across clouds or a team.
 
-### Prerequisites
-- Comfortable with the Linux command line
-- Familiar with one major cloud console
-- Basic Git workflows (clone, commit, push)
+This course teaches Terraform from the language basics through advanced deployment. Students work examples, demos, and hands-on labs on AWS, Azure, Google Cloud, and Kubernetes.
 
-## Course Objectives
+## Learning Objectives
 
-- **Overall:** Build and operate team Terraform workflows with remote state, modules, and safe applies.
-- **Chapter 1:** Write, plan, and apply Terraform configurations with providers and variables.
-- **Chapter 2:** Move state to a shared remote backend with locking.
-- **Chapter 3:** Package infrastructure as reusable modules.
+- Automate the creation, management, and destruction of infrastructure with Terraform
+- Install Terraform and identify where Terraform Cloud fits
+- Run the Terraform workflow with providers, folders, and state
+- Write HashiCorp Configuration Language for resources, functions, and templates
+- Provision networks, virtual machines, storage, and databases
+- Deploy a scalable, fault-tolerant application on AWS, Azure, and Google Cloud
+- Build a complex deployment from reusable Terraform modules
+- Deploy Kubernetes applications with the Terraform Kubernetes provider
+- Run team Terraform workflows in Terraform Cloud
 
-## Chapters
+## Who Should Attend
 
-### Chapter 1: Terraform Fundamentals
+Engineers, developers, architects, and anyone else who wants to use Terraform to automate infrastructure provisioning and application deployment for the cloud or Kubernetes.
 
-**File:** `01-terraform-fundamentals.md`
-**Time:** 120 minutes (75 lecture, 30 lab, 15 quiz and discussion)
+## Prerequisites
 
-**Chapter objectives**
-- Explain the write, plan, apply loop and what each step changes.
-- Configure a provider and authenticate it safely.
-- Use variables and outputs to parameterize a configuration.
+- Experience creating cloud resources on AWS, Microsoft Azure, or Google Cloud
 
-#### Section 1.1: The Terraform Workflow
-- **Teaching point:** Terraform compares desired state in code to real infrastructure and plans the difference.
-- **Key concepts:** declarative configuration, plan as a diff, apply, state as the record of what exists
-- **Examples and demos:** live `terraform plan` that adds one bucket; reading the plan symbols (+, ~, -)
-- **Misconceptions:** “apply runs my file top to bottom like a script”
-- **Proves:** the write, plan, apply objective; Lab 1 applies a real plan
+## Hands-On Activities
 
-#### Section 1.2: Providers and Authentication
-- **Teaching point:** …
-- **Key concepts:** …
-- **Examples and demos:** …
-- **Misconceptions:** …
-- **Proves:** …
+- Lab: Installing Terraform
+- Lab: Getting Started with Terraform
+- Lab: Understanding HCL
+- Lab: Building Cloud Infrastructure
+- Lab: Deploying a Scalable, Fault-Tolerant Application with Terraform
+- Lab: Modularizing a Complex Deployment
+- Lab: Deploying to Kubernetes Using Terraform
+- Lab: Using Terraform Cloud
 
-#### Section 1.3: Variables and Outputs
-- …
+## Course Outline
 
-**Lab 1: Deploy Your First Terraform Configuration** (30 minutes)
-- **Folder:** `labs/lab-01-first-terraform-config/`
-- **Outcome:** Student has applied a configuration that creates a bucket and a service account, parameterized by variables, with outputs printed.
-- **Starting state:** Empty Cloud Shell in a fresh project.
-- **Finished solution:** `main.tf`, `variables.tf`, `outputs.tf`, `terraform.tfvars`; `terraform apply` succeeds; `terraform output` shows the bucket URL.
-- **Tools:** Cloud Shell, Terraform 1.x, `gcloud`
-- **Tasks:**
-  1. Set up the project and Terraform working directory
-  2. Write and apply a bucket resource
-  3. Add variables and outputs
-  4. Bonus: add a second resource that depends on the first
+**Module 1: Getting Started with Terraform**
 
-### Chapter 2: State and Remote Backends
-…
+- Terraform Overview
+- Installation
+- Terraform Cloud
+- Lab: Installing Terraform
 
-### Chapter 3: Modules
-…
+**Module 2: Terraform Essentials**
 
-## Schedule
+- Providers
+- Folder Structure
+- Workflow
+- Managing State
+- Lab: Getting Started with Terraform
 
-### Day 1
+**Module 3: HashiCorp Configuration Language (HCL)**
 
-| Time | Block | Minutes |
-| :--- | :--- | :--- |
-| 9:00 | Introduction | 15 |
-| 9:15 | Chapter 1 lecture | 75 |
-| 10:30 | Break | 15 |
-| 10:45 | Lab 1 | 30 |
-| 11:15 | Chapter 1 quiz | 15 |
-| … | … | … |
+- Basic Syntax
+- Creating Multiple Resources
+- Built-in Functions
+- Reverse Engineering Templates
+- Lab: Understanding HCL
 
-**Totals:** lecture X min, labs Y min, quizzes Z min, breaks W min.
+**Module 4: Building Cloud Infrastructure**
 
-## Facts to Verify
+- Networks
+- Virtual Machines
+- Storage
+- Databases
+- Lab: Building Cloud Infrastructure
 
-| Claim the course depends on | Where | Why it may change |
-| :--- | :--- | :--- |
-| `gcs` backend arguments (`bucket`, `prefix`) | Ch 2, Lab 2 | Provider and backend releases |
-| Current Terraform minor version | Ch 1 | Frequent releases |
+**Module 5: Deploying Scalable, Fault-Tolerant Solutions**
 
-## Risks and Open Questions
+- Architecting Cloud Applications
+- Deploying Applications to AWS
+- Deploying Applications to Azure
+- Deploying Applications to Google Cloud
+- Lab: Deploying a Scalable, Fault-Tolerant Application with Terraform
 
-- Do students get a pre-provisioned project, or create their own?
-- Is Terraform pinned to a specific version in the lab image?
-````
+**Module 6: Modularizing Terraform Deployments**
 
----
+- Modules Revisited
+- Building Modular Deployments
+- Lab: Modularizing a Complex Deployment
 
-## Notes
+**Module 7: Deploying to Kubernetes with Terraform**
 
-- Keep one `#` heading for the outline title, and the `##` / `###` / `####` levels shown. Downstream skills rely on them.
-- Do not put a slide count on a section. Course Generator writes as many slides as the teaching point needs. It must not invent a budget.
-- Chapter **Time** and the schedule are an estimate you write after the teaching is listed. Do not add or cut sections to make them match the requested duration. Report the difference in the handoff and stop.
-- When an existing outline was assessed, add a `## Changes from the Source Outline` section listing what you added or changed.
+- Kubernetes Basics
+- Creating Kubernetes Clusters with Terraform
+- Terraform Kubernetes Provider
+- Lab: Deploying to Kubernetes Using Terraform
+
+**Module 8: Terraform Cloud**
+
+- Using Terraform Cloud
+- Lab: Using Terraform Cloud

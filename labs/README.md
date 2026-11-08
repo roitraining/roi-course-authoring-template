@@ -23,9 +23,9 @@ Follow the **Lab Generator** skill (solution first, then steps):
 - [.agents/skills/lab-generator/examples/lab-template.md](../.agents/skills/lab-generator/examples/lab-template.md)
 - [.agents/skills/shared/lab-markdown-rules.md](../.agents/skills/shared/lab-markdown-rules.md)
 
-Ask your coding agent, for example: *“Using the Lab Generator skill, write lab-02-… under labs/ from the lab plan in plan/course-outline.md.”*
+Ask your coding agent, for example: *“Using the Lab Generator skill, write the lab for the lab slide in course/. Read the slides that lead up to it.”*
 
-Test with the **Lab Tester** skill in a fresh session. It writes `test-report.md` and does not rewrite the lab.
+Test with the **Lab Tester** skill in a fresh session. It writes `test-report.md` and does not rewrite the lab. A later Lab Generator pass applies that report.
 
 ## Preview
 
