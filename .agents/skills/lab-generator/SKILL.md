@@ -2,126 +2,111 @@
 name: lab-generator
 description: >
   Designs and writes ROI Training hands-on lab manuals as Markdown for the HTML
-  Lab Viewer—one folder per lab with lab.md, images, Overview, Lab Instructions,
-  and Congratulations. Use when creating labs, lab guides, lab manuals, challenge
-  steps, or pairing labs with course slide stubs.
+  Lab Viewer. Studies the slides that lead up to a lab and writes tasks that
+  make students practice that material. Builds the finished solution first,
+  then the steps. Use when creating or fixing labs, including a pass that
+  applies a Lab Tester report.
 ---
 
 # Lab Generator Skill
 
-Write **clear, procedural lab manuals** for intermediate professionals. Output
-compiles in the [HTML Lab Viewer](https://labv.roitraining.com/) as a single
-Markdown document (not slide decks).
+Write the lab that makes students do what the course just taught. The manual compiles in the [HTML Lab Viewer](https://labv.roitraining.com/) as one Markdown document.
 
-**Always read** [examples/lab-template.md](examples/lab-template.md) and the
-sample at `labs/lab-01-sample-lab-viewer-format/lab.md`. Copy that structure
-rather than inventing a new outline.
-
-Labs are **simpler than slide courses**: one story, numbered tasks, copyable
-commands, screenshots where useful. Prefer doing over lecturing.
+The slides already explained the idea. The lab is the practice: the same skills, in the same order, with the tools and examples those slides used.
 
 ---
 
-## 1. Audience and tone
+## Mandatory reads
 
-- Default: intermediate practitioners (same audience as the paired slide course unless the user says otherwise).
-- Voice: **second person** (*you*), **simple present**, conversational but professional.
-- Steps: begin with an **imperative** (Click, Run, Create, Configure…).
-- Do **not** use the ampersand character (`&`) in titles or body text—write “and”.
+1. The chapter files under `course/`, in teaching order, through the lab slide you are writing. Read the whole stretch. The slides since the previous lab, or from the first teaching slide when this is the first lab, are the skills this lab enforces. Stop before the lab slide itself. Its body is `Lab link: TODO`.
+2. [../shared/lab-markdown-rules.md](../shared/lab-markdown-rules.md): structure, syntax, typography, images, conformance checklist.
+3. [examples/lab-template.md](examples/lab-template.md): copy this skeleton.
+4. `labs/lab-01-sample-lab-viewer-format/lab.md`: reference sample, when that file is in the repo.
+5. [../shared/verify-current-facts.md](../shared/verify-current-facts.md): verify commands, flags, and UI labels while you build.
+6. `labs/lab-NN-slug/test-report.md` when it exists. Apply the failures it established.
 
----
-
-## 2. Design workflow
-
-1. Confirm what the learner should **accomplish** (outcomes) and **time** (often about **30 minutes**; match the course lab stub).
-2. Outline **Tasks** (usually 3–6) that build sequentially. Prefer a **Bonus Task** unless it truly does not fit.
-3. Write **one lab folder** with `lab.md` + `images/` (see §3).
-4. **Test and illustrate** when you can (see §3a): run the lab steps if tools/access allow; capture or generate screenshots and diagrams; otherwise leave placeholders + TODO comments for humans.
-5. If a slide course exists, ensure the chapter **lab stub** has the lab title and time only (Course Generator does not add the link—humans add that later).
-6. Run the **Validation checklist** (§9).
+If the chapter files are missing, stop. Say that the teaching slides have to exist first. Do not ask for an outcome, a time, or an environment, and do not invent a lab from the outline. The outline lists titles. The slides are the course.
 
 ---
 
-## 3. Folder and file layout (required)
+## 1. What this lab practices
 
-In the authoring template, labs live under `labs/`:
+Find the lab slide. The title is the lab name.
+
+Then list the skills in the teaching slides that lead up to it. A required task practices one of those skills. The tasks follow the order of the slides. Use the tools, data, and examples the slides used.
+
+- A step that needs a command, a concept, or a tool those slides have not taught does not belong in this lab.
+- A skill those slides taught, which this lab is the place to practice, has a task. Leaving it out means the lab did not enforce the course.
+- Do not reteach the section. One or two sentences can say what a task achieves. The steps are the work.
+- Take the audience from the course. Do not assume a default level.
+- The starting state is what those slides, and any earlier lab, say the student already has. Put files they need in `starter/`. Setup they still have to do goes in Task 1.
+
+When a `test-report.md` exists, fix every failure it proved: the broken command, the wrong label, the step out of order, and a task that does not match the slides. Do not leave a suggested fix unused.
+
+---
+
+## 2. Workflow: solution first, then steps
+
+Build the finished result first, then write the path to it. Steps written before the solution exists produce a lab that does not work.
+
+### Build the finished solution
+
+- Build the end state that shows the student can do what the preceding slides taught. Do it for real when you have the tools and access.
+- Save solution files under `labs/lab-NN-slug/solution/`.
+- Write `solution/README.md` with the finished state, how to verify it, and the versions and tools used, with the date.
+- For a lab that produces no files, `solution/README.md` describes the end state and how to check it.
+- If you cannot build it, write the most accurate solution you can and mark every unverified part. Record that for the Lab Tester.
+
+### Write the steps
+
+- Take the shortest path from the starting state to that solution that still practices each required skill.
+- Group the work into tasks that each produce a visible result. Do not pad or cut the tasks to hit a count.
+- Add a Bonus Task only when it stretches the same skill without teaching a new topic. Omit it when that stretch does not exist.
+- Every command and code block in `lab.md` matches the solution files.
+- When a step copies a starter file, give the exact relative path from the lab folder, such as `starter/README.md`, and the destination.
+
+### Time and the slide
+
+- Set **Time Required** to how long the required tasks take for this audience.
+- Do not drop a skill the slides require in order to hit a shorter number.
+- Leave the lab slide as it is. The title stays the lab name. The body stays `Lab link: TODO`. Do not add a time or a URL.
+
+### Images
+
+- Capture a real screenshot for a non-obvious UI step when you can.
+- Otherwise use an image reference, `<!-- TODO IMAGE: … -->`, and a labeled placeholder file. See [../shared/lab-markdown-rules.md](../shared/lab-markdown-rules.md).
+
+### Then stop
+
+- Run the lab conformance checklist and the checklist at the end of this skill.
+- Do not grade your own lab as tested. The Lab Tester does that in a fresh session.
+- Record what you could run and what you could not. That record is for the tester.
+
+---
+
+## 3. Folder layout
 
 ```text
 labs/
   lab-01-getting-started/
-    lab.md             # preferred filename (Lab Viewer opens the lab folder)
+    lab.md             # the manual (preferred filename)
     images/
-      task1-console.png
-      architecture.png
-  lab-02-remote-state/
-    lab.md
-    images/
+    solution/          # finished result + README.md (how to verify)
+    starter/           # optional: files students start from
 ```
 
-### Naming
-
-- Folder: `lab-NN-short-kebab-slug` aligned with course chapter/lab numbers when possible.
-- Markdown: prefer **`lab.md`**. Preview by opening the **lab folder** URL in the Lab Viewer (not a deep link to a specific file unless debugging).
-- Images: descriptive names under `images/`; never `image1.png`.
-
-### Image references
-
-Use relative paths from `lab.md`:
-
-```markdown
-![Create bucket dialog](images/create-bucket.png)
-```
-
-The Lab Viewer resolves relative images against the Markdown file’s directory.
-
-### Preview
-
-Open [https://labv.roitraining.com/](https://labv.roitraining.com/) and paste a GitHub URL to the **lab folder** (for example `…/labs/lab-01-getting-started`).
-
-### 3a. Testing, screenshots, and generated images
-
-Treat verification and visuals as part of authoring—not optional polish.
-
-**Test the lab when you are able.** If you have access to the CLIs, consoles, APIs, browsers, or other tools the lab uses, execute the steps (or a faithful dry-run) and fix broken commands, wrong labels, missing flags, and bad ordering before you deliver. If you cannot fully test (no credentials, no product access, offline), say so briefly and still write the most accurate procedure you can.
-
-**Create images and screenshots when you are able.**
-
-- Capture real UI screenshots for non-obvious console or wizard steps
-- Generate diagrams, architecture sketches, or annotated visuals when that teaches better than a raw screenshot
-- Save files under `images/` with descriptive names; wire them with meaningful alt text
-
-**If you cannot produce an accurate visual yet**, do not silently omit it and do not invent a fake product screenshot when accuracy matters. Instead:
-
-1. Add the Markdown image reference (so the layout is ready)
-2. Add a `<!-- TODO IMAGE: … -->` comment that tells a human exactly what to capture or create
-3. Add a **placeholder image file** under `images/` (a simple labeled stub is fine) so the link is not broken
-
-```markdown
-<!-- TODO IMAGE: Console screenshot of the Create bucket dialog with Name and Location filled in -->
-![Create bucket dialog](images/create-bucket.png)
-```
-
-Prefer a placeholder + TODO over a missing image or a fabricated UI that could mislead learners.
+- Folder: `lab-NN-short-kebab-slug`, aligned with the lab’s place in the course.
+- Preview by pasting the GitHub URL of the lab folder into the [Lab Viewer](https://labv.roitraining.com/).
 
 ---
 
-## 4. Required lab structure (in order)
+## 4. How to write the manual
 
-Use **Title Case** for `#` and `##` headings. Use `### Task N: …` / `### Bonus Task N: …` with a **colon**, and **sentence case** after the colon (capitalize the first word and proper nouns only—not Title Case on every word).
+Structure, headings, syntax, and typography come from [../shared/lab-markdown-rules.md](../shared/lab-markdown-rules.md).
 
-| Section | Heading | Required? | Notes |
-| :--- | :--- | :--- | :--- |
-| Title | `# …` | Yes | Outcome-oriented; Title Case; include key product/tech names |
-| Time Required | `## Time Required` | Yes | Prefer **`30 minutes`** (or the agreed duration). Write the full phrase, not a bare number |
-| Overview | `## Overview` | Yes | Short narrative: *In this lab, you will…* / *In this lab, you…* what students do |
-| You learn how to | `### You learn how to:` | Yes | Nested under Overview. Imperative bullets; one bullet per main task theme; begin each with a verb |
-| Scenario | `## Scenario` | Optional | Business problem / use case framing |
-| Lab Instructions | `## Lab Instructions` | Yes | Contains all tasks |
-| Tasks | `### Task N: …` | Yes | Numbered tasks; setup belongs in **Task 1** (no separate Setup section) |
-| Bonus | `### Bonus Task N: …` | Preferred | Fewer step-by-step hints; stretch goal similar to what they just practiced |
-| Closing | `## Congratulations!` | Yes | *In this lab, you have:* + past tense of the “You learn how to” bullets |
+Voice is second person (*you*), simple present. Steps begin with an imperative: Click, Run, Create, Configure.
 
-### Overview and learning objectives
+### Overview
 
 ```markdown
 ## Overview
@@ -134,146 +119,54 @@ In this lab, you will configure a remote backend and migrate Terraform state for
 - Verify that state locking prevents concurrent applies.
 ```
 
-- Bullets under **You learn how to** are imperative, complete sentences with ending punctuation.
-- Prefer one learning bullet per primary task (Bonus may share themes rather than adding a new bullet).
+One learning bullet per primary task. The bullets are the skills from the slides, not a new list of topics. Congratulations mirrors them in past tense.
 
-### Scenario (optional, but preferred)
+A short Scenario is useful when the slides set up a problem the lab continues. Omit it when the Overview is enough.
 
-Short description of the business problem or use case. Omit when the Overview already provides enough context.
+### Task body
 
-### Lab Instructions and tasks
-
-Under `## Lab Instructions`:
-
-1. **`### Task 1: …`** — Include environment setup here (sign in, select project, open console/Cloud Shell, clone repo). Then the first real work.
-2. **`### Task 2: …`** through **`### Task N: …`** — Continue the story.
-3. **`### Bonus Task N: …`** — Preferred. Same domain, fewer hand-holding steps.
-
-#### Task body pattern
-
-1. One or two sentences: what this task achieves (not the full step list).
-2. **Numbered steps** — restart at **1.** at the beginning of each task. Put a **blank line between each numbered step**. One primary user action per step when practical.
-3. Fenced code with a **language tag**; introduce commands with purpose (“To list regions, run:”).
-4. Screenshots for non-obvious UI; **meaningful alt text**; do not screenshot text that belongs in a code block.
-5. **Callouts when appropriate** — see §4a. Prefer `[!NOTE]`, `[!IMPORTANT]`, and `[!WARNING]` in labs (TIP/CAUTION also supported).
-
-Optional under a task: a short **Success criteria** bullet list when verification matters.
-
-### 4a. Callouts / alerts (use when appropriate)
-
-Add GitHub-style callouts in tasks when they help the learner. Do **not** sprinkle them on every step—use them for real guidance, constraints, or pitfalls.
+1. One or two sentences on what this task achieves.
+2. Numbered steps, one primary action each, with a blank line between steps.
+3. Commands introduced by their purpose (“To list regions, run:”), in fenced blocks with a language tag.
+4. Screenshots for non-obvious UI. Do not screenshot text that belongs in a code block.
+5. A callout after the step it applies to, not on every step.
+6. A short success check when the student needs to know the step worked.
 
 | Alert | Use when |
 | :--- | :--- |
-| `> [!NOTE]` | Helpful context, expected results, or “you should see…” guidance |
-| `> [!IMPORTANT]` | Must-follow constraints (ignore fine details for now, required settings, do not skip) |
-| `> [!WARNING]` | Mistakes, destructive actions, or easy-to-miss failures |
-| `> [!TIP]` | Optional shortcut (use sparingly) |
-| `> [!CAUTION]` | Stronger than WARNING when the risk is high |
-
-**Syntax** (blockquote + tag on the first line; blank line before the callout is fine):
-
-```markdown
-> [!NOTE]
-> Your generated page should resemble the screenshot below, but it will not be fully functional yet.
-
-> [!IMPORTANT]
-> Ignore fine visual details for now. Focus on structure and layout.
-
-> [!WARNING]
-> Do not commit real project IDs or secrets to a shared repository.
-```
-
-Place callouts after the step (or cluster of steps) they apply to. Emulate the sample lab and patterns like the GCP Canvas labs.
-
-### Congratulations!
-
-```markdown
-## Congratulations!
-
-In this lab, you have:
-- Created a remote state bucket with versioning enabled.
-- Configured a Terraform backend and migrated state.
-- Verified that state locking prevents concurrent applies.
-```
-
-Mirror the **You learn how to** list in past tense. No new procedures.
+| `> [!NOTE]` | Helpful context, expected results, “you should see…” |
+| `> [!IMPORTANT]` | A constraint the student must follow |
+| `> [!WARNING]` | A mistake, a destructive action, or an easy miss |
+| `> [!TIP]` | An optional shortcut |
+| `> [!CAUTION]` | A high-risk action |
 
 ---
 
-## 5. Lab Viewer Markdown correctness
+## 5. What this skill does not do
 
-The Lab Viewer is a single scrolling HTML page (TOC from headings) at
-[https://labv.roitraining.com/](https://labv.roitraining.com/). It supports:
-
-- Standard Markdown (headings, lists, tables, links, images)
-- Fenced code blocks with language tags (copy button in the viewer)
-- GitHub-style alerts: `[!NOTE]`, `[!TIP]`, `[!IMPORTANT]`, `[!WARNING]`, `[!CAUTION]`
-
-**Do not use** Qwiklabs-only tags or fragments (`ql-code-block`, `ql-infobox`,
-`![[/fragments/…]]`, templated `ql-variable` syntax). Those belong in other
-publishing systems, not this viewer.
-
-External links are fine; the viewer opens them in a new tab.
+- It does not write or restyle the slide deck.
+- It does not put a URL or a time on the lab slide.
+- It does not invent credentials, project IDs, or secrets. Use placeholders such as `YOUR_PROJECT_ID`.
+- It does not invent a product screenshot and present it as real.
+- It does not add a separate Setup or Prerequisites section. Setup goes in Task 1.
+- It does not author Qwiklabs YAML or `ql-*` markup.
+- It does not mark the lab as tested.
 
 ---
 
-## 6. Teaching quality bar
+## 6. Validation checklist
 
-- One clear **story**: problem → approach → tasks → accomplishment.
-- Prefer **transferable skills** over click-only tourism.
-- Keep conceptual asides short; link out for deep docs.
-- Tables for three or more related UI field/value pairs on the same screen.
-- UI labels in **sentence case** in steps, even if the product UI is all caps.
-- When a step ends with text the learner types, omit ending punctuation on that step.
-
----
-
-## 7. Relationship to slide courses
-
-- Course Generator writes a **lab stub** on slides: **title and time only**.
-- Humans add the lab URL/link later.
-- This skill writes the **full lab manual** under `labs/lab-NN-slug/lab.md`.
-
----
-
-## 8. Explicit non-goals
-
-- Do **not** write slide decks here (use Course Generator).
-- Do **not** author Qwiklabs YAML, assessments, or `ql-*` markup unless the user explicitly asks for that platform.
-- Do **not** invent credentials, project IDs, or secret values—use placeholders like `YOUR_PROJECT_ID`.
-- Do **not** leave screenshot references without alt text, without a file on disk, or without a `<!-- TODO IMAGE: … -->` when the real asset is still missing.
-- Do **not** invent fake product screenshots when accuracy matters—use a placeholder image + TODO for the human.
-- Do **not** skip testing when you have the tools/access to run the lab steps.
-- Do **not** add a separate top-level Setup or Prerequisites section—put setup steps in Task 1.
-- Do **not** put a lab URL on the course stub (title and time only).
-
----
-
-## 9. Validation checklist
-
-Before delivering:
-
-- [ ] Folder `labs/lab-NN-slug/` with **`lab.md`** and `images/` as needed
-- [ ] Structure: Title → Time Required → Overview (with You learn how to) → (Scenario) → Lab Instructions (Task 1…N, Bonus preferred) → Congratulations!
-- [ ] `#` / `##` headings use Title Case; tasks use `### Task N: …` with sentence case after the colon
-- [ ] Time Required uses a full phrase such as `30 minutes`
-- [ ] You learn how to bullets are imperative complete sentences with ending punctuation
-- [ ] Setup appears in Task 1 (no standalone Setup section)
-- [ ] Each task restarts numbering at 1; code fences have language tags
-- [ ] Bonus Task included unless it clearly does not fit
-- [ ] Congratulations past-tense mirrors You learn how to
-- [ ] Lab tested when tools/access allow; known untested areas noted
-- [ ] Screenshots/diagrams generated or captured when possible; otherwise placeholder image file + `<!-- TODO IMAGE: … -->` + meaningful alt text
-- [ ] Images use `images/…` relative paths (no broken links)
-- [ ] Callouts use correct `[!NOTE]|[!IMPORTANT]|[!WARNING]|[!TIP]|[!CAUTION]` syntax when used; NOTE/IMPORTANT/WARNING added where appropriate (not on every step)
-- [ ] No `&` in titles/body; no `ql-*` / fragment syntax
-- [ ] Second person, simple present
-- [ ] Course stub (if any) has title and time only—no lab link authored here
-
----
-
-## 10. Templates
-
-Copy-paste skeleton: [examples/lab-template.md](examples/lab-template.md).  
-Emulate the sample: `labs/lab-01-sample-lab-viewer-format/lab.md`.
+- [ ] The slides leading up to this lab were read before any step was written
+- [ ] Each required task practices a skill from those slides, in that order
+- [ ] No task depends on a tool or an idea those slides never taught
+- [ ] No skill those slides assigned to this lab is missing
+- [ ] [../shared/lab-markdown-rules.md](../shared/lab-markdown-rules.md) conformance checklist passes
+- [ ] `solution/` exists, with `README.md` describing the end state and how to verify it
+- [ ] Every command and code block in `lab.md` matches the solution
+- [ ] Starting state is clear, and `starter/` exists when students need files
+- [ ] Every “copy this file” step names the source path and the destination
+- [ ] **Time Required** matches the required work, and no required practice was cut to shrink it
+- [ ] The lab slide still has the lab title and the body `Lab link: TODO`
+- [ ] Volatile commands, flags, UI labels, and versions are verified or marked unverified
+- [ ] A `test-report.md`, when one existed, has had its proved failures fixed
+- [ ] The record for the Lab Tester lists what was run and what was not

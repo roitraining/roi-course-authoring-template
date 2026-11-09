@@ -5,23 +5,21 @@ description: >
   layout variety, SVG graphics, generated images, and screenshot placeholders
   without breaking HTML Slides Viewer rules. Use when polishing a generated
   course, adding diagrams or graphics, improving slide layouts, choosing image
-  shapes, or acting as the Course Graphics Designer after Course Generator.
+  shapes, or acting as the Course Graphics Designer after Instructor Review
+  and before the Technical Editor.
 ---
 
 # Course Graphics Designer Skill
 
 ## Mission
 
-Take a course produced by the **Course Generator** skill and improve how it
-**looks and teaches visually**, while strictly following ROI Course Factory /
-HTML Slides Viewer rules.
+Take the course after Instructor Review and improve how it looks and teaches visually. Follow the HTML Slides Viewer rules.
 
-You are a visual editor, not a rewrite of the curriculum. Preserve teaching
-substance. Change layouts, add visuals, and reshape slides so the deck is more
-interesting and clearer in class. **Never break the course.**
+**Where you sit in the pipeline:** after Instructor Review and before the Technical Editor. Instructor Review may have added demos, Do Nows, and discussions. The Course Generator may already have created graphics. You are the polish pass that sees the whole deck. The Technical Editor checks your diagrams for accuracy after you. Run in a fresh session so you read the deck as it is.
 
-**Bottom line:** improve the look of Course Generator output while following ROI
-Course Factory rules.
+Do not run on a spine-only course. If a chapter has navigation slides and no teaching slides after them, stop. The content step is not finished.
+
+You are a visual editor, not a rewrite of the curriculum. Preserve teaching substance. Change layouts, add visuals, and reshape slides so the deck is clearer in class. Never break the course.
 
 ---
 
@@ -29,9 +27,10 @@ Course Factory rules.
 
 Before editing slides, read and follow:
 
-1. [../course-generator/SKILL.md](../course-generator/SKILL.md) — course spine, hard viewer constraints, stock images, validation
+1. [../shared/slide-markdown-rules.md](../shared/slide-markdown-rules.md) — hard viewer constraints, image paths, stock images, image shapes, conformance checklist
 2. [../course-generator/examples/layout-templates.md](../course-generator/examples/layout-templates.md) — copy-paste layout syntax
-3. [examples/visual-patterns.md](examples/visual-patterns.md) — graphics patterns and before/after shapes
+3. [../shared/svg-craft.md](../shared/svg-craft.md) — when to draw, transparent canvas, ROI Alt palette, concept-encoding gate. **Read this before creating or replacing any SVG.**
+4. [examples/visual-patterns.md](examples/visual-patterns.md) — layout recipes and weak-vs-strong SVG examples
 
 Do **not** invent layout directives, comment syntax, or image-path conventions.
 Copy templates from the Course Generator examples.
@@ -46,10 +45,11 @@ Copy this checklist and track progress:
 Graphics pass:
 - [ ] 1. Inventory course files and existing images/
 - [ ] 2. Audit slides for visual and layout opportunities
-- [ ] 3. Choose media type per opportunity (SVG / generated / screenshot)
-- [ ] 4. Choose layout + image shape per opportunity
-- [ ] 5. Implement assets under images/ and wire Markdown
-- [ ] 6. Validate: viewer rules + no broken teaching spine
+- [ ] 3. Audit existing SVGs against svg-craft.md; redraw or delete failures
+- [ ] 4. Choose media type per opportunity (SVG / generated / screenshot)
+- [ ] 5. Choose layout + image shape per opportunity
+- [ ] 6. Implement assets under images/ and wire Markdown
+- [ ] 7. Validate: viewer rules + svg-craft gate + no broken teaching spine
 ```
 
 ### Step 1 — Inventory
@@ -67,27 +67,37 @@ stock panel art). Look for:
 
 | Opportunity | Prefer |
 | :--- | :--- |
-| Abstract idea with no visual | Analogy photo, simple SVG, or infographic |
-| Architecture / flow / comparison | SVG diagram or wide stacked graphic |
+| Spatial / mechanical / contrast idea with no visual | SVG that passes [../shared/svg-craft.md](../shared/svg-craft.md), or skip |
+| Parallel options or a thesis list | `2-column` / `card-layout` (no SVG of labeled cards) |
 | Tool / console / IDE teaching | Real screenshot, or TODO placeholder |
 | 4+ consecutive default content slides | Insert `2-column`, `3-column`, `card-layout`, auto-split, `stacked`, or `title-image` |
 | Dense bullet wall that is really N options | Cards or columns |
-| Important diagram buried in bullets | `title-image` or `image-only` |
-| Weak side image on a key point | Replace with stronger asset; fix aspect ratio |
+| Important diagram buried in bullets | `title-image` or `image-only` (only if the diagram already teaches) |
+| Weak or lazy existing SVG | Redraw to pass the gate, or delete and use columns |
 
 **Do not** decorate every slide. Aim for purposeful visuals on slides where a
 graphic or layout change improves understanding or classroom energy.
 
-### Step 3 — Choose media
+### Step 3 — Audit existing SVGs
 
-See §3. Prefer SVG for labeled diagrams; generated images for photos and rich
-scenes; screenshots (or human TODOs) for real product UI.
+Open every `.svg` in `images/` against the reject list in
+[../shared/svg-craft.md](../shared/svg-craft.md). Gray canvas, a title that
+repeats the slide heading, three-to-five rounded cards plus arrows, or bullets
+copied into shapes: **redraw or delete.** Do not keep a lazy diagram because it
+already exists. If the idea was never spatial, drop the image and use
+`2-column` / `card-layout` instead.
 
-### Step 4 — Choose layout and shape
+### Step 4 — Choose media
+
+See §3. Prefer SVG only when the graphic passes the svg-craft gate; generated
+images for photos and rich scenes; screenshots (or human TODOs) for real product
+UI.
+
+### Step 5 — Choose layout and shape
 
 See §4 and §5. Layout and image aspect ratio must match.
 
-### Step 5 — Implement
+### Step 6 — Implement
 
 - Save new assets under the course `images/` folder.
 - Use descriptive names: `ch02-remote-backend-flow.svg`, not `image1.png`.
@@ -95,7 +105,7 @@ See §4 and §5. Layout and image aspect ratio must match.
 - Change layout comments only when the slide structure needs it.
 - Keep teaching bullets accurate; shorten only when needed to fit a visual layout.
 
-### Step 6 — Validate
+### Step 7 — Validate
 
 Run §8 before finishing.
 
@@ -103,16 +113,19 @@ Run §8 before finishing.
 
 ## 2. Do-not-break rules (hard constraints)
 
-Invalid Markdown breaks the class. Treat these as gates:
+Invalid Markdown breaks the class. Everything in
+[../shared/slide-markdown-rules.md](../shared/slide-markdown-rules.md) is a gate.
+The rules most often broken during a graphics pass:
 
-- Keep the same `<!-- course-title: … -->` and `<!-- course-theme: … -->` in every chapter file.
+- Keep the same `<!-- course-title: … -->` and `<!-- course-theme: … -->` in every chapter file. The factory default is `roi-alt-theme`. Do not switch a course to `roi-theme` unless the user asks.
 - Keep lone `---` between slides; do not merge or split slides accidentally.
 - Use **only** valid layout directives from the Course Generator skill.
 - Layout comments stay on their own line; never nest HTML comments.
 - Do **not** put images into `2-column` / `3-column` / `card-layout` slides that are meant for text comparisons. Use auto-split, `stacked`, `title-image`, or `image-only` instead.
-- Preserve intro spine order and stock panel images; **never regenerate** stock art.
-- Preserve chapter spine: Title → Objectives → (Nav → sections) → Lab stub → What You Learned → Quizzes (if present) → Questions and Answers.
-- Lab stubs stay title + time only (no lab URL, no lab steps).
+- Preserve the introduction: title, Welcome, objectives, agenda, who should attend, prerequisites, and the stock panel images. Never regenerate stock art.
+- Preserve each chapter’s frame: title, objectives, navigation, teaching slides, What You Learned, quizzes, and Questions and Answers.
+- A lab slide stays the lab name and the body `Lab link: TODO`. Do not add a time, a URL, or steps.
+- Do not remove a demo, a Do Now, or a discussion.
 - No ampersands (`&`) in visible text; no em-dashes; use smart quotes outside code.
 - Code fences keep language tags.
 - Do **not** invent fake product screenshots when accuracy matters.
@@ -126,7 +139,7 @@ If a visual idea would require breaking a hard rule, choose a different layout o
 
 | Media | Use when | Strengths | Watch-outs |
 | :--- | :--- | :--- | :--- |
-| **SVG** | Process flows, architecture boxes, simple diagrams, icon-led explainers, labeled comparisons | Crisp at any size; **no spelling errors** in labels you control; easy to edit later | Keep style simple and professional; avoid tiny text |
+| **SVG** | A spatial, mechanical, or contrast picture that still teaches if you mute the bullets | Crisp at any size; **no spelling errors** in labels you control; easy to edit later | Must pass [../shared/svg-craft.md](../shared/svg-craft.md). No gray canvas, no restated title, no labeled-card rows |
 | **Generated image** | Photos, metaphors, complex scenes, rich infographics, atmospheric full-bleed slides | Very flexible | May invent **spelling / grammar / UI fakeouts**. Minimize on-image text; put precise labels in Markdown or SVG instead |
 | **Screenshot** | Real consoles, IDEs, CLIs, browser tools | Authentic for tool training | Capture only when you can get the real UI. Otherwise placeholder + human TODO |
 
@@ -135,7 +148,7 @@ If a visual idea would require breaking a hard rule, choose a different layout o
 1. **Can a real screenshot teach this best?**  
    - Yes, and you can capture it → screenshot.  
    - Yes, but only a human can capture it → placeholder + `<!-- TODO IMAGE: … -->`.
-2. **Is the point a labeled diagram / flow / structure?** → **SVG**.
+2. **Would a spatial / mechanical / contrast picture teach better than type?** → **SVG**, but only if it passes [../shared/svg-craft.md](../shared/svg-craft.md). If the idea is parallel options, use columns or cards instead.
 3. **Is the point photographic, metaphorical, or a complex visual scene?** → **generated image**.
 4. If a generated image needs many accurate words, prefer **SVG** for the labels (or keep labels as slide bullets) and use generation only for the illustration layer.
 
@@ -206,15 +219,26 @@ Variety tips:
 
 ---
 
-## 6. SVG craft (preferred for labeled diagrams)
+## 6. SVG craft (follow svg-craft.md)
 
-- One clear idea per graphic.
-- Large labels; high contrast; limited palette (neutral grays + one accent aligned with the course theme).
-- Prefer simple boxes, arrows, and icons over ornate illustration.
-- Put words in SVG `<text>` (or as slide bullets), not in a generated bitmap.
-- Save as `.svg` under `images/` and reference like any other image.
-- Avoid raw `&` in SVG text nodes; use `and` or proper XML entities if required by the file format.
-- Keep file self-contained (no external font CDN requirement for critical text).
+**Source of truth:** [../shared/svg-craft.md](../shared/svg-craft.md). Do not
+draw from memory. The rules that used to say “prefer simple boxes, arrows, and
+icons” produced slides a human would delete. That is no longer the bar.
+
+A graphic earns its place if an instructor could mute the bullets for five
+seconds and the picture would still carry the idea.
+
+- Draw only when a spatial, mechanical, or contrast picture teaches better than type.
+- Transparent canvas: no full-viewBox gray, white, or `#f4f8fc` fill.
+- ROI Alt palette only (`#082445`, `#1e71d6`, `#6a55e4`, `#bd35c2`, `#495f7a`, `#1c1d1f`). White only as type on a dark fill. No orange `#c45c26`, no generic navy `#1f4b99`.
+- No `<text>` title that restates the slide `#`. Labels name parts (`train`, `.grad`, `64`), not slogans.
+- Encode the concept (the actual object, before/after in one frame, motion of a signal, size as quantity). Rectangles are parts of the thing, not word containers.
+- Reject: three-to-five rounded cards plus arrows; bullets copied into shapes; decorative icons with no argument.
+- Type: Inter. Few words. Self-contained file. No raw `&` in SVG text.
+
+If an existing SVG fails this list, **redraw or delete it.** Do not keep it
+because it already exists. If the idea was never spatial, replace the image
+with `2-column` / `card-layout` and remove the file.
 
 ---
 
@@ -242,6 +266,11 @@ Variety tips:
 
 - [ ] Visuals added where they improve understanding or pacing, not on every slide
 - [ ] Media choice fits the content (SVG / generated / screenshot / TODO)
+- [ ] Every SVG has a transparent canvas (no full-viewBox gray or white fill)
+- [ ] Every SVG uses ROI Alt colors only (`#082445`, `#1e71d6`, `#6a55e4`, `#bd35c2`, `#495f7a`, `#1c1d1f`; white only on a dark fill)
+- [ ] No SVG heading that restates the slide title
+- [ ] Each SVG encodes the concept; none is boxes containing the slide’s words
+- [ ] Existing SVGs that failed the reject list were redrawn or deleted, not kept
 - [ ] Generated images checked for spelling, grammar, and fake UI problems
 - [ ] Image shapes match placement (square beside content; wide under content; tall for panel fill; 16:9 when alone)
 - [ ] Filenames are descriptive; assets live under `images/`
@@ -249,10 +278,13 @@ Variety tips:
 
 ### Do-not-break / Course Factory
 
-- [ ] Same `course-title` and `course-theme` metadata as before
+- [ ] [../shared/slide-markdown-rules.md](../shared/slide-markdown-rules.md) conformance checklist passes
+- [ ] Same `course-title` and `course-theme` metadata as before (default remains `roi-alt-theme`)
 - [ ] Valid layout directives only; comments clean and unnested
 - [ ] Intro stock images untouched; still wired on Welcome / Agenda / Who Should Attend / Prerequisites
-- [ ] Chapter spine intact (including lab stub, What You Learned, quizzes if present, Questions and Answers)
+- [ ] Chapter frame intact: title, objectives, navigation, What You Learned, quizzes, and Questions and Answers
+- [ ] Lab slides still read `Lab link: TODO`, with no time and no URL
+- [ ] Demos, Do Nows, and discussions are still present
 - [ ] No ampersands or em-dashes in visible slide text; smart quotes outside code
 - [ ] Code fences still have language tags
 - [ ] Screenshot TODOs present wherever a real UI capture is required but missing
@@ -263,4 +295,5 @@ Variety tips:
 ## 9. Templates and examples
 
 - Layout syntax: [../course-generator/examples/layout-templates.md](../course-generator/examples/layout-templates.md)
+- SVG quality bar: [../shared/svg-craft.md](../shared/svg-craft.md)
 - Graphics patterns: [examples/visual-patterns.md](examples/visual-patterns.md)

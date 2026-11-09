@@ -1,7 +1,9 @@
 # Course Generator Slide Layout Templates
 
 Copy and paste these templates when building decks for the HTML Slides Viewer.
-See [SKILL.md](../SKILL.md) for course structure, timing, and file-layout rules (multi-file default; short-course exception).
+See [SKILL.md](../SKILL.md) for phases and teaching craft,
+[../../shared/course-spine.md](../../shared/course-spine.md) for required slide order, and
+[../../shared/slide-markdown-rules.md](../../shared/slide-markdown-rules.md) for the formatting gates.
 
 ---
 
@@ -29,10 +31,11 @@ Copy the **stock** files from `course/images/` in this template (do not regenera
 
 **Short-course exception:** one Markdown file (e.g. `course.md`) is fine for a thin single-sitting deck. Split when the outline becomes multi-chapter.
 
-Every Markdown file starts with the **same** course-title metadata (or once at the top of a single-file short course):
+Every Markdown file starts with the **same** course-title and course-theme metadata (or once at the top of a single-file short course):
 
 ```markdown
-<!-- course-title: 815: Hands-On Terraform -->
+<!-- course-title: Hands-On Terraform -->
+<!-- course-theme: roi-alt-theme -->
 ```
 
 ---
@@ -43,10 +46,7 @@ Every Markdown file starts with the **same** course-title metadata (or once at t
 <!-- layout: title -->
 ![ROI Logo](images/roi-logo-with-name.png)
 
-# Course 815:
 # Hands-On Terraform
-
-## Infrastructure as Code for Cloud Teams
 ```
 
 Chapter divider variant:
@@ -55,9 +55,9 @@ Chapter divider variant:
 <!-- layout: title -->
 ![ROI Logo](images/roi-logo-with-name.png)
 
-815: Hands-On Terraform
+Hands-On Terraform
 
-# Chapter 2: State & Remote Backends
+# Chapter 2: State and Remote Backends
 ```
 
 ---
@@ -172,8 +172,8 @@ Repeat before **each** section. Same list every time; move the bold.
 
 - **Why State Matters**
 - Remote Backends
-- State Locking & Conflicts
-- Drift & Recovery
+- State Locking and Conflicts
+- Drift and Recovery
 ```
 
 Later in the chapter:
@@ -184,8 +184,8 @@ Later in the chapter:
 
 - Why State Matters
 - **Remote Backends**
-- State Locking & Conflicts
-- Drift & Recovery
+- State Locking and Conflicts
+- Drift and Recovery
 ```
 
 ---
@@ -448,14 +448,14 @@ Generate custom diagrams/infographics/photos into `images/` when you can; use TO
 
 ---
 
-## 14. Lab stub (end of chapter - no lab body)
+## 14. Lab slide
 
-Do **not** write lab steps here. Do **not** add the lab URL. Humans add the link later. Labs are authored separately with the Lab Generator skill.
+The Course Generator inserts this after the lab’s navigation slide. The title is the lab name. The body is one line. Do not write a time, a URL, or lab steps. A person adds the link later. The Lab Generator writes the manual.
 
 ```markdown
-# Lab 2: Configure Remote State
+# Configure Remote State
 
-**Time:** 30 minutes
+Lab link: TODO
 ```
 
 ---
@@ -562,12 +562,78 @@ Questions?
 
 ## 18. Assemble files
 
-**Default: `00-introduction.md`:** Title → Welcome (`panel-right` + `welcome.png`) → Course Objectives → Agenda (`panel-left` + `agenda.png`) → Who Should Attend (`panel-right` + `who-should-attend.png`) → Prerequisites (`panel-left` + `prerequisites.png`)
+**Spine, `00-introduction.md`:** Title → Welcome (`panel-right` + `welcome.png`) → Course Objectives → Agenda (`panel-left` + `agenda.png`) → Who Should Attend (`panel-right` + `who-should-attend.png`) → Prerequisites (`panel-left` + `prerequisites.png`)
 
-**Default: each content `0N-….md` chapter:** Title → Chapter Objectives → (Navigation → section slides) × N → Lab stub → What You Learned → Quizzes (2 MCQ + 1 discussion, with answers) → Questions and Answers
+**Spine, each content `0N-….md` chapter:** Title → Chapter Objectives → one navigation slide per section (a lab is a section) → What You Learned → Questions and Answers (`Questions?`)
 
-**No quizzes on:** Introduction; course-summary / office-hours closers; very short chapters or when the user declines
+**Course Generator then inserts:** teaching slides after each navigation slide that is not a lab; one lab slide after each lab navigation item; three quizzes (2 multiple choice with answers, then a discussion and discussion points) after What You Learned and before Questions and Answers.
 
-**Short-course exception:** the same spine may live in one file (e.g. `course.md`) when the deck is a single sitting.
+No quizzes in the introduction. Omit the chapter quizzes only when the user says so.
 
-Ensure `images/` includes the stock set when authoring from this template: `roi-logo-with-name.png`, `welcome.png`, `agenda.png`, `who-should-attend.png`, `prerequisites.png`, `qa.png`.
+Ensure `images/` includes the stock set: `roi-logo-with-name.png`, `welcome.png`, `agenda.png`, `who-should-attend.png`, `prerequisites.png`, `qa.png`. Do not regenerate them.
+
+---
+
+## 19. Spine skeleton
+
+This is a content chapter after the **spine** skill. There are no teaching slides, no quizzes, and no lab slide yet.
+
+```markdown
+<!-- course-title: Hands-On Terraform -->
+<!-- course-theme: roi-alt-theme -->
+
+<!-- layout: title -->
+![ROI Logo](images/roi-logo-with-name.png)
+
+Hands-On Terraform
+
+# Chapter 2: State and Remote Backends
+
+---
+
+# Chapter 2: Objectives
+
+- Explain why local state fails for a team and how a remote backend fixes it
+- Explain why two people applying from laptops lose updates
+- Configure a remote backend and migrate the existing state
+
+---
+
+<!-- layout: navigation -->
+# Chapter 2
+
+- **Why State Matters**
+- Lab: Configure Remote State
+
+---
+
+<!-- layout: navigation -->
+# Chapter 2
+
+- Why State Matters
+- **Lab: Configure Remote State**
+
+---
+
+# What You Learned
+
+- Explained why local state fails for a team and how a remote backend fixes it
+- Explained why two people applying from laptops lose updates
+- Configured a remote backend and migrated the existing state
+
+---
+
+# Questions and Answers
+
+Questions?
+```
+
+The content skill inserts teaching slides after the first navigation slide. After the lab navigation slide it inserts one slide, and nothing else about the lab:
+
+```markdown
+# Configure Remote State
+
+Lab link: TODO
+```
+
+It then inserts the three quizzes between What You Learned and Questions and Answers.

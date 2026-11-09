@@ -1,14 +1,47 @@
 # Lab Generator — copy-paste template
 
-Copy this skeleton when creating a new lab. See [SKILL.md](../SKILL.md) for rules.
-Emulate the sample at `labs/lab-01-sample-lab-viewer-format/lab.md`.
+Copy this skeleton when creating a new lab. See [SKILL.md](../SKILL.md) for the
+solution-first workflow and [../../shared/lab-markdown-rules.md](../../shared/lab-markdown-rules.md)
+for the formatting gates. Emulate the sample at `labs/lab-01-sample-lab-viewer-format/lab.md`.
 
 Place files at:
 
 ```text
 labs/lab-NN-short-slug/lab.md
-labs/lab-NN-short-slug/images/   # screenshots and diagrams
+labs/lab-NN-short-slug/images/     # screenshots and diagrams
+labs/lab-NN-short-slug/solution/   # finished result + README.md (built first)
+labs/lab-NN-short-slug/starter/    # optional starting files
 ```
+
+## Solution README skeleton
+
+Write this **before** `lab.md`:
+
+````markdown
+# Solution: Configure Remote State for Terraform
+
+## End State
+
+- A versioned GCS bucket named `YOUR_PROJECT_ID-tf-state`
+- Terraform configuration in `main.tf` using the `gcs` backend with prefix `demo`
+- State object stored at `gs://YOUR_PROJECT_ID-tf-state/demo/default.tfstate`
+
+## How to Verify
+
+```bash
+gcloud storage ls "gs://${PROJECT_ID}-tf-state/demo/"
+terraform state list
+```
+
+Expected: the state object is listed, and `terraform state list` shows the bucket resource.
+
+## Built With
+
+- Terraform 1.x, Google provider 6.x, Cloud Shell (checked YYYY-MM-DD)
+- Unverified: (list anything you could not run)
+````
+
+## Lab manual skeleton
 
 **Heading case:** Title Case for `#` and `##`. Task headings: `### Task N: …` with sentence case after the colon.
 
